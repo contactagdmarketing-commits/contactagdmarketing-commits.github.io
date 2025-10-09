@@ -36,7 +36,6 @@
 
   <!-- Swiper -->
   <link rel="stylesheet" href="https://unpkg.com/swiper@10/swiper-bundle.min.css" />
-  <script defer src="https://unpkg.com/swiper@10/swiper-bundle.min.js"></script>
 
   <style>
     .glass{backdrop-filter:saturate(180%) blur(12px);background:rgba(255,255,255,.75)}
@@ -50,6 +49,8 @@
     }
   </style>
 </head>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 <body class="antialiased text-slate-800 bg-white">
   <!-- Topbar langue -->
   <div class="bg-slate-900 text-white text-xs">
@@ -492,19 +493,25 @@
       try {
         // Carrousel fournisseurs — continu + boutons
         const suppliersSwiper = new Swiper('.suppliers-swiper', {
-          slidesPerView: 2,
-          spaceBetween: 16,
-          loop: true,
-          loopAdditionalSlides: 12,
-          speed: 12000,                 // plus grand = plus lent
-          autoplay: { delay: 0, disableOnInteraction: false, pauseOnMouseEnter: true },
-          navigation: { nextEl: '.suppliers-next', prevEl: '.suppliers-prev' },
-          breakpoints: {
-            640:  { slidesPerView: 3 },
-            768:  { slidesPerView: 4 },
-            1024: { slidesPerView: 6 }
-          }
-        });
+  slidesPerView: 2,
+  spaceBetween: 16,
+  loop: true,
+  loopAdditionalSlides: 20,     // beaucoup de duplications = scroll plus fluide
+  loopedSlides: 20,
+  allowTouchMove: true,
+  speed: 9000,                  // vitesse (plus grand = plus lent)
+  autoplay: {
+    delay: 1,                   // 1ms = continu (0 est parfois ignoré)
+    disableOnInteraction: false,
+    pauseOnMouseEnter: true
+  },
+  navigation: { nextEl: '.suppliers-next', prevEl: '.suppliers-prev' },
+  breakpoints: {
+    640:  { slidesPerView: 3 },
+    768:  { slidesPerView: 4 },
+    1024: { slidesPerView: 6 }
+  }
+});
 
         // Avis
         const reviewsSwiper = new Swiper('.reviews-swiper', {
