@@ -426,41 +426,50 @@
   </section>
 
   <!-- Blog -->
-  <section id="blog" class="bg-slate-50">
-    <div class="container py-12 md:py-16">
-      <h2 class="text-2xl md:text-3xl font-bold text-center">Actualités énergie</h2>
-      <div class="grid md:grid-cols-3 gap-6 mt-8">
-        <article class="rounded-2xl bg-white border overflow-hidden">
-          <div class="aspect-[4/3] bg-slate-100"></div>
-          <div class="p-5">
-            <h3 class="font-semibold">Comprendre l’indexation des contrats</h3>
-            <p class="text-sm text-slate-600 mt-2">Repères simples pour lire vos clauses d’indexation et éviter les pièges.</p>
-            <a href="#" class="text-primary-700 font-medium inline-block mt-3">Lire →</a>
+ <!-- ACTUS AUTO DEPUIS _posts (sans date) -->
+<section id="blog" class="bg-slate-50">
+  <div class="container py-12 md:py-16">
+    <h2 class="text-2xl md:text-3xl font-bold text-center">Actualités énergie</h2>
+
+    <!-- Carrousel -->
+    <div class="swiper reviews-swiper mt-8">
+      <div class="swiper-wrapper">
+        {% assign posts_home = site.posts | where_exp: "p", "p.published != false" %}
+        {% for post in posts_home limit: 6 %}
+          <div class="swiper-slide">
+            <article class="rounded-2xl bg-white border overflow-hidden h-full flex flex-col">
+              <a href="{{ post.url | relative_url }}" class="block">
+                {% if post.image %}
+                  <img src="{{ post.image | relative_url }}" alt="{{ post.title | escape }}" class="aspect-[4/3] w-full object-cover">
+                {% else %}
+                  <div class="aspect-[4/3] bg-slate-100"></div>
+                {% endif %}
+              </a>
+              <div class="p-5 flex flex-col gap-2 grow">
+                <h3 class="font-semibold">
+                  <a href="{{ post.url | relative_url }}" class="hover:text-primary-700">{{ post.title }}</a>
+                </h3>
+                {% if post.excerpt %}
+                  <p class="text-sm text-slate-600">{{ post.excerpt | strip_html | truncate: 120 }}</p>
+                {% endif %}
+                <div class="mt-auto">
+                  <a href="{{ post.url | relative_url }}" class="text-primary-700 font-medium">Lire →</a>
+                </div>
+              </div>
+            </article>
           </div>
-        </article>
-        <article class="rounded-2xl bg-white border overflow-hidden">
-          <div class="aspect-[4/3] bg-slate-100"></div>
-          <div class="p-5">
-            <h3 class="font-semibold">Puissance souscrite : comment l’optimiser</h3>
-            <p class="text-sm text-slate-600 mt-2">Méthode rapide pour ajuster sans risque et réduire la facture.</p>
-            <a href="#" class="text-primary-700 font-medium inline-block mt-3">Lire →</a>
-          </div>
-        </article>
-        <article class="rounded-2xl bg-white border overflow-hidden">
-          <div class="aspect-[4/3] bg-slate-100"></div>
-          <div class="p-5">
-            <h3 class="font-semibold">Changer de fournisseur sereinement</h3>
-            <p class="text-sm text-slate-600 mt-2">Checklist des étapes et documents utiles pour une bascule fluide.</p>
-            <a href="#" class="text-primary-700 font-medium inline-block mt-3">Lire →</a>
-          </div>
-        </article>
+        {% endfor %}
       </div>
-      <div class="text-center mt-8">
-        <a href="#" class="inline-flex items-center rounded-xl border border-slate-300 px-5 py-3 font-semibold hover:border-slate-400">Tous les articles</a>
+
+      <!-- flèches -->
+      <div class="flex items-center justify-center gap-4 mt-6">
+        <button class="reviews-prev rounded-lg border px-3 py-2">◀</button>
+        <button class="reviews-next rounded-lg border px-3 py-2">▶</button>
       </div>
     </div>
-  </section>
-
+  </div>
+</section>
+  
   <!-- CTA -->
   <section class="bg-gradient-to-r from-primary-600 to-secondary-600 text-white">
     <div class="container py-10 flex flex-col md:flex-row items-center justify-between gap-4">
@@ -500,53 +509,64 @@
   </footer>
 
   <!-- Scripts -->
-  <script>
-    // Menu mobile
-    document.getElementById('menuBtn').addEventListener('click', () => {
-      document.getElementById('mobileMenu').classList.toggle('hidden');
+<script>
+  // Menu mobile (sécurisé si l’élément n’existe pas)
+  const menuBtn = document.getElementById('menuBtn');
+  if (menuBtn) {
+    menuBtn.addEventListener('click', () => {
+      const mobileMenu = document.getElementById('mobileMenu');
+      if (mobileMenu) mobileMenu.classList.toggle('hidden');
     });
-
-    // Swiper init à la fin du chargement
-    window.addEventListener('load', function(){
-      try {
-        // Carrousel fournisseurs — continu + boutons
-        const suppliersSwiper = new Swiper('.suppliers-swiper', {
-  slidesPerView: 2,
-  spaceBetween: 16,
-  loop: true,
-  loopAdditionalSlides: 20,     // beaucoup de duplications = scroll plus fluide
-  loopedSlides: 20,
-  allowTouchMove: true,
-  speed: 4000,                  // vitesse (plus grand = plus lent)
-  autoplay: {
-    delay: 1,                   // 1ms = continu (0 est parfois ignoré)
-    disableOnInteraction: false,
-    pauseOnMouseEnter: true
-  },
-  navigation: { nextEl: '.suppliers-next', prevEl: '.suppliers-prev' },
-  breakpoints: {
-    640:  { slidesPerView: 3 },
-    768:  { slidesPerView: 4 },
-    1024: { slidesPerView: 6 }
   }
-});
 
-        // Avis
-        const reviewsSwiper = new Swiper('.reviews-swiper', {
+  // Initialise Swiper quand tout est chargé
+  window.addEventListener('load', function () {
+    try {
+      // --- Carrousel fournisseurs : défilement continu + boutons ---
+      const supplierSlidesCount = document.querySelectorAll('.suppliers-swiper .swiper-slide').length;
+
+      new Swiper('.suppliers-swiper', {
+        slidesPerView: 2,
+        spaceBetween: 16,
+        loop: supplierSlidesCount > 6,   // boucle seulement si > 6 logos
+        watchOverflow: true,             // désactive si pas assez d’éléments
+        loopAdditionalSlides: 12,
+        speed: 12000,                    // grand = lent (défilement continu)
+        autoplay: { delay: 0, disableOnInteraction: false, pauseOnMouseEnter: true },
+        navigation: { nextEl: '.suppliers-next', prevEl: '.suppliers-prev' },
+        breakpoints: {
+          640:  { slidesPerView: 3 },
+          768:  { slidesPerView: 4 },
+          1024: { slidesPerView: 6 }
+        }
+      });
+
+      // --- Actus + Avis : initialise TOUTES les .reviews-swiper avec leurs propres boutons ---
+      document.querySelectorAll('.reviews-swiper').forEach((swiperEl) => {
+        // on limite la recherche des boutons à la même section
+        const scope = swiperEl.closest('section') || document;
+
+        new Swiper(swiperEl, {
           slidesPerView: 1,
           spaceBetween: 16,
           loop: true,
           autoplay: { delay: 3500, disableOnInteraction: false },
-          navigation: { nextEl: '.reviews-next', prevEl: '.reviews-prev' },
+          navigation: {
+            nextEl: scope.querySelector('.reviews-next'),
+            prevEl: scope.querySelector('.reviews-prev'),
+          },
           breakpoints: {
-            768: { slidesPerView: 2 },
-            1024:{ slidesPerView: 3 }
+            768:  { slidesPerView: 2 },
+            1024: { slidesPerView: 3 }
           }
         });
-      } catch(e) {
-        console.error('Swiper init error:', e);
-      }
-    });
+      });
+
+    } catch (e) {
+      console.error('Swiper init error:', e);
+    }
+  });
+</script>
   </script>
 </body>
 </html>
