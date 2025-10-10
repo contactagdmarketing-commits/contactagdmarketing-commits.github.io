@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page.title }} — Elga Energy</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>.prose img{border-radius:1rem}</style>
+</head>
+<body class="bg-white text-slate-800">
+  <header class="border-b">
+    <div class="max-w-6xl mx-auto p-4 flex items-center justify-between">
+      <a href="/" class="font-bold">Elga Energy</a>
+      <a href="/actu.html" class="text-sm hover:underline">Toutes les actus</a>
+    </div>
+  </header>
+
+  <main class="max-w-3xl mx-auto p-4 md:p-8">
+    <div class="text-xs text-slate-500">{{ page.date | date: "%d %b %Y" }}</div>
+    <h1 class="text-3xl md:text-4xl font-extrabold mt-1">{{ page.title }}</h1>
+
+    {% if page.image %}
+    <img src="{{ page.image | relative_url }}" alt="" class="w-full rounded-2xl my-6">
+    {% endif %}
+
+    <article class="prose prose-slate max-w-none">
+      {{ content }}
+    </article>
+
+    <div class="mt-10">
+      <a href="/actu.html" class="inline-block border rounded-xl px-4 py-2 hover:bg-slate-50">← Retour aux actus</a>
+    </div>
+  </main>
+</body>
+</html>
