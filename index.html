@@ -224,26 +224,65 @@
         <button data-step="4" class="absolute left-1/2 -translate-x-1/2 top-[16.75rem] size-6 rounded-full bg-secondary-600 ring-4 ring-white shadow-soft" aria-label="Étape 4"></button>
       </div>
 
-      <!-- Col texte (carte dynamique) -->
-      <div>
-        <div id="step-card" class="rounded-2xl bg-white border p-6 shadow-soft">
-          <div class="text-sm uppercase tracking-wide text-secondary-600 font-semibold">Étape <span id="step-number">1</span></div>
-          <h3 id="step-title" class="mt-1 text-xl font-bold text-slate-900">Analyse</h3>
-          <p id="step-text" class="mt-3 text-slate-700">
-            Nos consultants analysent vos données de consommation et vos contrats (élec/gaz) pour identifier les leviers d’économies.
-          </p>
+     <!-- Col visuel (ESCALIER PROPRE) -->
+<div class="relative">
+  <div class="aspect-[4/3] rounded-2xl shadow-soft overflow-hidden bg-slate-50">
+    <!-- SVG escalier -->
+    <svg viewBox="0 0 800 600" class="w-full h-full">
+      <!-- dégradé discret aux couleurs ELGA -->
+      <defs>
+        <linearGradient id="elgaBg" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#0E8A57" stop-opacity=".12"/>
+          <stop offset="100%" stop-color="#0B3D91" stop-opacity=".12"/>
+        </linearGradient>
+      </defs>
 
-          <!-- Barre d’étapes -->
-          <div class="mt-6 flex gap-2">
-            <span class="h-1 w-12 bg-secondary-600 rounded" data-bar="1"></span>
-            <span class="h-1 w-12 bg-slate-200 rounded" data-bar="2"></span>
-            <span class="h-1 w-12 bg-slate-200 rounded" data-bar="3"></span>
-            <span class="h-1 w-12 bg-slate-200 rounded" data-bar="4"></span>
-          </div>
-        </div>
-      </div>
-    </div>
+      <!-- fond -->
+      <rect x="0" y="0" width="800" height="600" fill="url(#elgaBg)"></rect>
+
+      <!-- marches (escalier qui monte vers la droite) -->
+      <!-- marche 1 (bas) -->
+      <rect x="80"  y="440" width="640" height="64" rx="14" fill="#ffffff" stroke="#E2E8F0" stroke-width="2"/>
+      <!-- marche 2 -->
+      <rect x="160" y="360" width="560" height="64" rx="14" fill="#ffffff" stroke="#E2E8F0" stroke-width="2"/>
+      <!-- marche 3 -->
+      <rect x="240" y="280" width="480" height="64" rx="14" fill="#ffffff" stroke="#E2E8F0" stroke-width="2"/>
+      <!-- marche 4 (haut) -->
+      <rect x="320" y="200" width="400" height="64" rx="14" fill="#ffffff" stroke="#E2E8F0" stroke-width="2"/>
+
+      <!-- (facultatif) petites légendes fantômes -->
+      <g font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif"
+         font-size="14" fill="#0B3D91" opacity=".75">
+        <text x="100" y="482">Dossier & données de conso</text>
+        <text x="180" y="402">Analyse & cadrage</text>
+        <text x="260" y="322">Appel d’offres & comparatif</text>
+        <text x="340" y="242">Négociation & reco / Signature</text>
+      </g>
+    </svg>
   </div>
+
+  <!-- HOTSPOTS cliquables (positions % sur le conteneur) -->
+  <!-- palier 1 (entre marche 1 et 2) -->
+  <button data-step="1"
+          class="absolute -translate-x-1/2 -translate-y-1/2 left-[30%] top-[66%] size-7 rounded-full bg-secondary-600 ring-4 ring-white shadow-soft"
+          aria-label="Étape 1"></button>
+
+  <!-- palier 2 (entre marche 2 et 3) -->
+  <button data-step="2"
+          class="absolute -translate-x-1/2 -translate-y-1/2 left-[40%] top-[54%] size-7 rounded-full bg-secondary-600 ring-4 ring-white shadow-soft"
+          aria-label="Étape 2"></button>
+
+  <!-- palier 3 (entre marche 3 et 4) -->
+  <button data-step="3"
+          class="absolute -translate-x-1/2 -translate-y-1/2 left-[50%] top-[42%] size-7 rounded-full bg-secondary-600 ring-4 ring-white shadow-soft"
+          aria-label="Étape 3"></button>
+
+  <!-- palier 4 (au-dessus de la marche 4) -->
+  <button data-step="4"
+          class="absolute -translate-x-1/2 -translate-y-1/2 left-[60%] top-[30%] size-7 rounded-full bg-secondary-600 ring-4 ring-white shadow-soft"
+          aria-label="Étape 4"></button>
+</div>
+
 </section>
 
 
