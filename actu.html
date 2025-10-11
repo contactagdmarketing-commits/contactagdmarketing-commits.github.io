@@ -19,26 +19,31 @@
   <section class="max-w-6xl mx-auto p-4 md:p-8">
     <h1 class="text-3xl font-extrabold mb-6">Actualités énergie</h1>
 
-    <div class="grid md:grid-cols-3 gap-6">
-      {% for post in site.posts %}
-      <article class="border rounded-2xl overflow-hidden hover:shadow transition">
-        <a href="{{ post.url | relative_url }}">
-          <div class="aspect-[4/3] bg-slate-100 overflow-hidden">
-            {% if post.image %}
-              <img src="{{ post.image | relative_url }}" alt="" class="w-full h-full object-cover">
-            {% endif %}
-          </div>
-          <div class="p-5">
-            <h2 class="font-semibold mt-1">{{ post.title }}</h2>
-            {% if post.excerpt %}
-              <p class="text-sm text-slate-600 mt-2">{{ post.excerpt | strip_html | truncate: 140 }}</p>
-            {% endif %}
-            <span class="text-primary-700 inline-block mt-3">Lire →</span>
-          </div>
-        </a>
-      </article>
-      {% endfor %}
-    </div>
+    {% assign posts_visibles = site.posts | where_exp: "p", "p.published != false" %}
+    {% if posts_visibles.size > 0 %}
+      <div class="grid md:grid-cols-3 gap-6">
+        {% for post in posts_visibles %}
+          <article class="border rounded-2xl overflow-hidden hover:shadow transition">
+            <a href="{{ post.url | relative_url }}" class="block">
+              <div class="aspect-[4/3] bg-slate-100 overflow-hidden">
+                {% if post.image %}
+                  <img src="{{ post.image | relative_url }}" alt="{{ post.title | escape }}" class="w-full h-full object-cover">
+                {% endif %}
+              </div>
+              <div class="p-5">
+                <h2 class="font-semibold mt-1">{{ post.title }}</h2>
+                {% if post.excerpt %}
+                  <p class="text-sm text-slate-600 mt-2">{{ post.excerpt | strip_html | truncate: 140 }}</p>
+                {% endif %}
+                <span class="text-primary-700 inline-block mt-3">Lire →</span>
+              </div>
+            </a>
+          </article>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p class="text-slate-600">Aucun article pour le moment. Revenez bientôt !</p>
+    {% endif %}
   </section>
 </body>
 </html>
