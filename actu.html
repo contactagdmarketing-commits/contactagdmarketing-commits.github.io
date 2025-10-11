@@ -1,49 +1,163 @@
 ---
 ---
 <!doctype html>
-<html lang="fr">
+<html lang="fr-FR" class="scroll-smooth">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Actualités — Elga Energy</title>
+  <meta name="description" content="Articles et conseils sur l'achat d'énergie : électricité, gaz, négociation, indexation, optimisation." />
+  <link rel="icon" href="/assets/logos/favicon.svg" type="image/svg+xml" />
+
+  <!-- Tailwind (CDN) + thème (mêmes couleurs que la home) -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50:'#ecfdf5',100:'#d1fae5',200:'#a7f3d0',300:'#6ee7b7',400:'#34d399',500:'#10b981',
+              600:'#0e8a57',700:'#0b6c45',800:'#0a5336',900:'#083f2a'
+            },
+            secondary: {
+              50:'#eef2ff',100:'#e0e7ff',200:'#c7d2fe',300:'#a5b4fc',400:'#818cf8',500:'#6366f1',
+              600:'#0b3d91',700:'#0a357e',800:'#082b67',900:'#072153'
+            }
+          },
+          container: { center: true, padding: '1rem' }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .glass{backdrop-filter:saturate(180%) blur(12px);background:rgba(255,255,255,.75)}
+    .shadow-soft{box-shadow:0 10px 30px rgba(2,6,12,.08)}
+    .picture-cover{object-fit:cover;object-position:center}
+  </style>
 </head>
-<body class="bg-white text-slate-800">
-  <header class="border-b">
-    <div class="max-w-6xl mx-auto p-4 flex items-center justify-between">
-      <a href="/" class="font-bold">Elga Energy</a>
-      <a href="/" class="text-sm hover:underline">Accueil</a>
+<body class="antialiased text-slate-800 bg-white">
+  <!-- Topbar langue -->
+  <div class="bg-slate-900 text-white text-xs">
+    <div class="container flex items-center justify-end gap-4 py-1">
+      <a class="opacity-80 hover:opacity-100" href="/" lang="fr-FR">FR</a>
+      <span class="opacity-30">|</span>
+      <a class="opacity-80 hover:opacity-100" href="/" lang="nl-BE">NL</a>
+    </div>
+  </div>
+
+  <!-- Header (identique à la home) -->
+  <header class="sticky top-0 z-50 border-b border-slate-200/60 bg-white/90 glass">
+    <div class="container flex items-center justify-between py-3 gap-4">
+      <a href="/" class="flex items-center gap-3">
+        <img id="logo-elga" src="/assets/logos/elga-energy-logo.svg" alt="Elga Energy" class="h-8 w-auto" />
+        <span class="sr-only">Elga Energy</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a href="/#offre" class="hover:text-primary-700">Offre</a>
+        <a href="/#process" class="hover:text-primary-700">Méthode</a>
+        <a href="/#fournisseurs" class="hover:text-primary-700">Fournisseurs</a>
+        <a href="/#avis" class="hover:text-primary-700">Avis</a>
+        <a href="/#faq" class="hover:text-primary-700">FAQ</a>
+        <a href="/actu.html" class="text-primary-700 font-semibold" aria-current="page">Blog</a>
+        <a href="/#contact" class="hover:text-primary-700">Contact</a>
+      </nav>
+      <div class="flex items-center gap-2">
+        <a href="/#contact" class="inline-flex items-center rounded-xl bg-primary-600 px-4 py-2 text-white text-sm font-medium shadow-soft hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-400">Obtenir un devis</a>
+        <button id="menuBtn" class="md:hidden inline-flex items-center justify-center size-10 rounded-lg border border-slate-300"><span class="sr-only">Ouvrir le menu</span>☰</button>
+      </div>
+    </div>
+    <div id="mobileMenu" class="md:hidden hidden border-t border-slate-200 bg-white">
+      <nav class="container flex flex-col py-3 text-sm">
+        <a href="/#offre" class="py-2">Offre</a>
+        <a href="/#process" class="py-2">Méthode</a>
+        <a href="/#fournisseurs" class="py-2">Fournisseurs</a>
+        <a href="/#avis" class="py-2">Avis</a>
+        <a href="/#faq" class="py-2">FAQ</a>
+        <a href="/actu.html" class="py-2 font-semibold text-primary-700">Blog</a>
+        <a href="/#contact" class="py-2">Contact</a>
+      </nav>
     </div>
   </header>
 
-  <section class="max-w-6xl mx-auto p-4 md:p-8">
-    <h1 class="text-3xl font-extrabold mb-6">Actualités énergie</h1>
+  <!-- Héro simple -->
+  <section class="bg-gradient-to-r from-primary-600 to-secondary-600 text-white">
+    <div class="container py-10 md:py-14">
+      <h1 class="text-3xl md:text-4xl font-extrabold">Actualités énergie</h1>
+      <p class="text-white/90 mt-2">Analyses, conseils et retours d’expérience pour payer l’énergie au juste prix.</p>
+    </div>
+  </section>
 
+  <!-- Grille d’articles (sans date) -->
+  <main class="container py-10 md:py-14">
     {% assign posts_visibles = site.posts | where_exp: "p", "p.published != false" %}
     {% if posts_visibles.size > 0 %}
-      <div class="grid md:grid-cols-3 gap-6">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {% for post in posts_visibles %}
-          <article class="border rounded-2xl overflow-hidden hover:shadow transition">
+          <article class="rounded-2xl bg-white border overflow-hidden hover:shadow-soft transition flex flex-col">
             <a href="{{ post.url | relative_url }}" class="block">
-              <div class="aspect-[4/3] bg-slate-100 overflow-hidden">
-                {% if post.image %}
-                  <img src="{{ post.image | relative_url }}" alt="{{ post.title | escape }}" class="w-full h-full object-cover">
-                {% endif %}
-              </div>
-              <div class="p-5">
-                <h2 class="font-semibold mt-1">{{ post.title }}</h2>
-                {% if post.excerpt %}
-                  <p class="text-sm text-slate-600 mt-2">{{ post.excerpt | strip_html | truncate: 140 }}</p>
-                {% endif %}
-                <span class="text-primary-700 inline-block mt-3">Lire →</span>
-              </div>
+              {% if post.image %}
+                <img src="{{ post.image | relative_url }}" alt="{{ post.title | escape }}" class="aspect-[4/3] w-full picture-cover">
+              {% else %}
+                <div class="aspect-[4/3] bg-slate-100"></div>
+              {% endif %}
             </a>
+            <div class="p-5 flex flex-col gap-2 grow">
+              <h2 class="font-semibold">
+                <a href="{{ post.url | relative_url }}" class="hover:text-primary-700">{{ post.title }}</a>
+              </h2>
+              {% if post.excerpt %}
+                <p class="text-sm text-slate-600">{{ post.excerpt | strip_html | truncate: 140 }}</p>
+              {% endif %}
+              <div class="mt-auto">
+                <a href="{{ post.url | relative_url }}" class="text-primary-700 font-medium">Lire →</a>
+              </div>
+            </div>
           </article>
         {% endfor %}
       </div>
     {% else %}
       <p class="text-slate-600">Aucun article pour le moment. Revenez bientôt !</p>
     {% endif %}
-  </section>
+  </main>
+
+  <!-- Footer (identique à la home) -->
+  <footer class="bg-slate-950 text-slate-200">
+    <div class="container py-10 grid md:grid-cols-3 gap-8">
+      <div>
+        <img src="/assets/logos/elga-energy-logo.svg" alt="Elga Energy" class="h-8 w-auto mb-3" onerror="this.remove()">
+        <p class="text-sm text-slate-400">ELGA Energy — Courtage & conseil en achats d'énergie.</p>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-3">Coordonnées</h4>
+        <p class="text-sm">contact@elgaenergy.fr<br/>+33 1 23 45 67 89</p>
+        <p class="text-sm mt-2">Paris — Lyon — Lille</p>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-3">Liens</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a class="hover:text-white" href="/#faq">FAQ</a></li>
+          <li><a class="hover:text-white" href="/actu.html">Blog</a></li>
+          <li><a class="hover:text-white" href="#">Mentions légales</a></li>
+          <li><a class="hover:text-white" href="#">Politique de confidentialité</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-white/10">
+      <div class="container py-4 text-xs text-slate-400">© 2025 Elga Energy</div>
+    </div>
+  </footer>
+
+  <!-- JS: menu mobile -->
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    if (menuBtn) {
+      menuBtn.addEventListener('click', () => {
+        const mobileMenu = document.getElementById('mobileMenu');
+        if (mobileMenu) mobileMenu.classList.toggle('hidden');
+      });
+    }
+  </script>
 </body>
 </html>
