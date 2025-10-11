@@ -196,96 +196,56 @@
 
   <!-- Méthode -->
   <section id="process" class="relative isolate overflow-hidden">
-    <!-- Fond photo adouci + dégradé -->
-   <div class="absolute inset-0">
-  <img src="/assets/images/process-bg.jpg"
-       alt="Illustration de fond"
-       class="w-full h-full picture-cover opacity-50"  <!-- était opacity-40 -->
-       onerror="this.remove()"/>
-  <div class="absolute inset-0 bg-gradient-to-b from-white/30 via-white/20 to-white/30"></div>
-  <!-- était: from-white/85 via-white/90 to-white/95 -->
-</div>
-
-
-    <div class="relative container py-12 md:py-16">
-      <h2 class="text-2xl md:text-3xl font-bold text-center">Notre méthode, pas à pas</h2>
-      <p class="text-center text-slate-600 mt-2">On s'occupe de tout — vous restez concentré sur votre activité.</p>
-
-      <div class="mt-12 space-y-12 md:space-y-16">
-        <!-- ÉTAPE 1 -->
-        <div class="grid md:grid-cols-2 items-center gap-6">
-          <div class="flex justify-center md:justify-end">
-            <div class="w-24 h-24 rounded-full bg-white ring-1 ring-slate-200 shadow-soft grid place-items-center">
-              <svg viewBox="0 0 24 24" class="w-10 h-10 text-secondary-600" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="6"/><path d="M20 20l-3.5-3.5"/></svg>
-            </div>
-          </div>
-          <div>
-            <div class="relative max-w-md rounded-xl bg-primary-600 text-white shadow-soft p-5">
-              <div class="absolute -top-2 -right-2 w-3 h-3 rounded-full bg-white"></div>
-              <h3 class="font-semibold tracking-wide uppercase">Analyse</h3>
-              <p class="text-white/90 text-sm mt-1">Nos consultants analysent les structures tarifaires et les produits qui vous conviennent. Ils vous proposent ainsi la solution la plus rentable.</p>
-            </div>
-          </div>
-        </div>
-        <!-- ÉTAPE 2 -->
-        <div class="grid md:grid-cols-2 items-center gap-6">
-         <div class="md:order-2 flex justify-center md:justify-start">
-            <div class="w-24 h-24 rounded-full bg-white ring-1 ring-slate-200 shadow-soft grid place-items-center">
-              <svg viewBox="0 0 24 24" class="w-10 h-10 text-secondary-600" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 17l5.5-1.5L20 5a2.1 2.1 0 0 0-3-3L6.5 12.5L5 18z"/><path d="M12 6l6 6"/></svg>
-            </div>
-          </div>
-          <div class="md:order-1 flex justify-center md:justify-end">
-            <div class="relative max-w-md rounded-xl bg-primary-600 text-white shadow-soft p-5">
-              <div class="absolute -top-2 -right-2 w-3 h-3 rounded-full bg-white"></div>
-              <h3 class="font-semibold tracking-wide uppercase">Tendre</h3>
-              <p class="text-white/90 text-sm mt-1">Une fois que nous aurons trouvé des fournisseurs appropriés pour vous, nous lancerons un appel d'offres sur la base des informations reçues.</p>
-            </div>
-          </div>
-        </div>
-        <!-- ÉTAPE 3 -->
-        <!-- ÉTAPE 3 (texte à DROITE) -->
-<div class="grid md:grid-cols-2 items-center gap-6">
-  <!-- Icône : à gauche en desktop, centrée en mobile -->
-  <div class="md:order-1 flex justify-center md:justify-end">
-    <div class="w-24 h-24 rounded-full bg-white ring-1 ring-slate-200 shadow-soft grid place-items-center">
-      <!-- guillemets -->
-      <svg viewBox="0 0 24 24" class="w-10 h-10 text-secondary-600" fill="currentColor">
-        <path d="M9 7a5 5 0 1 0 0 10V7zm8 0a5 5 0 1 0 0 10V7z"/>
-      </svg>
-    </div>
+  <!-- Fond + voile -->
+  <div class="absolute inset-0">
+    <img src="/assets/images/process-bg.jpg" alt="" class="w-full h-full object-cover opacity-60" onerror="this.remove()">
+    <div class="absolute inset-0 bg-gradient-to-b from-white/30 via-white/20 to-white/30"></div>
   </div>
 
-  <!-- Carte texte : à droite en desktop -->
-  <div class="md:order-2">
-    <div class="relative max-w-md rounded-xl bg-primary-600 text-white shadow-soft p-5">
-      <div class="absolute -top-2 -right-2 w-3 h-3 rounded-full bg-white"></div>
-      <h3 class="font-semibold tracking-wide uppercase">Négociation</h3>
-      <p class="text-white/90 text-sm mt-1">
-        Parlons maintenant énergie ! Nous négocions pour vous avec les fournisseurs afin d'obtenir
-        des prix et des conditions encore plus avantageux.
-      </p>
-    </div>
-  </div>
-</div>
+  <div class="relative container py-12 md:py-16">
+    <h2 class="text-2xl md:text-3xl font-bold text-center">Notre méthode, pas à pas</h2>
+    <p class="text-center text-slate-600 mt-2">Cliquez sur les paliers entre les marches.</p>
 
-        <!-- ÉTAPE 4 -->
-        <div class="grid md:grid-cols-2 items-center gap-6">
-          <div class="md:order-2 flex justify-center md:justify-start">
-            <div class="w-24 h-24 rounded-full bg-white ring-1 ring-slate-200 shadow-soft grid place-items-center">
-              <svg viewBox="0 0 24 24" class="w-10 h-10 text-secondary-600" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M20 6l-11 11l-5-5"/></svg>
-            </div>
-          </div>
-          <div class="md:order-1 flex md:justify-end">
-            <div class="relative max-w-md rounded-xl bg-primary-600 text-white shadow-soft p-5">
-              <div class="absolute -top-2 -right-2 w-3 h-3 rounded-full bg-white"></div>
-              <h3 class="font-semibold tracking-wide uppercase">Conseil</h3>
-              <p class="text-white/90 text-sm mt-1">Le résultat de tout cela est un conseil qui place vos intérêts en premier.</p>
-            </div>
+    <!-- VISUEL INTERACTIF -->
+    <div id="elga-steps" class="mt-10 grid md:grid-cols-2 gap-10 items-center">
+      <!-- Col visuel (les “marches”) -->
+      <div class="relative">
+        <div class="grid gap-6">
+          <div class="h-16 bg-primary-100 rounded-xl shadow-soft"></div>
+          <div class="h-16 bg-primary-200 rounded-xl shadow-soft"></div>
+          <div class="h-16 bg-primary-300 rounded-xl shadow-soft"></div>
+          <div class="h-16 bg-primary-400 rounded-xl shadow-soft"></div>
+        </div>
+
+        <!-- Paliers cliquables (points) -->
+        <button data-step="1" class="absolute left-1/2 -translate-x-1/2 top-[3.25rem] size-6 rounded-full bg-secondary-600 ring-4 ring-white shadow-soft" aria-label="Étape 1"></button>
+        <button data-step="2" class="absolute left-1/2 -translate-x-1/2 top-[7.75rem] size-6 rounded-full bg-secondary-600 ring-4 ring-white shadow-soft" aria-label="Étape 2"></button>
+        <button data-step="3" class="absolute left-1/2 -translate-x-1/2 top-[12.25rem] size-6 rounded-full bg-secondary-600 ring-4 ring-white shadow-soft" aria-label="Étape 3"></button>
+        <button data-step="4" class="absolute left-1/2 -translate-x-1/2 top-[16.75rem] size-6 rounded-full bg-secondary-600 ring-4 ring-white shadow-soft" aria-label="Étape 4"></button>
+      </div>
+
+      <!-- Col texte (carte dynamique) -->
+      <div>
+        <div id="step-card" class="rounded-2xl bg-white border p-6 shadow-soft">
+          <div class="text-sm uppercase tracking-wide text-secondary-600 font-semibold">Étape <span id="step-number">1</span></div>
+          <h3 id="step-title" class="mt-1 text-xl font-bold text-slate-900">Analyse</h3>
+          <p id="step-text" class="mt-3 text-slate-700">
+            Nos consultants analysent vos données de consommation et vos contrats (élec/gaz) pour identifier les leviers d’économies.
+          </p>
+
+          <!-- Barre d’étapes -->
+          <div class="mt-6 flex gap-2">
+            <span class="h-1 w-12 bg-secondary-600 rounded" data-bar="1"></span>
+            <span class="h-1 w-12 bg-slate-200 rounded" data-bar="2"></span>
+            <span class="h-1 w-12 bg-slate-200 rounded" data-bar="3"></span>
+            <span class="h-1 w-12 bg-slate-200 rounded" data-bar="4"></span>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
 
   <!-- Carrousel fournisseurs -->
   <section id="fournisseurs" class="bg-white">
@@ -563,6 +523,47 @@
       console.error('Swiper init error:', e);
     }
   });
+    /* --------- Notre méthode : interactions --------- */
+  window.addEventListener('load', function () {
+    // Sélecteurs (ne fait rien si la section n'est pas sur la page)
+    const section = document.getElementById('process');
+    if (!section) return;
+
+    const num   = document.getElementById('step-number');
+    const title = document.getElementById('step-title');
+    const text  = document.getElementById('step-text');
+
+    // Contenu des étapes (tu peux ajuster les textes)
+    const steps = {
+      1:{ title:'Analyse', text:"Nos consultants analysent vos données de consommation et vos contrats (élec/gaz) pour identifier les leviers d’économies." },
+      2:{ title:'Cadrage & stratégie', text:"On cadre le besoin (fixe/indexé, durée, clauses sensibles) et on prépare la stratégie d’achat adaptée au marché." },
+      3:{ title:'Appel d’offres & comparatif', text:"On consulte des fournisseurs, challenge les prix/conditions et on prépare un comparatif clair et argumenté." },
+      4:{ title:'Négociation & recommandation', text:"On négocie les clauses clés et on recommande l’option la plus rentable et sécurisée pour votre activité." }
+    };
+
+    function setStep(i){
+      const d = steps[i]; if(!d) return;
+      if (num)   num.textContent   = i;
+      if (title) title.textContent = d.title;
+      if (text)  text.textContent  = d.text;
+
+      // Met à jour la barre de progression
+      document.querySelectorAll('[data-bar]').forEach(b=>{
+        const k = Number(b.getAttribute('data-bar'));
+        b.classList.toggle('bg-secondary-600', k <= i);
+        b.classList.toggle('bg-slate-200',   k >  i);
+      });
+    }
+
+    // Clic/Clavier sur les points data-step
+    section.querySelectorAll('[data-step]').forEach(btn=>{
+      btn.addEventListener('click', ()=> setStep(btn.getAttribute('data-step')));
+      btn.addEventListener('keydown', e=>{
+        if(e.key==='Enter' || e.key===' '){ e.preventDefault(); setStep(btn.getAttribute('data-step')); }
+      });
+    });
+  });
+
 </script>
 </body>
 </html>
