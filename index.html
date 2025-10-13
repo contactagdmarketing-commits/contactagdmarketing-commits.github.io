@@ -246,6 +246,155 @@
   </div>
 </section>
 
+<!-- ===== Parcours Client Elga Energy (fond transparent) ===== -->
+<section id="parcours-client" class="bg-white">
+  <div class="container py-12 md:py-16">
+    <h2 class="text-2xl md:text-3xl font-bold text-center">Parcours Client Elga Energy</h2>
+    <p class="text-center text-slate-600 mt-2">5 étapes claires — de l’analyse au suivi.</p>
+
+    <div id="parcours-elga" class="mt-10" style="--elga-blue:#1E88E5; --elga-blue-dark:#155fa3; --text:#1f2937;">
+      <style>
+        /* Scopé à #parcours-elga pour éviter tout conflit */
+        #parcours-elga svg{width:100%;height:auto;display:block}
+        #parcours-elga .t{font:600 16px Montserrat,Arial,Helvetica,sans-serif;fill:var(--text)}
+        #parcours-elga .s{font:400 13px Montserrat,Arial,Helvetica,sans-serif;fill:#6b7280}
+        #parcours-elga .n{font:700 14px Montserrat,Arial,Helvetica,sans-serif;fill:#fff}
+        #parcours-elga .wrap{max-width:1100px;margin:0 auto}
+        #parcours-elga .shadow{filter:url(#soft)}
+      </style>
+
+      <div class="wrap">
+        <!-- SVG vectoriel, fond transparent -->
+        <svg viewBox="0 0 1200 700" role="img" aria-label="Parcours client en 5 étapes">
+          <defs>
+            <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%"  stop-color="var(--elga-blue)"/>
+              <stop offset="100%" stop-color="var(--elga-blue-dark)"/>
+            </linearGradient>
+            <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+              <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="rgba(0,0,0,.18)"/>
+            </filter>
+            <!-- Icônes -->
+            <g id="ico-collecte" fill="none" stroke="var(--elga-blue-dark)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="0" cy="0" r="16"/><path d="M-10 6 h20 M-6 0 h12 M-2 -6 h4"/>
+            </g>
+            <g id="ico-nego" fill="none" stroke="var(--elga-blue-dark)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M-18 -6 l12 -8 l24 16 l-12 8z M-14 8 l-6 12 l12 -4 l20 -14"/>
+            </g>
+            <g id="ico-bar" fill="none" stroke="var(--elga-blue-dark)" stroke-width="6" stroke-linecap="round">
+              <path d="M-18 12 h36"/><rect x="-16" y="2" width="8" height="10" rx="1"/>
+              <rect x="-4" y="-4" width="8" height="16" rx="1"/><rect x="8" y="-10" width="8" height="22" rx="1"/>
+            </g>
+            <g id="ico-sign" fill="none" stroke="var(--elga-blue-dark)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="-18" y="-14" width="36" height="28" rx="3"/><path d="M-10 2 q6 -8 12 0"/><path d="M-10 -4 h16"/>
+            </g>
+            <g id="ico-support" fill="none" stroke="var(--elga-blue-dark)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="0" cy="-6" r="10"/><path d="M-18 -6 a10 10 0 0 1 8 -10 v8 M18 -6 a10 10 0 0 0 -8 -10 v8"/><path d="M-8 10 h16"/>
+            </g>
+          </defs>
+
+          <!-- Étapes (marches isométriques) -->
+          <!-- 1 -->
+          <g transform="translate(340,560)" class="shadow">
+            <path d="M-140 -40 l160 0 l40 20 l-160 0 z" fill="url(#g)"/>
+            <path d="M60 -40 l40 20 l0 30 l-40 -20 z" fill="var(--elga-blue-dark)" opacity=".9"/>
+            <g fill="var(--elga-blue-dark)" opacity=".8">
+              <rect x="-60" y="-35" width="6" height="20" rx="1"/>
+              <rect x="-46" y="-30" width="6" height="20" rx="1"/>
+              <rect x="-32" y="-25" width="6" height="20" rx="1"/>
+              <rect x="-18" y="-20" width="6" height="20" rx="1"/>
+              <rect x="-4"  y="-15" width="6" height="20" rx="1"/>
+            </g>
+            <use href="#ico-collecte" transform="translate(-90,-5)"/>
+          </g>
+
+          <!-- 2 -->
+          <g transform="translate(520,460)" class="shadow">
+            <path d="M-140 -40 l160 0 l40 20 l-160 0 z" fill="url(#g)"/>
+            <path d="M60 -40 l40 20 l0 30 l-40 -20 z" fill="var(--elga-blue-dark)" opacity=".9"/>
+            <g fill="var(--elga-blue-dark)" opacity=".8">
+              <rect x="-60" y="-35" width="6" height="20" rx="1"/>
+              <rect x="-46" y="-30" width="6" height="20" rx="1"/>
+              <rect x="-32" y="-25" width="6" height="20" rx="1"/>
+              <rect x="-18" y="-20" width="6" height="20" rx="1"/>
+              <rect x="-4"  y="-15" width="6" height="20" rx="1"/>
+            </g>
+            <use href="#ico-nego" transform="translate(-90,-5)"/>
+          </g>
+
+          <!-- 3 -->
+          <g transform="translate(700,360)" class="shadow">
+            <path d="M-140 -40 l160 0 l40 20 l-160 0 z" fill="url(#g)"/>
+            <path d="M60 -40 l40 20 l0 30 l-40 -20 z" fill="var(--elga-blue-dark)" opacity=".9"/>
+            <g fill="var(--elga-blue-dark)" opacity=".8">
+              <rect x="-60" y="-35" width="6" height="20" rx="1"/>
+              <rect x="-46" y="-30" width="6" height="20" rx="1"/>
+              <rect x="-32" y="-25" width="6" height="20" rx="1"/>
+              <rect x="-18" y="-20" width="6" height="20" rx="1"/>
+              <rect x="-4"  y="-15" width="6" height="20" rx="1"/>
+            </g>
+            <use href="#ico-bar" transform="translate(-90,-5)"/>
+          </g>
+
+          <!-- 4 -->
+          <g transform="translate(520,260)" class="shadow">
+            <path d="M-140 -40 l160 0 l40 20 l-160 0 z" fill="url(#g)"/>
+            <path d="M60 -40 l40 20 l0 30 l-40 -20 z" fill="var(--elga-blue-dark)" opacity=".9"/>
+            <g fill="var(--elga-blue-dark)" opacity=".8">
+              <rect x="-60" y="-35" width="6" height="20" rx="1"/>
+              <rect x="-46" y="-30" width="6" height="20" rx="1"/>
+              <rect x="-32" y="-25" width="6" height="20" rx="1"/>
+              <rect x="-18" y="-20" width="6" height="20" rx="1"/>
+              <rect x="-4"  y="-15" width="6" height="20" rx="1"/>
+            </g>
+            <use href="#ico-sign" transform="translate(-90,-5)"/>
+          </g>
+
+          <!-- 5 -->
+          <g transform="translate(700,160)" class="shadow">
+            <path d="M-140 -40 l160 0 l40 20 l-160 0 z" fill="url(#g)"/>
+            <path d="M60 -40 l40 20 l0 30 l-40 -20 z" fill="var(--elga-blue-dark)" opacity=".9"/>
+            <g fill="var(--elga-blue-dark)" opacity=".8">
+              <rect x="-60" y="-35" width="6" height="20" rx="1"/>
+              <rect x="-46" y="-30" width="6" height="20" rx="1"/>
+              <rect x="-32" y="-25" width="6" height="20" rx="1"/>
+              <rect x="-18" y="-20" width="6" height="20" rx="1"/>
+              <rect x="-4"  y="-15" width="6" height="20" rx="1"/>
+            </g>
+            <use href="#ico-support" transform="translate(-90,-5)"/>
+          </g>
+
+          <!-- Pastilles + textes -->
+          <circle cx="890" cy="590" r="28" fill="url(#g)"/><text x="890" y="596" text-anchor="middle" class="n">1</text>
+          <text x="930" y="560" class="t">Collecte & Analyse</text>
+          <text x="930" y="584" class="s">Rassemblement et analyse des données</text>
+          <text x="930" y="604" class="s">de consommation et des tarifs.</text>
+
+          <circle cx="280" cy="490" r="28" fill="url(#g)"/><text x="280" y="496" text-anchor="middle" class="n">2</text>
+          <text x="60" y="460" class="t">Négociation Fournisseurs</text>
+          <text x="60" y="484" class="s">Négociation multi-fournisseurs pour</text>
+          <text x="60" y="504" class="s">obtenir les meilleures conditions.</text>
+
+          <circle cx="890" cy="390" r="28" fill="url(#g)"/><text x="890" y="396" text-anchor="middle" class="n">3</text>
+          <text x="930" y="360" class="t">Comparatif Client</text>
+          <text x="930" y="384" class="s">Présentation des économies et des options</text>
+          <text x="930" y="404" class="s">pour un choix éclairé.</text>
+
+          <circle cx="280" cy="290" r="28" fill="url(#g)"/><text x="280" y="296" text-anchor="middle" class="n">4</text>
+          <text x="60" y="260" class="t">Signature & Bascule</text>
+          <text x="60" y="284" class="s">Signature électronique et transition</text>
+          <text x="60" y="304" class="s">sans interruption.</text>
+
+          <circle cx="890" cy="190" r="28" fill="url(#g)"/><text x="890" y="196" text-anchor="middle" class="n">5</text>
+          <text x="930" y="160" class="t">Suivi & Accompagnement</text>
+          <text x="930" y="184" class="s">Suivi continu et soutien pour</text>
+          <text x="930" y="204" class="s">les clients.</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ===== /Parcours Client ===== -->
 
   <!-- Carrousel fournisseurs -->
   <section id="fournisseurs" class="bg-white">
