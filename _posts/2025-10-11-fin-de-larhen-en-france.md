@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Fin de l'ARENH : Quels changement pour les entreprises ?"
+title: "Fin de l’ARENH : quels changements pour les entreprises ?"
 image: /assets/images/image_arenh.jpg
 excerpt: "L’Accès Régulé à l’Électricité Nucléaire Historique (ARENH) prend fin en 2025. Quelles conséquences sur vos factures d’énergie et comment anticiper la hausse des prix ?"
 published: true
@@ -54,4 +54,3 @@ Nous accompagnons déjà de nombreuses entreprises dans la renégociation de leu
 ---
 
 **#énergie #ARENH #électricité #France #ElgaEnergy**
-
