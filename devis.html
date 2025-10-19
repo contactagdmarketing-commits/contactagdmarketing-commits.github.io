@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Recevez une offre — Elga Energy</title>
-  <meta name="description" content="Complétez notre formulaire énergie pour obtenir une étude personnalisée électricité et gaz.">
+  <meta name="description" content="Complétez notre tunnel devis énergie pour obtenir une étude personnalisée électricité et gaz.">
   <link rel="icon" href="/assets/logos/favicon.svg" type="image/svg+xml" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -32,15 +32,15 @@
     .shadow-soft{box-shadow:0 20px 40px rgba(15,23,42,.08)}
     .field-card{border:1px solid rgba(15,23,42,.08);border-radius:1.5rem;padding:2rem;background:#fff;box-shadow:0 16px 36px rgba(15,23,42,.06)}
     .field-card h3{font-size:1.25rem;font-weight:700;color:#0b3d91;margin-bottom:1rem}
-    .pill-radio {position:relative;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:.25rem;padding:1rem 1.4rem;border-radius:1rem;border:1px solid #cbd5f5;background:#fff;cursor:pointer;transition:all .25s ease-in-out;overflow:visible;box-sizing:border-box}
-    .pill-radio input {position:absolute;opacity:0;cursor:pointer;width:100%;height:100%;top:0;left:0;z-index:2}
-    .pill-radio span,.pill-radio small {position:relative;z-index:3;line-height:1.3}
-    .pill-radio span {font-weight:700;color:#0b3d91;font-size:1rem;word-break:normal;white-space:normal}
-    .pill-radio small {color:#64748b;font-size:.85rem;word-break:normal;white-space:normal}
-    .pill-radio:hover {border-color:#818cf8;transform:scale(1.02);box-shadow:0 8px 24px rgba(99,102,241,.15)}
-    .pill-radio.is-active {border-color:#0b3d91;background:linear-gradient(135deg,rgba(11,61,145,.08),rgba(16,185,129,.08));box-shadow:0 0 0 4px rgba(16,185,129,.15),0 10px 30px rgba(11,61,145,.1);transform:scale(1.03)}
-    .pill-radio.is-active span {color:#0b3d91}
-    .pill-radio.is-active small {color:#0f172a}
+    .pill-radio{position:relative;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:.25rem;padding:1rem 1.4rem;border-radius:1rem;border:1px solid #cbd5f5;background:#fff;cursor:pointer;transition:all .25s ease-in-out;overflow:visible;box-sizing:border-box}
+    .pill-radio input{position:absolute;opacity:0;cursor:pointer;width:100%;height:100%;top:0;left:0;z-index:2}
+    .pill-radio span,.pill-radio small{position:relative;z-index:3;line-height:1.3}
+    .pill-radio span{font-weight:700;color:#0b3d91;font-size:1rem;word-break:normal;white-space:normal}
+    .pill-radio small{color:#64748b;font-size:.85rem;word-break:normal;white-space:normal}
+    .pill-radio:hover{border-color:#818cf8;transform:scale(1.02);box-shadow:0 8px 24px rgba(99,102,241,.15)}
+    .pill-radio.is-active{border-color:#0b3d91;background:linear-gradient(135deg,rgba(11,61,145,.08),rgba(16,185,129,.08));box-shadow:0 0 0 4px rgba(16,185,129,.15),0 10px 30px rgba(11,61,145,.1);transform:scale(1.03)}
+    .pill-radio.is-active span{color:#0b3d91}
+    .pill-radio.is-active small{color:#0f172a}
     [data-step]{opacity:0;transform:translateY(10px);pointer-events:none;transition:opacity .4s ease,transform .4s ease}
     [data-step].active-step{opacity:1;transform:translateY(0);pointer-events:all}
     html,body{width:100%;overflow-x:hidden}
@@ -78,9 +78,8 @@
     <div class="container py-12 md:py-16 grid lg:grid-cols-[minmax(0,1fr),minmax(320px,0.8fr)] gap-10 lg:gap-14">
       <section class="space-y-8">
         <div class="rounded-3xl bg-white border border-slate-200/70 shadow-soft p-6 md:p-8">
-          <h2 class="text-2xl font-bold text-slate-900 mb-6">Je demande mon comparatif</h2>
+          <h2 class="text-2xl font-bold text-slate-900 mb-6">Tunnel devis</h2>
 
-          <!-- Formulaire avec envoi mail -->
           <form id="quote-form" class="mt-6 space-y-8"
                 action="https://formsubmit.co/el/fefevo"
                 method="POST" enctype="multipart/form-data">
@@ -194,12 +193,6 @@
                 </button>
               </div>
             </div>
-
-            <!-- Champs cachés FormSubmit -->
-            <input type="hidden" name="_subject" value="🔔 Nouveau devis Elga Energy via le site">
-            <input type="hidden" name="_next" value="https://elgaenergy.fr/merci.html">
-            <input type="text" name="_honey" style="display:none">
-
           </form>
         </div>
       </section>
@@ -241,8 +234,11 @@
     const docsContainer = document.getElementById('docs-container');
     let currentStep = 0;
 
+    // ✅ Correction : génération interactive avec écouteurs
     function generateCompteurs(nbElec, nbGaz) {
       compteursContainer.innerHTML = '';
+
+      // Compteurs élec
       for (let i = 1; i <= nbElec; i++) {
         compteursContainer.innerHTML += `
           <fieldset class="space-y-2">
@@ -254,6 +250,8 @@
             <label class="pill-radio"><input type="radio" name="typologie_compteurs_elec_${i}" value="+250"><span>&gt; 250 kVA</span><small>Grands sites / tarif vert</small></label>
           </fieldset>`;
       }
+
+      // Compteurs gaz
       for (let j = 1; j <= nbGaz; j++) {
         compteursContainer.innerHTML += `
           <fieldset class="space-y-2">
@@ -265,8 +263,20 @@
             <label class="pill-radio"><input type="radio" name="typologie_compteurs_gaz_${j}" value="t3"><span>T3/T4 / +300 MWh</span><small>Industrie, gros volumes</small></label>
           </fieldset>`;
       }
+
+      // Réactivation des clics radio
+      const radioInputs = compteursContainer.querySelectorAll('.pill-radio input');
+      radioInputs.forEach(input => {
+        input.addEventListener('change', () => {
+          document.querySelectorAll(`input[name="${input.name}"]`).forEach(i => {
+            const card = i.closest('.pill-radio');
+            card.classList.toggle('is-active', i.checked);
+          });
+        });
+      });
     }
 
+    // Uploads
     function generateUploadZones(nbElec, nbGaz) {
       docsContainer.innerHTML = '';
       for (let i = 1; i <= nbElec; i++) {
@@ -287,6 +297,7 @@
       }
     }
 
+    // Navigation
     function showStep(step) {
       currentStep = Math.min(Math.max(step, 0), panels.length - 1);
       panels.forEach((panel, index) => {
@@ -312,7 +323,6 @@
       showStep(currentStep + 1);
     });
 
-    // ✅ Plus de preventDefault : FormSubmit gère l'envoi
     form.addEventListener('submit', () => {
       setTimeout(() => {
         form.innerHTML = `
