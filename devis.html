@@ -51,6 +51,11 @@
     @media (max-width:640px){
       .field-card{padding:1.4rem;border-radius:1.2rem}
     }
+    html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
   </style>
 </head>
 <body class="antialiased text-slate-800 bg-white">
@@ -109,7 +114,8 @@
     </div>
   </section>
 
-  <main class="bg-slate-50">
+  <main class="bg-slate-50 min-h-screen overflow-x-hidden">
+
     <div class="container py-12 md:py-16 grid lg:grid-cols-[minmax(0,1fr),minmax(320px,0.8fr)] gap-10 lg:gap-14">
       <section class="space-y-8">
         <div class="rounded-3xl bg-white border border-slate-200/70 shadow-soft p-6 md:p-8">
