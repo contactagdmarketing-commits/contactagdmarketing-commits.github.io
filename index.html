@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="fr-FR" class="scroll-smooth">
 <head>
@@ -201,34 +202,32 @@
     <div id="parcours-elga" class="mt-10">
       <style>
         /* Styles scoped à la section Parcours Client */
-        #parcours-elga{position:relative;padding:4.5rem 1.5rem;border-radius:2.25rem;overflow:hidden;color:#0b1f33}
-        #parcours-elga::before{content:'';position:absolute;inset:0;background:url('/assets/images/process-bg.jpg') center/cover no-repeat;filter:contrast(1.15) saturate(1.1);}
-        #parcours-elga::after{content:'';position:absolute;inset:0;background:linear-gradient(120deg,rgba(8,63,42,.18),rgba(9,34,75,.18));}
+        #parcours-elga{position:relative;padding:4.5rem 1.5rem;border-radius:2.25rem;overflow:hidden;color:#0b1f33;background:linear-gradient(135deg,#eef9f5,#e7edff)}
+        #parcours-elga::before{content:'';position:absolute;inset:-40% -20% 50% -10%;background:radial-gradient(circle at top left,rgba(16,185,129,.28),transparent 65%);opacity:.8}
+        #parcours-elga::after{content:'';position:absolute;inset:45% -25% -35% 35%;background:radial-gradient(circle at bottom right,rgba(11,61,145,.26),transparent 68%);opacity:.85}
         #parcours-elga > *{position:relative;z-index:1}
-        #parcours-elga .process-header{max-width:680px;margin:0 auto 3.5rem auto;text-align:center;color:#f8fafc}
+        #parcours-elga .process-header{max-width:680px;margin:0 auto 3.5rem auto;text-align:center;color:#0b1f33}
         #parcours-elga .process-header h3{font-size:1.85rem;font-weight:700;letter-spacing:.01em}
-        #parcours-elga .process-header p{margin-top:.85rem;font-size:1.02rem;line-height:1.7rem;color:rgba(241,245,249,.85)}
-        #parcours-elga .process-flow{display:flex;flex-direction:column;gap:3.65rem;max-width:960px;margin:0 auto}
-        #parcours-elga .process-step{display:grid;grid-template-columns:minmax(0,1.25fr) auto minmax(0,1.25fr);gap:2.4rem;align-items:center;position:relative}
-        #parcours-elga .process-node{position:relative;display:grid;place-items:center;width:148px;height:148px;border-radius:999px;background:linear-gradient(135deg,#0b3d91,#10b981);box-shadow:0 26px 48px rgba(15,23,42,.38);color:#fff}
+        #parcours-elga .process-header p{margin-top:.85rem;font-size:1.02rem;line-height:1.7rem;color:rgba(15,30,45,.7)}
+        #parcours-elga .process-flow{display:flex;flex-direction:column;gap:3.65rem;max-width:980px;margin:0 auto}
+        #parcours-elga .process-step{display:grid;grid-template-columns:minmax(0,1fr) 148px minmax(0,1fr);gap:2.4rem;align-items:center;position:relative}
+        #parcours-elga .process-node{grid-column:2;position:relative;display:grid;place-items:center;width:148px;height:148px;border-radius:999px;background:linear-gradient(135deg,#0b3d91,#10b981);box-shadow:0 26px 48px rgba(15,23,42,.28);color:#fff}
         #parcours-elga .process-number{font-size:2.6rem;font-weight:700;letter-spacing:.04em}
-        #parcours-elga .process-step:not(:last-child) .process-node::before{content:'';position:absolute;left:50%;top:100%;transform:translateX(-50%);width:2px;height:82px;background:linear-gradient(180deg,rgba(255,255,255,.45),rgba(255,255,255,.05))}
-        #parcours-elga .process-node .process-arrow{display:none}
-        #parcours-elga .process-card{padding:1.6rem 1.75rem;border-radius:1.35rem;background:linear-gradient(145deg,rgba(16,185,129,.95),rgba(11,61,145,.95));box-shadow:0 24px 36px rgba(6,51,73,.28);color:#f8fafc;position:relative}
+        #parcours-elga .process-step:not(:last-child) .process-node::before{content:'';position:absolute;left:50%;top:100%;transform:translateX(-50%);width:3px;height:86px;background:linear-gradient(180deg,rgba(11,61,145,.18),rgba(11,61,145,0))}
+        #parcours-elga .process-card{padding:1.7rem 1.9rem;border-radius:1.35rem;background:linear-gradient(145deg,rgba(16,185,129,.96),rgba(11,61,145,.92));box-shadow:0 24px 36px rgba(6,51,73,.26);color:#f8fafc;position:relative}
         #parcours-elga .process-card::after{content:'';position:absolute;width:.75rem;height:.75rem;border-radius:999px;background:rgba(255,255,255,.75);top:1rem;right:1.2rem;opacity:.85}
         #parcours-elga .process-card .tag{display:inline-block;padding:.35rem .8rem;border-radius:999px;background:rgba(255,255,255,.18);font-size:.68rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(248,250,252,.92)}
         #parcours-elga .process-card h4{margin-top:.9rem;font-size:1.12rem;font-weight:700;letter-spacing:.01em}
         #parcours-elga .process-card p{margin-top:.9rem;font-size:.95rem;line-height:1.6rem;color:rgba(241,245,249,.9)}
-        #parcours-elga .process-gap{height:1px}
-        #parcours-elga .process-step.process-right .process-card{grid-column:3}
+        #parcours-elga .process-gap{height:1px;visibility:hidden}
+        #parcours-elga .process-step.process-right .process-card{grid-column:3;text-align:left;justify-self:start}
         #parcours-elga .process-step.process-right .process-gap{grid-column:1}
-        #parcours-elga .process-step.process-right .process-node{grid-column:2}
-        #parcours-elga .process-step.process-left .process-card{grid-column:1}
+        #parcours-elga .process-step.process-left .process-card{grid-column:1;text-align:right;justify-self:end}
         #parcours-elga .process-step.process-left .process-gap{grid-column:3}
-        #parcours-elga .process-step.process-left .process-node{grid-column:2}
         @media (max-width:1023px){
           #parcours-elga{padding:3.5rem 1.25rem}
-          #parcours-elga .process-flow{gap:3rem}
+          #parcours-elga .process-flow{gap:2.8rem}
+          #parcours-elga .process-step{grid-template-columns:minmax(0,1fr) 130px minmax(0,1fr);gap:1.8rem}
           #parcours-elga .process-node{width:130px;height:130px}
           #parcours-elga .process-number{font-size:2.2rem}
         }
@@ -236,9 +235,8 @@
           #parcours-elga{padding:3rem 1rem}
           #parcours-elga .process-flow{gap:2.6rem}
           #parcours-elga .process-step{grid-template-columns:1fr;justify-items:center;text-align:center}
-          #parcours-elga .process-card{grid-column:1;order:2;margin-top:1.4rem}
+          #parcours-elga .process-card{grid-column:1;order:2;margin-top:1.4rem;text-align:left}
           #parcours-elga .process-gap{display:none}
-          #parcours-elga .process-node .process-arrow{display:none}
           #parcours-elga .process-step .process-node::before{height:68px}
         }
         @media (prefers-reduced-motion:reduce){
