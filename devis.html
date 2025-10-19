@@ -31,17 +31,27 @@
   <style>
     .glass{backdrop-filter:saturate(180%) blur(12px);background:rgba(255,255,255,.75)}
     .shadow-soft{box-shadow:0 20px 40px rgba(15,23,42,.08)}
-    .step-dot{width:40px;height:40px;border-radius:999px;display:grid;place-items:center;font-weight:600}
-    .step-dot[data-active="true"]{background-image:linear-gradient(135deg,#0b3d91,#10b981);color:#fff}
-    .step-dot[data-complete="true"]{background:#0b6c45;color:#fff}
-    .step-dot[data-active="false"][data-complete="false"]{background:#e2e8f0;color:#64748b}
-    .step-rail{height:4px;border-radius:999px;background:#e2e8f0;overflow:hidden}
-    .step-rail-fill{height:100%;background-image:linear-gradient(135deg,#0b3d91,#10b981)}
     .field-card{border:1px solid rgba(15,23,42,.08);border-radius:1.5rem;padding:2rem;background:#fff;box-shadow:0 16px 36px rgba(15,23,42,.06)}
     .field-card h3{font-size:1.25rem;font-weight:700;color:#0b3d91;margin-bottom:1rem}
-    .pill-radio{position:relative;display:flex;align-items:center;justify-content:space-between;padding:1rem 1.4rem;border-radius:1rem;border:1px solid #cbd5f5;background:#fff;cursor:pointer;transition:all .2s ease}
-    
-    /* ✅ FIX DU BUG DE CLIC */
+
+    /* ✅ Style final boutons radio avec animation douce */
+    .pill-radio {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 0.25rem;
+      padding: 1rem 1.4rem;
+      border-radius: 1rem;
+      border: 1px solid #cbd5f5;
+      background: #fff;
+      cursor: pointer;
+      transition: all 0.25s ease-in-out;
+      overflow: visible;
+      box-sizing: border-box;
+    }
+
     .pill-radio input {
       position: absolute;
       opacity: 0;
@@ -52,45 +62,74 @@
       left: 0;
       z-index: 2;
     }
+
     .pill-radio span,
     .pill-radio small {
       position: relative;
       z-index: 3;
+      line-height: 1.3;
     }
 
-    .pill-radio span{font-weight:600;color:#0b3d91}
-    .pill-radio small{color:#64748b}
-    .pill-radio:hover{border-color:#818cf8;box-shadow:0 12px 24px rgba(99,102,241,.12)}
-    .pill-radio.is-active{border-color:#0b3d91;background:linear-gradient(135deg,rgba(11,61,145,.12),rgba(16,185,129,.12));box-shadow:0 14px 30px rgba(11,61,145,.18)}
-    .pill-radio.is-active span{color:#0b3d91}
-    .pill-radio.is-active small{color:#0f172a}
+    .pill-radio span {
+      font-weight: 700;
+      color: #0b3d91;
+      font-size: 1rem;
+      word-break: normal;
+      white-space: normal;
+    }
+
+    .pill-radio small {
+      color: #64748b;
+      font-size: 0.85rem;
+      word-break: normal;
+      white-space: normal;
+    }
+
+    .pill-radio:hover {
+      border-color: #818cf8;
+      transform: scale(1.02);
+      box-shadow: 0 8px 24px rgba(99, 102, 241, 0.15);
+    }
+
+    .pill-radio.is-active {
+      border-color: #0b3d91;
+      background: linear-gradient(135deg, rgba(11, 61, 145, 0.08), rgba(16, 185, 129, 0.08));
+      box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.15), 0 10px 30px rgba(11, 61, 145, 0.1);
+      transform: scale(1.03);
+    }
+
+    .pill-radio.is-active span { color: #0b3d91; }
+    .pill-radio.is-active small { color: #0f172a; }
 
     @media (max-width:640px){
       .field-card{padding:1.4rem;border-radius:1.2rem}
+      .pill-radio{padding:1rem;border-radius:0.8rem;gap:0.3rem}
+      .pill-radio span{font-size:0.95rem}
+      .pill-radio small{font-size:0.8rem}
     }
 
-    /* ✅ AJOUT POUR LE RESPONSIVE ET SUPPRESSION SCROLL HORIZONTAL */
-    html, body {
-      width: 100%;
-      overflow-x: hidden;
+    /* ✅ Animation d'apparition fluide entre les étapes */
+    [data-step] {
+      opacity: 0;
+      transform: translateY(10px);
+      pointer-events: none;
+      transition: opacity 0.4s ease, transform 0.4s ease;
     }
+    [data-step].active-step {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: all;
+    }
+
+    html, body { width:100%; overflow-x:hidden; }
   </style>
 </head>
 
 <body class="antialiased text-slate-800 bg-white">
-  <div class="bg-slate-900 text-white text-xs">
-    <div class="container flex items-center justify-end gap-4 py-1">
-      <a class="opacity-80 hover:opacity-100" href="/" lang="fr-FR">FR</a>
-      <span class="opacity-30">|</span>
-      <a class="opacity-80 hover:opacity-100" href="/" lang="nl-BE">NL</a>
-    </div>
-  </div>
-
   <header class="sticky top-0 z-50 border-b border-slate-200/60 bg-white/90 glass">
     <div class="container flex items-center justify-between py-3 gap-4">
       <a href="/" class="flex items-center gap-3">
         <img id="logo-elga" src="/assets/logos/elga-energy-logo.svg" alt="Elga Energy" class="h-8 w-auto">
-        <span class="sr-only">Elga Energy</span>
       </a>
       <nav class="hidden md:flex items-center gap-6 text-sm">
         <a href="/#offre" class="hover:text-primary-700">Offre</a>
@@ -99,37 +138,17 @@
         <a href="/#avis" class="hover:text-primary-700">Avis</a>
         <a href="/#faq" class="hover:text-primary-700">FAQ</a>
         <a href="/actu.html" class="hover:text-primary-700">Blog</a>
-        <a href="/devis.html" class="text-primary-700 font-semibold" aria-current="page">Obtenir un devis</a>
-      </nav>
-      <div class="flex items-center gap-2">
-        <a href="/devis.html" class="inline-flex items-center rounded-xl bg-primary-600 px-4 py-2 text-white text-sm font-medium shadow-soft hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-400">Obtenir un devis</a>
-        <button id="menuBtn" class="md:hidden inline-flex items-center justify-center size-10 rounded-lg border border-slate-300"><span class="sr-only">Ouvrir le menu</span>☰</button>
-      </div>
-    </div>
-    <div id="mobileMenu" class="md:hidden hidden border-t border-slate-200 bg-white">
-      <nav class="container flex flex-col py-3 text-sm">
-        <a href="/#offre" class="py-2">Offre</a>
-        <a href="/#process" class="py-2">Méthode</a>
-        <a href="/#fournisseurs" class="py-2">Fournisseurs</a>
-        <a href="/#avis" class="py-2">Avis</a>
-        <a href="/#faq" class="py-2">FAQ</a>
-        <a href="/actu.html" class="py-2">Blog</a>
-        <a href="/devis.html" class="py-2 font-semibold text-primary-700">Obtenir un devis</a>
-        <a href="/#contact" class="py-2">Contact</a>
+        <a href="/devis.html" class="text-primary-700 font-semibold">Obtenir un devis</a>
       </nav>
     </div>
   </header>
 
   <section class="bg-gradient-to-br from-secondary-900 via-slate-900 to-primary-900 text-white">
     <div class="container py-12 md:py-16">
-      <nav class="text-sm text-white/70 mb-4">
-        <a href="/" class="hover:text-white/100">Accueil</a>
-        <span class="mx-2 opacity-50">/</span>
-        <span>Recevez une offre</span>
-      </nav>
-      <p class="text-sm font-semibold tracking-[0.4em] text-primary-200 uppercase">N’attendez plus</p>
-      <h1 class="mt-3 text-3xl md:text-4xl lg:text-5xl font-extrabold">Recevez une offre d’énergie sur-mesure</h1>
-      <p class="mt-4 max-w-2xl text-white/80 text-base md:text-lg">Dites-nous ce dont vous avez besoin, nous comparons le marché et négocions pour vous. 6 étapes simples, moins de 3 minutes, zéro engagement.</p>
+      <h1 class="text-4xl font-extrabold mb-3">Recevez une offre d’énergie sur-mesure</h1>
+      <p class="max-w-2xl text-white/80 text-base md:text-lg">
+        6 étapes simples, moins de 3 minutes, zéro engagement.
+      </p>
     </div>
   </section>
 
@@ -137,12 +156,10 @@
     <div class="container py-12 md:py-16 grid lg:grid-cols-[minmax(0,1fr),minmax(320px,0.8fr)] gap-10 lg:gap-14">
       <section class="space-y-8">
         <div class="rounded-3xl bg-white border border-slate-200/70 shadow-soft p-6 md:p-8">
-          <div>
-            <p class="text-xs uppercase tracking-[0.4em] text-primary-600 font-semibold">Tunnel devis</p>
-            <h2 class="mt-2 text-2xl font-bold text-slate-900">6 étapes pour qualifier votre besoin</h2>
-          </div>
+          <h2 class="text-2xl font-bold text-slate-900 mb-6">Tunnel devis</h2>
 
-          <form id="quote-form" class="mt-10 space-y-8">
+          <form id="quote-form" class="mt-6 space-y-8">
+
             <!-- ÉTAPE 1 -->
             <div class="field-card" data-step="0">
               <h3>Quels contrats souhaitez-vous renégocier ?</h3>
@@ -171,39 +188,16 @@
               <div class="grid gap-4 md:grid-cols-2">
                 <fieldset class="space-y-2">
                   <legend class="text-sm font-semibold text-slate-700 uppercase tracking-[0.2em]">Puissance électrique</legend>
-                  <label class="pill-radio">
-                    <input type="radio" name="power" value="-36">
-                    <span>&lt; 36 kVA</span>
-                    <small>Tarif Bleu / PME</small>
-                  </label>
-                  <label class="pill-radio">
-                    <input type="radio" name="power" value="36-250">
-                    <span>36 à 250 kVA</span>
-                    <small>Tarif Jaune / industriel léger</small>
-                  </label>
-                  <label class="pill-radio">
-                    <input type="radio" name="power" value="+250">
-                    <span>&gt; 250 kVA</span>
-                    <small>Grands sites / tarif vert</small>
-                  </label>
+                  <label class="pill-radio"><input type="radio" name="power" value="-36"><span>&lt; 36 kVA</span><small>Tarif Bleu / PME</small></label>
+                  <label class="pill-radio"><input type="radio" name="power" value="36-250"><span>36 à 250 kVA</span><small>Tarif Jaune / industriel léger</small></label>
+                  <label class="pill-radio"><input type="radio" name="power" value="+250"><span>&gt; 250 kVA</span><small>Grands sites / tarif vert</small></label>
                 </fieldset>
+
                 <fieldset class="space-y-2">
                   <legend class="text-sm font-semibold text-slate-700 uppercase tracking-[0.2em]">Consommation gaz</legend>
-                  <label class="pill-radio">
-                    <input type="radio" name="gas_profile" value="t1">
-                    <span>T1 / &lt; 6 MWh/an</span>
-                    <small>Petits volumes</small>
-                  </label>
-                  <label class="pill-radio">
-                    <input type="radio" name="gas_profile" value="t2">
-                    <span>T2 / 6 à 300 MWh</span>
-                    <small>Sites multisites, restauration</small>
-                  </label>
-                  <label class="pill-radio">
-                    <input type="radio" name="gas_profile" value="t3">
-                    <span>T3/T4 / +300 MWh</span>
-                    <small>Industrie, gros volumes</small>
-                  </label>
+                  <label class="pill-radio"><input type="radio" name="gas_profile" value="t1"><span>T1 / &lt; 6 MWh/an</span><small>Petits volumes</small></label>
+                  <label class="pill-radio"><input type="radio" name="gas_profile" value="t2"><span>T2 / 6 à 300 MWh</span><small>Sites multisites, restauration</small></label>
+                  <label class="pill-radio"><input type="radio" name="gas_profile" value="t3"><span>T3/T4 / +300 MWh</span><small>Industrie, gros volumes</small></label>
                 </fieldset>
               </div>
             </div>
@@ -212,56 +206,34 @@
             <div class="field-card hidden" data-step="2">
               <h3>Sites concernés</h3>
               <div class="grid gap-4">
-                <label class="text-sm font-medium text-slate-700">
-                  Nombre de sites
+                <label class="text-sm font-medium text-slate-700">Nombre de sites
                   <input type="number" min="1" name="sites_count" class="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-primary-400 focus:ring-primary-200" placeholder="ex. 5">
                 </label>
-                <label class="text-sm font-medium text-slate-700">
-                  Localisation principale
+                <label class="text-sm font-medium text-slate-700">Localisation principale
                   <input type="text" name="location" class="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-primary-400 focus:ring-primary-200" placeholder="Ville, région">
                 </label>
               </div>
-              <fieldset class="mt-4 grid sm:grid-cols-2 gap-3">
-                <legend class="text-sm font-semibold text-slate-700 uppercase tracking-[0.2em] mb-2">Contexte</legend>
-                <label class="pill-radio">
-                  <input type="radio" name="context" value="renegociation">
-                  <span>Renégociation</span>
-                  <small>Contrat en cours</small>
-                </label>
-                <label class="pill-radio">
-                  <input type="radio" name="context" value="emménagement">
-                  <span>Emménagement</span>
-                  <small>Ouverture de site</small>
-                </label>
-              </fieldset>
             </div>
-
             <!-- ÉTAPE 4 -->
             <div class="field-card hidden" data-step="3">
               <h3>Vos coordonnées</h3>
               <div class="grid md:grid-cols-2 gap-4">
-                <label class="text-sm font-medium text-slate-700">
-                  Raison sociale *
+                <label class="text-sm font-medium text-slate-700">Raison sociale *
                   <input type="text" name="company" required class="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-primary-400 focus:ring-primary-200">
                 </label>
-                <label class="text-sm font-medium text-slate-700">
-                  SIRET
+                <label class="text-sm font-medium text-slate-700">SIRET
                   <input type="text" name="siret" class="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-primary-400 focus:ring-primary-200">
                 </label>
-                <label class="text-sm font-medium text-slate-700">
-                  Nom *
+                <label class="text-sm font-medium text-slate-700">Nom *
                   <input type="text" name="lastname" required class="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-primary-400 focus:ring-primary-200">
                 </label>
-                <label class="text-sm font-medium text-slate-700">
-                  Prénom *
+                <label class="text-sm font-medium text-slate-700">Prénom *
                   <input type="text" name="firstname" required class="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-primary-400 focus:ring-primary-200">
                 </label>
-                <label class="text-sm font-medium text-slate-700">
-                  Téléphone *
+                <label class="text-sm font-medium text-slate-700">Téléphone *
                   <input type="tel" name="phone" required class="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-primary-400 focus:ring-primary-200">
                 </label>
-                <label class="text-sm font-medium text-slate-700">
-                  Email *
+                <label class="text-sm font-medium text-slate-700">Email *
                   <input type="email" name="email" required class="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-primary-400 focus:ring-primary-200">
                 </label>
               </div>
@@ -271,16 +243,23 @@
             <div class="field-card hidden" data-step="4">
               <h3>Ajoutez vos documents (optionnel)</h3>
               <p class="text-sm text-slate-500">Formats PDF, JPG, PNG, 10 Mo max par fichier.</p>
-              <label class="block text-sm font-medium text-slate-700 mt-4">
-                Facture électricité
-                <input type="file" name="elec_invoice" accept=".pdf,.jpg,.jpeg,.png" class="mt-2 block w-full rounded-xl border border-dashed border-primary-300 px-4 py-5 text-sm text-slate-600 file:mr-4 file:rounded-lg file:border-0 file:bg-primary-100 file:px-4 file:py-2 file:text-primary-700 hover:file:bg-primary-200">
-              </label>
+              <div class="space-y-4 mt-4">
+                <label class="block text-sm font-medium text-slate-700">
+                  Votre dernière facture gaz
+                  <input type="file" name="gaz_invoice" accept=".pdf,.jpg,.jpeg,.png" class="mt-2 block w-full rounded-xl border border-dashed border-primary-300 px-4 py-5 text-sm text-slate-600 file:mr-4 file:rounded-lg file:border-0 file:bg-primary-100 file:px-4 file:py-2 file:text-primary-700 hover:file:bg-primary-200">
+                </label>
+                <label class="block text-sm font-medium text-slate-700">
+                  Votre dernière facture électricité
+                  <input type="file" name="elec_invoice" accept=".pdf,.jpg,.jpeg,.png" class="mt-2 block w-full rounded-xl border border-dashed border-primary-300 px-4 py-5 text-sm text-slate-600 file:mr-4 file:rounded-lg file:border-0 file:bg-primary-100 file:px-4 file:py-2 file:text-primary-700 hover:file:bg-primary-200">
+                </label>
+              </div>
             </div>
 
             <!-- ÉTAPE 6 -->
             <div class="field-card hidden" data-step="5">
               <h3>Votre besoin en quelques mots</h3>
-              <textarea name="message" rows="6" class="w-full rounded-2xl border border-slate-200 px-5 py-4 focus:border-primary-400 focus:ring-primary-200" placeholder="Décrivez vos besoins…"></textarea>
+              <p class="text-sm text-slate-500 mb-4">Précisez vos attentes, vos échéances ou un point particulier à vérifier.</p>
+              <textarea name="message" rows="6" class="w-full rounded-2xl border border-slate-200 px-5 py-4 focus:border-primary-400 focus:ring-primary-200" placeholder="Ex. Renouvellement anticipé, recherche d’offres indexées, bilan multi-sites…"></textarea>
               <label class="flex items-start gap-3 text-sm text-slate-500 mt-4">
                 <input type="checkbox" required class="mt-1 size-4 rounded border-slate-300 text-primary-600 focus:ring-primary-500">
                 J’accepte que mes données soient utilisées pour étudier mon dossier et être recontacté par Elga Energy.
@@ -295,15 +274,35 @@
                 <button type="submit" id="step-submit" class="hidden rounded-xl bg-primary-600 px-6 py-2.5 text-sm font-semibold text-white hover:bg-primary-500">Envoyer</button>
               </div>
             </div>
+
           </form>
         </div>
       </section>
     </div>
   </main>
 
-  <footer class="bg-slate-950 text-slate-200 mt-16">
-    <div class="container py-10 text-center text-xs text-slate-400">
-      © 2025 Elga Energy — Courtage & Conseil en énergie
+  <footer class="bg-slate-950 text-slate-200 mt-12">
+    <div class="container py-10 grid md:grid-cols-3 gap-8">
+      <div>
+        <img src="/assets/logos/elga-energy-logo.svg" alt="Elga Energy" class="h-8 w-auto mb-3">
+        <p class="text-sm text-slate-400">ELGA Energy — Courtage & conseil en achats d'énergie.</p>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-3">Coordonnées</h4>
+        <p class="text-sm">contact@elgaenergy.fr<br/>+33 1 23 45 67 89</p>
+        <p class="text-sm mt-2">Paris — Lyon — Lille</p>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-3">Liens</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a class="hover:text-white" href="/#faq">FAQ</a></li>
+          <li><a class="hover:text-white" href="/actu.html">Blog</a></li>
+          <li><a class="hover:text-white" href="#">Mentions légales</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-white/10">
+      <div class="container py-4 text-xs text-slate-400">© 2025 Elga Energy</div>
     </div>
   </footer>
 
@@ -317,29 +316,45 @@
 
     function showStep(step) {
       currentStep = Math.min(Math.max(step, 0), panels.length - 1);
-      panels.forEach((p, i) => p.classList.toggle('hidden', i !== currentStep));
+      panels.forEach((panel, index) => {
+        if (index === currentStep) {
+          panel.classList.remove('hidden');
+          requestAnimationFrame(() => panel.classList.add('active-step'));
+        } else {
+          panel.classList.remove('active-step');
+          setTimeout(() => panel.classList.add('hidden'), 300);
+        }
+      });
       prevBtn.classList.toggle('hidden', currentStep === 0);
       nextBtn.classList.toggle('hidden', currentStep === panels.length - 1);
       submitBtn.classList.toggle('hidden', currentStep !== panels.length - 1);
     }
 
-    nextBtn.addEventListener('click', () => showStep(currentStep + 1));
     prevBtn.addEventListener('click', () => showStep(currentStep - 1));
+    nextBtn.addEventListener('click', () => showStep(currentStep + 1));
     form.addEventListener('submit', e => {
       e.preventDefault();
-      alert("Formulaire envoyé avec succès !");
-      form.reset();
-      showStep(0);
+      form.innerHTML = `
+        <div class="text-center space-y-4 p-10 bg-primary-50 rounded-3xl border border-primary-200">
+          <div class="inline-flex items-center justify-center rounded-full bg-primary-100 text-primary-700 size-16 mx-auto">
+            <svg viewBox="0 0 24 24" class="size-8" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 13l4 4L19 7"/></svg>
+          </div>
+          <h3 class="text-2xl font-bold text-slate-900">Merci !</h3>
+          <p class="text-slate-600 max-w-xl mx-auto">Un conseiller Elga Energy reviendra vers vous sous 48 h ouvrées.</p>
+        </div>
+      `;
     });
 
-    const radios = document.querySelectorAll('.pill-radio input');
-    radios.forEach(r => {
-      r.addEventListener('change', () => {
-        document.querySelectorAll(`input[name="${r.name}"]`).forEach(i => {
-          const wrap = i.closest('.pill-radio');
-          wrap.classList.toggle('is-active', i.checked);
+    const pillInputs = form.querySelectorAll('.pill-radio input');
+    pillInputs.forEach(input => {
+      const refresh = () => {
+        document.querySelectorAll(`input[name="${input.name}"]`).forEach(i => {
+          const card = i.closest('.pill-radio');
+          if (card) card.classList.toggle('is-active', i.checked);
         });
-      });
+      };
+      input.addEventListener('change', refresh);
+      refresh();
     });
 
     showStep(0);
