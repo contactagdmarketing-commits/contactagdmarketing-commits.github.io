@@ -64,7 +64,7 @@
         <a href="/#contact" class="hover:text-primary-700">Contact</a>
       </nav>
       <div class="flex items-center gap-2">
-        <a href="/#contact" class="inline-flex items-center rounded-xl bg-primary-600 px-4 py-2 text-white text-sm font-medium shadow-soft hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-400">Obtenir un devis</a>
+        <a href="/devis.html" class="inline-flex items-center rounded-xl bg-primary-600 px-4 py-2 text-white text-sm font-medium shadow-soft hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-400">Obtenir un devis</a>
         <button id="menuBtn" class="md:hidden inline-flex items-center justify-center size-10 rounded-lg border border-slate-300"><span class="sr-only">Ouvrir le menu</span>☰</button>
       </div>
     </div>
@@ -81,45 +81,268 @@
     </div>
   </header>
 
-  <!-- Héro simple -->
-  <section class="bg-gradient-to-r from-primary-600 to-secondary-600 text-white">
-    <div class="container py-10 md:py-14">
-      <h1 class="text-3xl md:text-4xl font-extrabold">Actualités énergie</h1>
-      <p class="text-white/90 mt-2">Analyses, conseils et retours d’expérience pour payer l’énergie au juste prix.</p>
+  <!-- Héro éditorial -->
+  <section class="relative isolate">
+    <div class="absolute inset-0">
+      <div class="absolute inset-0 bg-slate-900/75"></div>
+      <img src="/assets/images/hero-visual.jpg" alt="" class="w-full h-full object-cover opacity-60" onerror="this.remove()">
+    </div>
+    <div class="relative container py-16 md:py-20 text-white">
+      <nav class="text-sm text-white/70 mb-6">
+        <a href="/" class="hover:text-white/100">Accueil</a>
+        <span class="mx-2 opacity-60">/</span>
+        <span>Blog</span>
+      </nav>
+      <h1 class="text-3xl md:text-5xl font-extrabold">Nos actualités énergie</h1>
+      <p class="mt-4 max-w-3xl text-lg text-white/80">Décryptages marché, retours d’expérience clients, conseils de négociation : la veille Elga Energy pour décider avec une longueur d’avance.</p>
+      <div class="mt-10 flex flex-wrap gap-3 text-sm text-white/70">
+        <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/20">
+          <svg viewBox="0 0 24 24" class="size-4" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3v3m8-3v3m-9 5h10M7 21h10a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2Z"/></svg>
+          Publication hebdomadaire
+        </span>
+        <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/20">
+          <svg viewBox="0 0 24 24" class="size-4" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+          Insights marché énergie &amp; gaz
+        </span>
+      </div>
     </div>
   </section>
 
-  <!-- Grille d’articles (sans date) -->
-  <main class="container py-10 md:py-14">
-    {% assign posts_visibles = site.posts | where_exp: "p", "p.published != false" %}
-    {% if posts_visibles.size > 0 %}
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {% for post in posts_visibles %}
-          <article class="rounded-2xl bg-white border overflow-hidden hover:shadow-soft transition flex flex-col">
-            <a href="{{ post.url | relative_url }}" class="block">
-              {% if post.image %}
-                <img src="{{ post.image | relative_url }}" alt="{{ post.title | escape }}" class="aspect-[4/3] w-full picture-cover">
-              {% else %}
-                <div class="aspect-[4/3] bg-slate-100"></div>
-              {% endif %}
-            </a>
-            <div class="p-5 flex flex-col gap-2 grow">
-              <h2 class="font-semibold">
-                <a href="{{ post.url | relative_url }}" class="hover:text-primary-700">{{ post.title }}</a>
-              </h2>
-              {% if post.excerpt %}
-                <p class="text-sm text-slate-600">{{ post.excerpt | strip_html | truncate: 140 }}</p>
-              {% endif %}
-              <div class="mt-auto">
-                <a href="{{ post.url | relative_url }}" class="text-primary-700 font-medium">Lire →</a>
+  <!-- Contenu blog -->
+  <main class="bg-slate-50">
+    <div class="container py-14 md:py-20 space-y-16">
+      <section class="grid lg:grid-cols-[1.1fr,0.9fr] gap-10 items-center">
+        <article class="relative overflow-hidden rounded-3xl shadow-soft bg-slate-900 text-white min-h-[320px]">
+          <img src="/assets/images/fin-arenh.jpg" alt="Fin de l’ARENH" class="absolute inset-0 h-full w-full object-cover opacity-80">
+          <div class="absolute inset-0 bg-gradient-to-br from-slate-900/60 via-slate-900/30 to-slate-900/90"></div>
+          <div class="relative p-8 md:p-10 flex flex-col gap-4 justify-end min-h-[320px]">
+            <span class="inline-flex items-center gap-2 self-start rounded-full border border-white/30 bg-white/15 px-4 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-white/80">À la une</span>
+            <h2 class="text-2xl md:text-3xl font-bold leading-tight">Fin de l’ARENH : ce que cela change pour les entreprises</h2>
+            <p class="max-w-2xl text-white/85 text-base md:text-lg">La fin de l’Accès Régulé à l’Électricité Nucléaire Historique rebat les cartes du marché. Quels impacts sur vos budgets énergie et comment sécuriser vos contrats ?</p>
+            <div class="mt-4 flex flex-wrap items-center gap-4 text-sm">
+              <a href="#" class="inline-flex items-center gap-2 rounded-full bg-primary-500/90 px-5 py-2 font-semibold text-white hover:bg-primary-400 transition">
+                Lire l’article
+                <svg viewBox="0 0 24 24" class="size-4" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
+              </a>
+              <span class="flex items-center gap-2 text-white/70">
+                <svg viewBox="0 0 24 24" class="size-4" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3v3m8-3v3m-9 5h10M7 21h10a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2Z"/></svg>
+                Publié le 11 octobre 2025
+              </span>
+              <span class="flex items-center gap-2 text-white/70">
+                <svg viewBox="0 0 24 24" class="size-4" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm0-10v5l3 2"/></svg>
+                Lecture 4 min
+              </span>
+            </div>
+          </div>
+        </article>
+        <aside class="rounded-3xl border border-white/40 bg-white shadow-soft p-8 space-y-6">
+          <h3 class="flex items-center gap-3 text-lg font-semibold text-secondary-700">
+            <span class="inline-flex size-10 items-center justify-center rounded-full bg-secondary-100 text-secondary-700 font-bold">+</span>
+            Restez informé
+          </h3>
+          <p class="text-slate-600 text-sm leading-relaxed">Recevez chaque semaine nos alertes marché et conseils pour sécuriser vos achats d’énergie.</p>
+          <form class="grid gap-4">
+            <label class="grid gap-1 text-sm">
+              <span class="font-medium text-slate-700">Adresse e-mail</span>
+              <input type="email" class="rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 focus:border-primary-400 focus:ring-primary-200" placeholder="ex. contact@votre-entreprise.fr">
+            </label>
+            <label class="flex items-start gap-3 text-xs text-slate-500">
+              <input type="checkbox" class="mt-1 size-4 rounded border-slate-300 text-primary-600 focus:ring-primary-500">
+              J’accepte de recevoir les communications d’Elga Energy. Vos données restent confidentielles.
+            </label>
+            <button type="submit" class="inline-flex items-center justify-center rounded-xl bg-secondary-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-secondary-500 transition">S’inscrire</button>
+          </form>
+          <div class="border-t border-slate-100 pt-6">
+            <h4 class="text-sm font-semibold text-slate-700 uppercase tracking-[0.22em]">Tendances</h4>
+            <ul class="mt-4 space-y-3 text-sm">
+              <li class="flex items-start gap-3">
+                <span class="mt-1 size-2 rounded-full bg-primary-500"></span>
+                <a href="#" class="text-slate-600 hover:text-secondary-600">Marché spot : quelles perspectives pour l’hiver 2025 ?</a>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="mt-1 size-2 rounded-full bg-primary-500"></span>
+                <a href="#" class="text-slate-600 hover:text-secondary-600">Gaz naturel : sécuriser ses volumes face à la volatilité</a>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="mt-1 size-2 rounded-full bg-primary-500"></span>
+                <a href="#" class="text-slate-600 hover:text-secondary-600">Budget énergie 2026 : les 4 erreurs à éviter</a>
+              </li>
+            </ul>
+          </div>
+        </aside>
+      </section>
+
+      <section class="space-y-8">
+        <div class="flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <p class="text-sm uppercase tracking-[0.32em] text-primary-600 font-semibold">Tous les articles</p>
+            <h3 class="mt-1 text-2xl md:text-3xl font-bold text-slate-900">Dernières analyses du marché énergie</h3>
+          </div>
+          <div class="flex items-center gap-2 text-sm bg-white border border-slate-200 rounded-full px-4 py-2 shadow-soft/30 text-slate-400">
+            <svg viewBox="0 0 24 24" class="size-4" fill="none" stroke="currentColor" stroke-width="2"><path d="m21 21-4.3-4.3"/><circle cx="11" cy="11" r="6"/></svg>
+            <input type="text" disabled placeholder="Recherche disponible bientôt" class="bg-transparent focus:outline-none text-slate-400 placeholder:text-slate-400">
+          </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
+          <article class="group flex flex-col overflow-hidden rounded-3xl bg-white border border-slate-200/70 shadow-soft transition hover:-translate-y-1 hover:shadow-xl">
+            <div class="relative">
+              <img src="/assets/images/hero-visual.jpg" alt="Le TURPE 2025" class="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-105">
+              <span class="absolute left-5 top-5 inline-flex items-center rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-secondary-600 shadow-soft">Réglementation</span>
+            </div>
+            <div class="flex flex-col gap-4 p-6 grow">
+              <div class="flex items-center gap-3 text-xs uppercase tracking-[0.24em] text-slate-400">
+                <span>17 octobre 2025</span>
+                <span>•</span>
+                <span>Lecture 3 min</span>
+              </div>
+              <h2 class="text-lg font-semibold text-slate-900 leading-snug">Le TURPE 2025 : tout comprendre en un coup d’œil</h2>
+              <p class="text-sm text-slate-600 leading-relaxed">Nouveaux barèmes, impacts budgétaires et opportunités de renégociation pour limiter la hausse tarifaire.</p>
+              <div class="mt-auto flex items-center justify-between text-sm">
+                <a href="#" class="inline-flex items-center gap-2 font-semibold text-secondary-600 group-hover:text-secondary-500 transition">
+                  Lire la suite
+                  <svg viewBox="0 0 24 24" class="size-4" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
+                </a>
+                <span class="inline-flex items-center gap-2 text-primary-600 text-xs font-semibold">
+                  <span class="size-2 rounded-full bg-primary-500"></span>
+                  Électricité
+                </span>
               </div>
             </div>
           </article>
-        {% endfor %}
-      </div>
-    {% else %}
-      <p class="text-slate-600">Aucun article pour le moment. Revenez bientôt !</p>
-    {% endif %}
+
+          <article class="group flex flex-col overflow-hidden rounded-3xl bg-white border border-slate-200/70 shadow-soft transition hover:-translate-y-1 hover:shadow-xl">
+            <div class="relative">
+              <img src="/assets/images/offre-visuel.jpg" alt="Réduire la facture" class="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-105">
+              <span class="absolute left-5 top-5 inline-flex items-center rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-secondary-600 shadow-soft">Optimisation</span>
+            </div>
+            <div class="flex flex-col gap-4 p-6 grow">
+              <div class="flex items-center gap-3 text-xs uppercase tracking-[0.24em] text-slate-400">
+                <span>15 octobre 2025</span>
+                <span>•</span>
+                <span>Lecture 5 min</span>
+              </div>
+              <h2 class="text-lg font-semibold text-slate-900 leading-snug">Comment réduire la facture d’électricité de votre restaurant ?</h2>
+              <p class="text-sm text-slate-600 leading-relaxed">De la cuisine au froid commercial, 6 leviers concrets pour faire baisser la consommation sans dégrader le service.</p>
+              <div class="mt-auto flex items-center justify-between text-sm">
+                <a href="#" class="inline-flex items-center gap-2 font-semibold text-secondary-600 group-hover:text-secondary-500 transition">
+                  Lire la suite
+                  <svg viewBox="0 0 24 24" class="size-4" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
+                </a>
+                <span class="inline-flex items-center gap-2 text-primary-600 text-xs font-semibold">
+                  <span class="size-2 rounded-full bg-primary-500"></span>
+                  Conseils
+                </span>
+              </div>
+            </div>
+          </article>
+
+          <article class="group flex flex-col overflow-hidden rounded-3xl bg-white border border-slate-200/70 shadow-soft transition hover:-translate-y-1 hover:shadow-xl">
+            <div class="relative">
+              <img src="/assets/images/process-bg.jpg" alt="Flashpoint énergie" class="aspect-[4/3] w-full object-cover opacity-80 transition duration-500 group-hover:scale-105">
+              <span class="absolute left-5 top-5 inline-flex items-center rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-secondary-600 shadow-soft">Flashpoint</span>
+            </div>
+            <div class="flex flex-col gap-4 p-6 grow">
+              <div class="flex items-center gap-3 text-xs uppercase tracking-[0.24em] text-slate-400">
+                <span>10 octobre 2025</span>
+                <span>•</span>
+                <span>Lecture 2 min</span>
+              </div>
+              <h2 class="text-lg font-semibold text-slate-900 leading-snug">Flashpoint du 06/10/2025 au 10/10/2025</h2>
+              <p class="text-sm text-slate-600 leading-relaxed">Nos équipes décryptent les tendances du marché de gros et les opportunités d’achat à court terme.</p>
+              <div class="mt-auto flex items-center justify-between text-sm">
+                <a href="#" class="inline-flex items-center gap-2 font-semibold text-secondary-600 group-hover:text-secondary-500 transition">
+                  Lire la suite
+                  <svg viewBox="0 0 24 24" class="size-4" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
+                </a>
+                <span class="inline-flex items-center gap-2 text-primary-600 text-xs font-semibold">
+                  <span class="size-2 rounded-full bg-primary-500"></span>
+                  Marché
+                </span>
+              </div>
+            </div>
+          </article>
+
+          <article class="group flex flex-col overflow-hidden rounded-3xl bg-white border border-slate-200/70 shadow-soft transition hover:-translate-y-1 hover:shadow-xl">
+            <div class="relative">
+              <img src="/assets/images/fin-arenh.jpg" alt="Réforme électricité" class="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-105">
+              <span class="absolute left-5 top-5 inline-flex items-center rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-secondary-600 shadow-soft">Marché</span>
+            </div>
+            <div class="flex flex-col gap-4 p-6 grow">
+              <div class="flex items-center gap-3 text-xs uppercase tracking-[0.24em] text-slate-400">
+                <span>8 octobre 2025</span>
+                <span>•</span>
+                <span>Lecture 4 min</span>
+              </div>
+              <h2 class="text-lg font-semibold text-slate-900 leading-snug">Réforme de l’électricité 2026 : les consommateurs sont-ils protégés ?</h2>
+              <p class="text-sm text-slate-600 leading-relaxed">Analyse des nouveaux mécanismes tarifaires et points de vigilance pour les entreprises multi-sites.</p>
+              <div class="mt-auto flex items-center justify-between text-sm">
+                <a href="#" class="inline-flex items-center gap-2 font-semibold text-secondary-600 group-hover:text-secondary-500 transition">
+                  Lire la suite
+                  <svg viewBox="0 0 24 24" class="size-4" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
+                </a>
+                <span class="inline-flex items-center gap-2 text-primary-600 text-xs font-semibold">
+                  <span class="size-2 rounded-full bg-primary-500"></span>
+                  Régulation
+                </span>
+              </div>
+            </div>
+          </article>
+
+          <article class="group flex flex-col overflow-hidden rounded-3xl bg-white border border-slate-200/70 shadow-soft transition hover:-translate-y-1 hover:shadow-xl">
+            <div class="relative">
+              <img src="/assets/images/offre-visuel.jpg" alt="Garagistes énergie" class="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-105">
+              <span class="absolute left-5 top-5 inline-flex items-center rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-secondary-600 shadow-soft">Étude de cas</span>
+            </div>
+            <div class="flex flex-col gap-4 p-6 grow">
+              <div class="flex items-center gap-3 text-xs uppercase tracking-[0.24em] text-slate-400">
+                <span>6 octobre 2025</span>
+                <span>•</span>
+                <span>Lecture 3 min</span>
+              </div>
+              <h2 class="text-lg font-semibold text-slate-900 leading-snug">Garagistes : et si votre contrat d’énergie travaillait enfin pour vous ?</h2>
+              <p class="text-sm text-slate-600 leading-relaxed">Retour sur un accompagnement Elga Energy auprès d’un réseau de garages multimarques.</p>
+              <div class="mt-auto flex items-center justify-between text-sm">
+                <a href="#" class="inline-flex items-center gap-2 font-semibold text-secondary-600 group-hover:text-secondary-500 transition">
+                  Lire la suite
+                  <svg viewBox="0 0 24 24" class="size-4" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
+                </a>
+                <span class="inline-flex items-center gap-2 text-primary-600 text-xs font-semibold">
+                  <span class="size-2 rounded-full bg-primary-500"></span>
+                  Témoignage
+                </span>
+              </div>
+            </div>
+          </article>
+
+          <article class="group flex flex-col overflow-hidden rounded-3xl bg-white border border-slate-200/70 shadow-soft transition hover:-translate-y-1 hover:shadow-xl">
+            <div class="relative">
+              <img src="/assets/images/process-bg.jpg" alt="Flashpoint gaz" class="aspect-[4/3] w-full object-cover opacity-80 transition duration-500 group-hover:scale-105">
+              <span class="absolute left-5 top-5 inline-flex items-center rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-secondary-600 shadow-soft">Flashpoint</span>
+            </div>
+            <div class="flex flex-col gap-4 p-6 grow">
+              <div class="flex items-center gap-3 text-xs uppercase tracking-[0.24em] text-slate-400">
+                <span>29 septembre 2025</span>
+                <span>•</span>
+                <span>Lecture 2 min</span>
+              </div>
+              <h2 class="text-lg font-semibold text-slate-900 leading-snug">Flashpoint du 29/09/2025 au 03/10/2025</h2>
+              <p class="text-sm text-slate-600 leading-relaxed">Points clés à surveiller sur l’électricité et le gaz pour saisir les meilleures fenêtres de signature.</p>
+              <div class="mt-auto flex items-center justify-between text-sm">
+                <a href="#" class="inline-flex items-center gap-2 font-semibold text-secondary-600 group-hover:text-secondary-500 transition">
+                  Lire la suite
+                  <svg viewBox="0 0 24 24" class="size-4" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
+                </a>
+                <span class="inline-flex items-center gap-2 text-primary-600 text-xs font-semibold">
+                  <span class="size-2 rounded-full bg-primary-500"></span>
+                  Marché
+                </span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+    </div>
   </main>
 
   <!-- Footer (identique à la home) -->

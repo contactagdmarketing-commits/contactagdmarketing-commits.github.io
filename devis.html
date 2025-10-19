@@ -1,0 +1,579 @@
+---
+---
+<!doctype html>
+<html lang="fr-FR" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Recevez une offre — Elga Energy</title>
+  <meta name="description" content="Complétez notre tunnel devis énergie pour obtenir une étude personnalisée électricité et gaz.">
+  <link rel="icon" href="/assets/logos/favicon.svg" type="image/svg+xml" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50:'#ecfdf5',100:'#d1fae5',200:'#a7f3d0',300:'#6ee7b7',400:'#34d399',500:'#10b981',
+              600:'#0e8a57',700:'#0b6c45',800:'#0a5336',900:'#083f2a'
+            },
+            secondary: {
+              50:'#eef2ff',100:'#e0e7ff',200:'#c7d2fe',300:'#a5b4fc',400:'#818cf8',500:'#6366f1',
+              600:'#0b3d91',700:'#0a357e',800:'#082b67',900:'#072153'
+            }
+          },
+          container: { center: true, padding: '1rem' }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .glass{backdrop-filter:saturate(180%) blur(12px);background:rgba(255,255,255,.75)}
+    .shadow-soft{box-shadow:0 20px 40px rgba(15,23,42,.08)}
+    .step-dot{width:40px;height:40px;border-radius:999px;display:grid;place-items:center;font-weight:600}
+    .step-dot[data-active="true"]{background-image:linear-gradient(135deg,#0b3d91,#10b981);color:#fff}
+    .step-dot[data-complete="true"]{background:#0b6c45;color:#fff}
+    .step-dot[data-active="false"][data-complete="false"]{background:#e2e8f0;color:#64748b}
+    .step-rail{height:4px;border-radius:999px;background:#e2e8f0;overflow:hidden}
+    .step-rail-fill{height:100%;background-image:linear-gradient(135deg,#0b3d91,#10b981)}
+    .field-card{border:1px solid rgba(15,23,42,.08);border-radius:1.5rem;padding:2rem;background:#fff;box-shadow:0 16px 36px rgba(15,23,42,.06)}
+    .field-card h3{font-size:1.25rem;font-weight:700;color:#0b3d91;margin-bottom:1rem}
+    .pill-radio{position:relative;display:flex;align-items:center;justify-content:space-between;padding:1rem 1.4rem;border-radius:1rem;border:1px solid #cbd5f5;background:#fff;cursor:pointer;transition:all .2s ease}
+    .pill-radio input{position:absolute;inset:0;opacity:0;cursor:pointer}
+    .pill-radio span{font-weight:600;color:#0b3d91}
+    .pill-radio small{color:#64748b}
+    .pill-radio:hover{border-color:#818cf8;box-shadow:0 12px 24px rgba(99,102,241,.12)}
+    .pill-radio.is-active{border-color:#0b3d91;background:linear-gradient(135deg,rgba(11,61,145,.12),rgba(16,185,129,.12));box-shadow:0 14px 30px rgba(11,61,145,.18)}
+    .pill-radio.is-active span{color:#0b3d91}
+    .pill-radio.is-active small{color:#0f172a}
+    @media (max-width:640px){
+      .field-card{padding:1.4rem;border-radius:1.2rem}
+    }
+  </style>
+</head>
+<body class="antialiased text-slate-800 bg-white">
+  <div class="bg-slate-900 text-white text-xs">
+    <div class="container flex items-center justify-end gap-4 py-1">
+      <a class="opacity-80 hover:opacity-100" href="/" lang="fr-FR">FR</a>
+      <span class="opacity-30">|</span>
+      <a class="opacity-80 hover:opacity-100" href="/" lang="nl-BE">NL</a>
+    </div>
+  </div>
+
+  <header class="sticky top-0 z-50 border-b border-slate-200/60 bg-white/90 glass">
+    <div class="container flex items-center justify-between py-3 gap-4">
+      <a href="/" class="flex items-center gap-3">
+        <img id="logo-elga" src="/assets/logos/elga-energy-logo.svg" alt="Elga Energy" class="h-8 w-auto">
+        <span class="sr-only">Elga Energy</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a href="/#offre" class="hover:text-primary-700">Offre</a>
+        <a href="/#process" class="hover:text-primary-700">Méthode</a>
+        <a href="/#fournisseurs" class="hover:text-primary-700">Fournisseurs</a>
+        <a href="/#avis" class="hover:text-primary-700">Avis</a>
+        <a href="/#faq" class="hover:text-primary-700">FAQ</a>
+        <a href="/actu.html" class="hover:text-primary-700">Blog</a>
+        <a href="/devis.html" class="text-primary-700 font-semibold" aria-current="page">Obtenir un devis</a>
+      </nav>
+      <div class="flex items-center gap-2">
+        <a href="/devis.html" class="inline-flex items-center rounded-xl bg-primary-600 px-4 py-2 text-white text-sm font-medium shadow-soft hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-400">Obtenir un devis</a>
+        <button id="menuBtn" class="md:hidden inline-flex items-center justify-center size-10 rounded-lg border border-slate-300"><span class="sr-only">Ouvrir le menu</span>☰</button>
+      </div>
+    </div>
+    <div id="mobileMenu" class="md:hidden hidden border-t border-slate-200 bg-white">
+      <nav class="container flex flex-col py-3 text-sm">
+        <a href="/#offre" class="py-2">Offre</a>
+        <a href="/#process" class="py-2">Méthode</a>
+        <a href="/#fournisseurs" class="py-2">Fournisseurs</a>
+        <a href="/#avis" class="py-2">Avis</a>
+        <a href="/#faq" class="py-2">FAQ</a>
+        <a href="/actu.html" class="py-2">Blog</a>
+        <a href="/devis.html" class="py-2 font-semibold text-primary-700">Obtenir un devis</a>
+        <a href="/#contact" class="py-2">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="bg-gradient-to-br from-secondary-900 via-slate-900 to-primary-900 text-white">
+    <div class="container py-12 md:py-16">
+      <nav class="text-sm text-white/70 mb-4">
+        <a href="/" class="hover:text-white/100">Accueil</a>
+        <span class="mx-2 opacity-50">/</span>
+        <span>Recevez une offre</span>
+      </nav>
+      <p class="text-sm font-semibold tracking-[0.4em] text-primary-200 uppercase">N’attendez plus</p>
+      <h1 class="mt-3 text-3xl md:text-4xl lg:text-5xl font-extrabold">Recevez une offre d’énergie sur-mesure</h1>
+      <p class="mt-4 max-w-2xl text-white/80 text-base md:text-lg">Dites-nous ce dont vous avez besoin, nous comparons le marché et négocions pour vous. 6 étapes simples, moins de 3 minutes, zéro engagement.</p>
+    </div>
+  </section>
+
+  <main class="bg-slate-50">
+    <div class="container py-12 md:py-16 grid lg:grid-cols-[minmax(0,1fr),minmax(320px,0.8fr)] gap-10 lg:gap-14">
+      <section class="space-y-8">
+        <div class="rounded-3xl bg-white border border-slate-200/70 shadow-soft p-6 md:p-8">
+          <div>
+            <p class="text-xs uppercase tracking-[0.4em] text-primary-600 font-semibold">Tunnel devis</p>
+            <h2 class="mt-2 text-2xl font-bold text-slate-900">6 étapes pour qualifier votre besoin</h2>
+          </div>
+
+          <div class="mt-8 space-y-3">
+            <div class="grid grid-cols-6 gap-3 md:gap-4 items-center">
+              <template id="step-template">
+                <div class="flex flex-col items-center text-center gap-2">
+                  <span class="step-dot" data-active="false" data-complete="false"></span>
+                  <span class="text-xs font-medium text-slate-500 step-label"></span>
+                </div>
+              </template>
+              <div id="stepper" class="col-span-6 grid grid-cols-6 gap-3 md:gap-4"></div>
+            </div>
+            <div class="step-rail">
+              <div id="stepper-progress" class="step-rail-fill w-0 transition-all duration-300"></div>
+            </div>
+          </div>
+
+          <form id="quote-form" class="mt-10 space-y-8">
+            <!-- Step 1 Energies -->
+            <div class="field-card" data-step="0">
+              <h3>Quels contrats souhaitez-vous renégocier ?</h3>
+              <div class="grid gap-3 sm:grid-cols-2">
+                <label class="pill-radio">
+                  <input type="radio" name="energy_type" value="gaz" required>
+                  <span>Gaz naturel</span>
+                  <small>Fourniture gaz seule</small>
+                </label>
+                <label class="pill-radio">
+                  <input type="radio" name="energy_type" value="electricite">
+                  <span>Électricité</span>
+                  <small>Site(s) alimenté(s) en électricité</small>
+                </label>
+                <label class="pill-radio sm:col-span-2">
+                  <input type="radio" name="energy_type" value="duo">
+                  <span>Gaz + Électricité</span>
+                  <small>Optimisation multi-énergies</small>
+                </label>
+              </div>
+            </div>
+
+            <!-- Step 2 Compteurs -->
+            <div class="field-card hidden" data-step="1">
+              <h3>Caractéristiques de vos compteurs</h3>
+              <div class="grid gap-4 md:grid-cols-2">
+                <fieldset class="space-y-2">
+                  <legend class="text-sm font-semibold text-slate-700 uppercase tracking-[0.2em]">Puissance électrique</legend>
+                  <label class="pill-radio">
+                    <input type="radio" name="power" value="-36">
+                    <span>&lt; 36 kVA</span>
+                    <small>Tarif Bleu / PME</small>
+                  </label>
+                  <label class="pill-radio">
+                    <input type="radio" name="power" value="36-250">
+                    <span>36 à 250 kVA</span>
+                    <small>Tarif Jaune / industriel léger</small>
+                  </label>
+                  <label class="pill-radio">
+                    <input type="radio" name="power" value="+250">
+                    <span>&gt; 250 kVA</span>
+                    <small>Grands sites / tarif vert</small>
+                  </label>
+                </fieldset>
+                <fieldset class="space-y-2">
+                  <legend class="text-sm font-semibold text-slate-700 uppercase tracking-[0.2em]">Consommation gaz</legend>
+                  <label class="pill-radio">
+                    <input type="radio" name="gas_profile" value="t1">
+                    <span>T1 / &lt; 6 MWh/an</span>
+                    <small>Petits volumes</small>
+                  </label>
+                  <label class="pill-radio">
+                    <input type="radio" name="gas_profile" value="t2">
+                    <span>T2 / 6 à 300 MWh</span>
+                    <small>Sites multisites, restauration</small>
+                  </label>
+                  <label class="pill-radio">
+                    <input type="radio" name="gas_profile" value="t3">
+                    <span>T3/T4 / +300 MWh</span>
+                    <small>Industrie, gros volumes</small>
+                  </label>
+                </fieldset>
+              </div>
+            </div>
+
+            <!-- Step 3 Lieux -->
+            <div class="field-card hidden" data-step="2">
+              <h3>Sites concernés</h3>
+              <div class="grid gap-4">
+                <label class="text-sm font-medium text-slate-700">
+                  Nombre de sites
+                  <input type="number" min="1" name="sites_count" class="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-primary-400 focus:ring-primary-200" placeholder="ex. 5">
+                </label>
+                <label class="text-sm font-medium text-slate-700">
+                  Localisation principale
+                  <input type="text" name="location" class="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-primary-400 focus:ring-primary-200" placeholder="Ville, région">
+                </label>
+              </div>
+              <fieldset class="mt-4 grid sm:grid-cols-2 gap-3">
+                <legend class="text-sm font-semibold text-slate-700 uppercase tracking-[0.2em] mb-2">Contexte</legend>
+                <label class="pill-radio">
+                  <input type="radio" name="context" value="renegociation">
+                  <span>Renégociation</span>
+                  <small>Contrat en cours</small>
+                </label>
+                <label class="pill-radio">
+                  <input type="radio" name="context" value="emménagement">
+                  <span>Emménagement</span>
+                  <small>Ouverture de site</small>
+                </label>
+              </fieldset>
+            </div>
+
+            <!-- Step 4 Identité -->
+            <div class="field-card hidden" data-step="3">
+              <h3>Vos coordonnées</h3>
+              <div class="grid md:grid-cols-2 gap-4">
+                <label class="text-sm font-medium text-slate-700">
+                  Raison sociale *
+                  <input type="text" name="company" required class="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-primary-400 focus:ring-primary-200">
+                </label>
+                <label class="text-sm font-medium text-slate-700">
+                  SIRET
+                  <input type="text" name="siret" class="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-primary-400 focus:ring-primary-200">
+                </label>
+                <label class="text-sm font-medium text-slate-700">
+                  Nom *
+                  <input type="text" name="lastname" required class="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-primary-400 focus:ring-primary-200">
+                </label>
+                <label class="text-sm font-medium text-slate-700">
+                  Prénom *
+                  <input type="text" name="firstname" required class="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-primary-400 focus:ring-primary-200">
+                </label>
+                <label class="text-sm font-medium text-slate-700">
+                  Téléphone *
+                  <input type="tel" name="phone" required class="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-primary-400 focus:ring-primary-200">
+                </label>
+                <label class="text-sm font-medium text-slate-700">
+                  Email *
+                  <input type="email" name="email" required class="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-primary-400 focus:ring-primary-200">
+                </label>
+              </div>
+              <div class="grid md:grid-cols-2 gap-4">
+                <label class="text-sm font-medium text-slate-700">
+                  Code parrainage (optionnel)
+                  <input type="text" name="referral" class="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-primary-400 focus:ring-primary-200">
+                </label>
+                <label class="text-sm font-medium text-slate-700">
+                  Votre conseiller (optionnel)
+                  <input type="text" name="consultant" class="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-primary-400 focus:ring-primary-200">
+                </label>
+              </div>
+            </div>
+
+            <!-- Step 5 Documents -->
+            <div class="field-card hidden" data-step="4">
+              <h3>Ajoutez vos documents (optionnel)</h3>
+              <p class="text-sm text-slate-500">Formats PDF, JPG, PNG, 10 Mo max par fichier.</p>
+              <div class="space-y-4 mt-4">
+                <label class="block text-sm font-medium text-slate-700">
+                  Votre dernière facture gaz
+                  <input type="file" name="gaz_invoice" accept=".pdf,.jpg,.jpeg,.png" class="mt-2 block w-full rounded-xl border border-dashed border-primary-300 px-4 py-5 text-sm text-slate-600 file:mr-4 file:rounded-lg file:border-0 file:bg-primary-100 file:px-4 file:py-2 file:text-primary-700 hover:file:bg-primary-200">
+                </label>
+                <label class="block text-sm font-medium text-slate-700">
+                  Votre dernière facture électricité
+                  <input type="file" name="elec_invoice" accept=".pdf,.jpg,.jpeg,.png" class="mt-2 block w-full rounded-xl border border-dashed border-primary-300 px-4 py-5 text-sm text-slate-600 file:mr-4 file:rounded-lg file:border-0 file:bg-primary-100 file:px-4 file:py-2 file:text-primary-700 hover:file:bg-primary-200">
+                </label>
+                <label class="block text-sm font-medium text-slate-700">
+                  Autres documents (contrats, BIC…)
+                  <input type="file" name="other_docs" multiple accept=".pdf,.jpg,.jpeg,.png" class="mt-2 block w-full rounded-xl border border-dashed border-primary-300 px-4 py-5 text-sm text-slate-600 file:mr-4 file:rounded-lg file:border-0 file:bg-primary-100 file:px-4 file:py-2 file:text-primary-700 hover:file:bg-primary-200">
+                </label>
+              </div>
+            </div>
+
+            <!-- Step 6 Commentaires -->
+            <div class="field-card hidden" data-step="5">
+              <h3>Votre besoin en quelques mots</h3>
+              <p class="text-sm text-slate-500 mb-4">Précisez vos attentes, vos échéances ou un point particulier à vérifier.</p>
+              <textarea name="message" rows="6" class="w-full rounded-2xl border border-slate-200 px-5 py-4 focus:border-primary-400 focus:ring-primary-200" placeholder="Ex. Renouvellement anticipé, recherche d’offres indexées, bilan multi-sites…"></textarea>
+              <label class="flex items-start gap-3 text-sm text-slate-500 mt-4">
+                <input type="checkbox" required class="mt-1 size-4 rounded border-slate-300 text-primary-600 focus:ring-primary-500">
+                J’accepte que mes données soient utilisées pour étudier mon dossier et être recontacté par Elga Energy.
+              </label>
+              <div class="rounded-xl bg-primary-50 border border-primary-100 text-primary-800 text-sm p-4 mt-4 flex items-start gap-3">
+                <svg viewBox="0 0 24 24" class="size-5" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17h.01"/><path d="M12 3a9 9 0 0 1 9 9c0 4-2.6 7.4-6.2 8.6"/><path d="M12 3a9 9 0 0 0-9 9c0 4 2.6 7.4 6.2 8.6"/><path d="m9.2 21 2.8-4 2.8 4"/></svg>
+                <p>Votre étude personnalisée est réalisée sous 48 h ouvrées. Un conseiller reviendra vers vous par téléphone et e-mail.</p>
+              </div>
+            </div>
+
+            <div class="flex flex-wrap items-center justify-between gap-4">
+              <button type="button" id="step-prev" class="hidden rounded-xl border border-slate-300 px-5 py-2.5 text-sm font-semibold text-slate-600 hover:border-slate-400">Précédent</button>
+              <div class="ml-auto flex gap-3">
+                <button type="button" id="step-save" class="rounded-xl border border-secondary-200 px-5 py-2.5 text-sm font-semibold text-secondary-600 hover:bg-secondary-50">Sauvegarder</button>
+                <button type="button" id="step-next" class="rounded-xl bg-secondary-600 px-6 py-2.5 text-sm font-semibold text-white hover:bg-secondary-500">Suivant</button>
+                <button type="submit" id="step-submit" class="hidden rounded-xl bg-primary-600 px-6 py-2.5 text-sm font-semibold text-white hover:bg-primary-500">Envoyer la demande</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <aside class="space-y-6">
+        <div class="rounded-3xl bg-white border border-slate-200/70 shadow-soft p-6 md:p-8 space-y-5">
+          <h3 class="text-xl font-bold text-slate-900">Pourquoi passer par Elga Energy ?</h3>
+          <ul class="space-y-4 text-sm text-slate-600">
+            <li class="flex gap-3">
+              <span class="mt-1 size-2.5 rounded-full bg-primary-500"></span>
+              Comparaison multi-fournisseurs (30+ partenaires énergie &amp; gaz).
+            </li>
+            <li class="flex gap-3">
+              <span class="mt-1 size-2.5 rounded-full bg-primary-500"></span>
+              Négociation sur les clauses clés : indexation, durée, flexibilité.
+            </li>
+            <li class="flex gap-3">
+              <span class="mt-1 size-2.5 rounded-full bg-primary-500"></span>
+              Accompagnement juridique et technique jusqu’à la bascule.
+            </li>
+            <li class="flex gap-3">
+              <span class="mt-1 size-2.5 rounded-full bg-primary-500"></span>
+              Suivi des consommations et alertes marchés toute l’année.
+            </li>
+          </ul>
+          <div class="rounded-2xl bg-primary-50 border border-primary-100 p-5 text-sm text-primary-900">
+            <p class="font-semibold">Besoin d’assistance immédiate ?</p>
+            <p class="mt-2">Appelez-nous au <a href="tel:+33123456789" class="font-semibold underline decoration-primary-500">+33 1 23 45 67 89</a> ou écrivez à <a href="mailto:contact@elgaenergy.fr" class="font-semibold underline decoration-primary-500">contact@elgaenergy.fr</a>.</p>
+          </div>
+        </div>
+
+        <div class="rounded-3xl bg-gradient-to-br from-primary-600 to-secondary-600 text-white p-7 space-y-4">
+          <h3 class="text-lg font-semibold">Préparez vos documents</h3>
+          <p class="text-sm text-white/85">Pour accélérer l’étude, pensez à rassembler vos dernières factures et, si possible, vos puissances souscrites.</p>
+          <ul class="space-y-2 text-sm">
+            <li class="flex gap-2">
+              <svg viewBox="0 0 24 24" class="size-4 text-white/70" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg>
+              Facture électricité &amp; gaz (moins de 3 mois)
+            </li>
+            <li class="flex gap-2">
+              <svg viewBox="0 0 24 24" class="size-4 text-white/70" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg>
+              Index ou consommations annuelles
+            </li>
+            <li class="flex gap-2">
+              <svg viewBox="0 0 24 24" class="size-4 text-white/70" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg>
+              Clauses contractuelles spécifiques à renégocier
+            </li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="bg-slate-950 text-slate-200">
+    <div class="container py-10 grid md:grid-cols-3 gap-8">
+      <div>
+        <img src="/assets/logos/elga-energy-logo.svg" alt="Elga Energy" class="h-8 w-auto mb-3" onerror="this.remove()">
+        <p class="text-sm text-slate-400">ELGA Energy — Courtage & conseil en achats d'énergie.</p>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-3">Coordonnées</h4>
+        <p class="text-sm">contact@elgaenergy.fr<br/>+33 1 23 45 67 89</p>
+        <p class="text-sm mt-2">Paris — Lyon — Lille</p>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-3">Liens</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a class="hover:text-white" href="/#faq">FAQ</a></li>
+          <li><a class="hover:text-white" href="/actu.html">Blog</a></li>
+          <li><a class="hover:text-white" href="#">Mentions légales</a></li>
+          <li><a class="hover:text-white" href="#">Politique de confidentialité</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-white/10">
+      <div class="container py-4 text-xs text-slate-400">© 2025 Elga Energy</div>
+    </div>
+  </footer>
+
+  <template id="step-data">
+    [
+      { "label":"Énergies" },
+      { "label":"Compteur" },
+      { "label":"Lieux" },
+      { "label":"Identité" },
+      { "label":"Documents" },
+      { "label":"Validation" }
+    ]
+  </template>
+
+  <script>
+    // Menu mobile
+    const menuBtn = document.getElementById('menuBtn');
+    if (menuBtn) {
+      menuBtn.addEventListener('click', () => {
+        const mobileMenu = document.getElementById('mobileMenu');
+        if (mobileMenu) mobileMenu.classList.toggle('hidden');
+      });
+    }
+
+    // Stepper
+    const steps = JSON.parse(document.getElementById('step-data').textContent);
+    const stepper = document.getElementById('stepper');
+    const template = document.getElementById('step-template');
+    const progressBar = document.getElementById('stepper-progress');
+    const form = document.getElementById('quote-form');
+    const panels = Array.from(form.querySelectorAll('[data-step]'));
+    const prevBtn = document.getElementById('step-prev');
+    const nextBtn = document.getElementById('step-next');
+    const submitBtn = document.getElementById('step-submit');
+    const saveBtn = document.getElementById('step-save');
+
+    let currentStep = 0;
+
+    // Render stepper
+    steps.forEach((step, index) => {
+      const node = template.content.cloneNode(true);
+      const dot = node.querySelector('.step-dot');
+      const label = node.querySelector('.step-label');
+      dot.dataset.index = index;
+      label.textContent = step.label;
+      dot.textContent = index + 1;
+      stepper.appendChild(node);
+    });
+
+    const dots = Array.from(stepper.querySelectorAll('.step-dot'));
+
+    function updateStepper() {
+      dots.forEach((dot, index) => {
+        const isActive = index === currentStep;
+        const isComplete = index < currentStep;
+        dot.dataset.active = isActive ? 'true' : 'false';
+        dot.dataset.complete = isComplete ? 'true' : 'false';
+      });
+      const progressPercent = (currentStep / (steps.length - 1)) * 100;
+      progressBar.style.width = `${progressPercent}%`;
+    }
+
+    function showStep(step) {
+      currentStep = Math.min(Math.max(step, 0), panels.length - 1);
+      panels.forEach((panel, index) => {
+        panel.classList.toggle('hidden', index !== currentStep);
+      });
+      prevBtn.classList.toggle('hidden', currentStep === 0);
+      nextBtn.classList.toggle('hidden', currentStep === panels.length - 1);
+      submitBtn.classList.toggle('hidden', currentStep !== panels.length - 1);
+      updateStepper();
+      panels[currentStep].scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function validateStep() {
+      const panel = panels[currentStep];
+      const requiredFields = Array.from(panel.querySelectorAll('input[required], textarea[required], select[required]'));
+      const handledRadio = new Set();
+      let invalidField = null;
+
+      for (const field of requiredFields) {
+        if (field.type === 'radio') {
+          if (handledRadio.has(field.name)) continue;
+          handledRadio.add(field.name);
+          const group = Array.from(panel.querySelectorAll(`input[type="radio"][name="${field.name}"]`));
+          const hasSelection = group.some(radio => radio.checked);
+          if (!hasSelection) {
+            invalidField = group[0];
+            break;
+          }
+        } else if (!field.checkValidity()) {
+          invalidField = field;
+          break;
+        }
+      }
+
+      if (invalidField) {
+        if (invalidField.type === 'radio') {
+          invalidField.setCustomValidity('Veuillez sélectionner une option.');
+          invalidField.reportValidity();
+          invalidField.setCustomValidity('');
+        } else {
+          invalidField.reportValidity();
+        }
+        return false;
+      }
+
+      return true;
+    }
+
+    prevBtn.addEventListener('click', () => showStep(currentStep - 1));
+    nextBtn.addEventListener('click', () => {
+      if (!validateStep()) return;
+      showStep(currentStep + 1);
+    });
+
+    if (saveBtn) {
+      saveBtn.addEventListener('click', () => {
+        try {
+          const data = Object.fromEntries(new FormData(form).entries());
+          localStorage.setItem('elga-quote-draft', JSON.stringify(data));
+          saveBtn.textContent = 'Enregistré !';
+          setTimeout(() => (saveBtn.textContent = 'Sauvegarder'), 2000);
+        } catch (err) {
+          console.warn('Impossible de sauvegarder le brouillon', err);
+        }
+      });
+    }
+
+    form.addEventListener('submit', (event) => {
+      if (!validateStep()) {
+        event.preventDefault();
+        return;
+      }
+      event.preventDefault();
+      progressBar.style.width = '100%';
+      try { localStorage.removeItem('elga-quote-draft'); } catch (err) {}
+      form.innerHTML = `
+        <div class="rounded-3xl bg-primary-50 border border-primary-200 p-8 text-center space-y-4">
+          <div class="inline-flex size-16 items-center justify-center rounded-full bg-primary-100 text-primary-700 mx-auto">
+            <svg viewBox="0 0 24 24" class="size-8" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 13l4 4L19 7"/></svg>
+          </div>
+          <h3 class="text-2xl font-bold text-slate-900">Merci ! Votre demande est envoyée.</h3>
+          <p class="text-slate-600 max-w-xl mx-auto">Un conseiller Elga Energy reprend contact avec vous sous 48 heures ouvrées pour finaliser l’étude et vous proposer la meilleure offre.</p>
+          <a href="/" class="inline-flex items-center gap-2 rounded-xl bg-secondary-600 px-6 py-3 font-semibold text-white hover:bg-secondary-500">Retour à l’accueil</a>
+        </div>
+      `;
+    });
+
+    // Restore draft if available
+    const draft = (() => {
+      try { return localStorage.getItem('elga-quote-draft'); } catch (err) { return null; }
+    })();
+    if (draft) {
+      try {
+        const values = JSON.parse(draft);
+        Object.entries(values).forEach(([name, value]) => {
+          const field = form.querySelector(`[name="${name}"]`);
+          if (!field) return;
+          if (field.type === 'radio') {
+            const target = form.querySelector(`[name="${name}"][value="${value}"]`);
+            if (target) target.checked = true;
+          } else if (field.type !== 'file') {
+            field.value = value;
+          }
+        });
+      } catch (err) {
+        console.warn('Brouillon invalide', err);
+      }
+    }
+
+    function refreshPillGroup(name) {
+      const group = form.querySelectorAll(`input[name="${name}"]`);
+      group.forEach(input => {
+        const holder = input.closest('.pill-radio');
+        if (holder) holder.classList.toggle('is-active', input.checked);
+      });
+    }
+
+    const pillInputs = form.querySelectorAll('.pill-radio input');
+    pillInputs.forEach(input => {
+      refreshPillGroup(input.name);
+      input.addEventListener('change', () => refreshPillGroup(input.name));
+    });
+
+    showStep(0);
+  </script>
+</body>
+</html>
