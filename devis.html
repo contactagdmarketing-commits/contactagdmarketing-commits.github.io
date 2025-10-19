@@ -1,3 +1,7 @@
+---
+layout: default
+title: Devis
+---
 <!doctype html>
 <html lang="fr-FR" class="scroll-smooth">
 <head>
@@ -34,7 +38,6 @@
     .field-card{border:1px solid rgba(15,23,42,.08);border-radius:1.5rem;padding:2rem;background:#fff;box-shadow:0 16px 36px rgba(15,23,42,.06)}
     .field-card h3{font-size:1.25rem;font-weight:700;color:#0b3d91;margin-bottom:1rem}
 
-    /* ✅ Style final boutons radio avec animation douce */
     .pill-radio {
       position: relative;
       display: flex;
@@ -51,7 +54,6 @@
       overflow: visible;
       box-sizing: border-box;
     }
-
     .pill-radio input {
       position: absolute;
       opacity: 0;
@@ -62,53 +64,35 @@
       left: 0;
       z-index: 2;
     }
-
     .pill-radio span,
     .pill-radio small {
       position: relative;
       z-index: 3;
       line-height: 1.3;
     }
-
     .pill-radio span {
       font-weight: 700;
       color: #0b3d91;
       font-size: 1rem;
-      word-break: normal;
-      white-space: normal;
     }
-
     .pill-radio small {
       color: #64748b;
       font-size: 0.85rem;
-      word-break: normal;
-      white-space: normal;
     }
-
     .pill-radio:hover {
       border-color: #818cf8;
       transform: scale(1.02);
       box-shadow: 0 8px 24px rgba(99, 102, 241, 0.15);
     }
-
     .pill-radio.is-active {
       border-color: #0b3d91;
       background: linear-gradient(135deg, rgba(11, 61, 145, 0.08), rgba(16, 185, 129, 0.08));
       box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.15), 0 10px 30px rgba(11, 61, 145, 0.1);
       transform: scale(1.03);
     }
-
     .pill-radio.is-active span { color: #0b3d91; }
     .pill-radio.is-active small { color: #0f172a; }
 
-    @media (max-width:640px){
-      .field-card{padding:1.4rem;border-radius:1.2rem}
-      .pill-radio{padding:1rem;border-radius:0.8rem;gap:0.3rem}
-      .pill-radio span{font-size:0.95rem}
-      .pill-radio small{font-size:0.8rem}
-    }
-
-    /* ✅ Animation d'apparition fluide entre les étapes */
     [data-step] {
       opacity: 0;
       transform: translateY(10px);
@@ -120,7 +104,6 @@
       transform: translateY(0);
       pointer-events: all;
     }
-
     html, body { width:100%; overflow-x:hidden; }
   </style>
 </head>
@@ -162,55 +145,44 @@
 
             <!-- ÉTAPE 1 -->
             <div class="field-card" data-step="0">
-              <h3>Quels contrats souhaitez-vous renégocier ?</h3>
-              <div class="grid gap-3 sm:grid-cols-2">
-                <label class="pill-radio">
-                  <input type="radio" name="energy_type" value="gaz" required>
-                  <span>Gaz naturel</span>
-                  <small>Fourniture gaz seule</small>
+              <h3>Combien de compteurs souhaitez-vous renseigner ?</h3>
+              <div class="grid md:grid-cols-2 gap-4">
+                <label class="text-sm font-medium text-slate-700">
+                  Nombre de compteurs <span class="font-semibold text-primary-700">Électricité</span>
+                  <input type="number" min="0" max="20" name="nb_compteurs_elec" required
+                         class="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-primary-400 focus:ring-primary-200"
+                         placeholder="ex. 3">
                 </label>
-                <label class="pill-radio">
-                  <input type="radio" name="energy_type" value="electricite">
-                  <span>Électricité</span>
-                  <small>Site(s) alimenté(s) en électricité</small>
-                </label>
-                <label class="pill-radio sm:col-span-2">
-                  <input type="radio" name="energy_type" value="duo">
-                  <span>Gaz + Électricité</span>
-                  <small>Optimisation multi-énergies</small>
+                <label class="text-sm font-medium text-slate-700">
+                  Nombre de compteurs <span class="font-semibold text-primary-700">Gaz</span>
+                  <input type="number" min="0" max="20" name="nb_compteurs_gaz" required
+                         class="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-primary-400 focus:ring-primary-200"
+                         placeholder="ex. 1">
                 </label>
               </div>
             </div>
 
             <!-- ÉTAPE 2 -->
-            <div class="field-card hidden" data-step="1">
+            <div class="field-card hidden" data-step="1" id="step-compteurs">
               <h3>Caractéristiques de vos compteurs</h3>
-              <div class="grid gap-4 md:grid-cols-2">
-                <fieldset class="space-y-2">
-                  <legend class="text-sm font-semibold text-slate-700 uppercase tracking-[0.2em]">Puissance électrique</legend>
-                  <label class="pill-radio"><input type="radio" name="power" value="-36"><span>&lt; 36 kVA</span><small>Tarif Bleu / PME</small></label>
-                  <label class="pill-radio"><input type="radio" name="power" value="36-250"><span>36 à 250 kVA</span><small>Tarif Jaune / industriel léger</small></label>
-                  <label class="pill-radio"><input type="radio" name="power" value="+250"><span>&gt; 250 kVA</span><small>Grands sites / tarif vert</small></label>
-                </fieldset>
-
-                <fieldset class="space-y-2">
-                  <legend class="text-sm font-semibold text-slate-700 uppercase tracking-[0.2em]">Consommation gaz</legend>
-                  <label class="pill-radio"><input type="radio" name="gas_profile" value="t1"><span>T1 / &lt; 6 MWh/an</span><small>Petits volumes</small></label>
-                  <label class="pill-radio"><input type="radio" name="gas_profile" value="t2"><span>T2 / 6 à 300 MWh</span><small>Sites multisites, restauration</small></label>
-                  <label class="pill-radio"><input type="radio" name="gas_profile" value="t3"><span>T3/T4 / +300 MWh</span><small>Industrie, gros volumes</small></label>
-                </fieldset>
-              </div>
+              <div id="compteurs-container" class="space-y-6 mt-4"></div>
             </div>
 
             <!-- ÉTAPE 3 -->
             <div class="field-card hidden" data-step="2">
-              <h3>Sites concernés</h3>
-              <div class="grid gap-4">
-                <label class="text-sm font-medium text-slate-700">Nombre de sites
-                  <input type="number" min="1" name="sites_count" class="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-primary-400 focus:ring-primary-200" placeholder="ex. 5">
+              <h3>Informations sur vos sites</h3>
+              <div class="grid gap-4 md:grid-cols-2">
+                <label class="text-sm font-medium text-slate-700">
+                  Adresse du siège social
+                  <input type="text" name="adresse_siege" required
+                         class="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-primary-400 focus:ring-primary-200"
+                         placeholder="ex. 15 rue Victor Hugo, Paris">
                 </label>
-                <label class="text-sm font-medium text-slate-700">Localisation principale
-                  <input type="text" name="location" class="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-primary-400 focus:ring-primary-200" placeholder="Ville, région">
+                <label class="text-sm font-medium text-slate-700">
+                  Nombre d’établissements
+                  <input type="number" min="1" name="nb_etablissements"
+                         class="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-primary-400 focus:ring-primary-200"
+                         placeholder="ex. 4">
                 </label>
               </div>
             </div>
@@ -219,16 +191,16 @@
               <h3>Vos coordonnées</h3>
               <div class="grid md:grid-cols-2 gap-4">
                 <label class="text-sm font-medium text-slate-700">Raison sociale *
-                  <input type="text" name="company" required class="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-primary-400 focus:ring-primary-200">
+                  <input type="text" name="raison_sociale" required class="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-primary-400 focus:ring-primary-200">
                 </label>
                 <label class="text-sm font-medium text-slate-700">SIRET
                   <input type="text" name="siret" class="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-primary-400 focus:ring-primary-200">
                 </label>
                 <label class="text-sm font-medium text-slate-700">Nom *
-                  <input type="text" name="lastname" required class="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-primary-400 focus:ring-primary-200">
+                  <input type="text" name="nom_prospect" required class="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-primary-400 focus:ring-primary-200">
                 </label>
                 <label class="text-sm font-medium text-slate-700">Prénom *
-                  <input type="text" name="firstname" required class="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-primary-400 focus:ring-primary-200">
+                  <input type="text" name="prenom_prospect" required class="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-primary-400 focus:ring-primary-200">
                 </label>
                 <label class="text-sm font-medium text-slate-700">Téléphone *
                   <input type="tel" name="phone" required class="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-primary-400 focus:ring-primary-200">
@@ -240,41 +212,42 @@
             </div>
 
             <!-- ÉTAPE 5 -->
-            <div class="field-card hidden" data-step="4">
-              <h3>Ajoutez vos documents (optionnel)</h3>
-              <p class="text-sm text-slate-500">Formats PDF, JPG, PNG, 10 Mo max par fichier.</p>
-              <div class="space-y-4 mt-4">
-                <label class="block text-sm font-medium text-slate-700">
-                  Votre dernière facture gaz
-                  <input type="file" name="gaz_invoice" accept=".pdf,.jpg,.jpeg,.png" class="mt-2 block w-full rounded-xl border border-dashed border-primary-300 px-4 py-5 text-sm text-slate-600 file:mr-4 file:rounded-lg file:border-0 file:bg-primary-100 file:px-4 file:py-2 file:text-primary-700 hover:file:bg-primary-200">
-                </label>
-                <label class="block text-sm font-medium text-slate-700">
-                  Votre dernière facture électricité
-                  <input type="file" name="elec_invoice" accept=".pdf,.jpg,.jpeg,.png" class="mt-2 block w-full rounded-xl border border-dashed border-primary-300 px-4 py-5 text-sm text-slate-600 file:mr-4 file:rounded-lg file:border-0 file:bg-primary-100 file:px-4 file:py-2 file:text-primary-700 hover:file:bg-primary-200">
-                </label>
-              </div>
+            <div class="field-card hidden" data-step="4" id="step-docs">
+              <h3>Ajoutez vos documents</h3>
+              <p class="text-sm text-slate-500">Formats PDF, JPG, PNG — plusieurs fichiers par compteur.</p>
+              <div id="docs-container" class="space-y-6 mt-5"></div>
             </div>
 
             <!-- ÉTAPE 6 -->
             <div class="field-card hidden" data-step="5">
               <h3>Votre besoin en quelques mots</h3>
-              <p class="text-sm text-slate-500 mb-4">Précisez vos attentes, vos échéances ou un point particulier à vérifier.</p>
-              <textarea name="message" rows="6" class="w-full rounded-2xl border border-slate-200 px-5 py-4 focus:border-primary-400 focus:ring-primary-200" placeholder="Ex. Renouvellement anticipé, recherche d’offres indexées, bilan multi-sites…"></textarea>
+              <p class="text-sm text-slate-500 mb-4">Précisez vos attentes, échéances ou remarques.</p>
+              <textarea name="message" rows="6"
+                        class="w-full rounded-2xl border border-slate-200 px-5 py-4 focus:border-primary-400 focus:ring-primary-200"
+                        placeholder="Ex. renégociation anticipée, bilan multi-sites…"></textarea>
               <label class="flex items-start gap-3 text-sm text-slate-500 mt-4">
                 <input type="checkbox" required class="mt-1 size-4 rounded border-slate-300 text-primary-600 focus:ring-primary-500">
-                J’accepte que mes données soient utilisées pour étudier mon dossier et être recontacté par Elga Energy.
+                J’accepte que mes données soient utilisées pour étudier mon dossier et être recontacté.
               </label>
             </div>
 
             <!-- Navigation -->
             <div class="flex flex-wrap items-center justify-between gap-4">
-              <button type="button" id="step-prev" class="hidden rounded-xl border border-slate-300 px-5 py-2.5 text-sm font-semibold text-slate-600 hover:border-slate-400">Précédent</button>
+              <button type="button" id="step-prev"
+                      class="hidden rounded-xl border border-slate-300 px-5 py-2.5 text-sm font-semibold text-slate-600 hover:border-slate-400">
+                Précédent
+              </button>
               <div class="ml-auto flex gap-3">
-                <button type="button" id="step-next" class="rounded-xl bg-secondary-600 px-6 py-2.5 text-sm font-semibold text-white hover:bg-secondary-500">Suivant</button>
-                <button type="submit" id="step-submit" class="hidden rounded-xl bg-primary-600 px-6 py-2.5 text-sm font-semibold text-white hover:bg-primary-500">Envoyer</button>
+                <button type="button" id="step-next"
+                        class="rounded-xl bg-secondary-600 px-6 py-2.5 text-sm font-semibold text-white hover:bg-secondary-500">
+                  Suivant
+                </button>
+                <button type="submit" id="step-submit"
+                        class="hidden rounded-xl bg-primary-600 px-6 py-2.5 text-sm font-semibold text-white hover:bg-primary-500">
+                  Envoyer
+                </button>
               </div>
             </div>
-
           </form>
         </div>
       </section>
@@ -285,7 +258,7 @@
     <div class="container py-10 grid md:grid-cols-3 gap-8">
       <div>
         <img src="/assets/logos/elga-energy-logo.svg" alt="Elga Energy" class="h-8 w-auto mb-3">
-        <p class="text-sm text-slate-400">ELGA Energy — Courtage & conseil en achats d'énergie.</p>
+        <p class="text-sm text-slate-400">ELGA Energy — Courtage & conseil en achats d’énergie.</p>
       </div>
       <div>
         <h4 class="font-semibold mb-3">Coordonnées</h4>
@@ -312,7 +285,57 @@
     const prevBtn = document.getElementById('step-prev');
     const nextBtn = document.getElementById('step-next');
     const submitBtn = document.getElementById('step-submit');
+    const compteursContainer = document.getElementById('compteurs-container');
+    const docsContainer = document.getElementById('docs-container');
     let currentStep = 0;
+
+    function generateCompteurs(nbElec, nbGaz) {
+      compteursContainer.innerHTML = '';
+      for (let i = 1; i <= nbElec; i++) {
+        const bloc = document.createElement('fieldset');
+        bloc.className = 'space-y-2';
+        bloc.innerHTML = `
+          <legend class="text-sm font-semibold text-slate-700 uppercase tracking-[0.2em] mb-1">
+            Compteur Électrique ${i}
+          </legend>
+          <label class="pill-radio"><input type="radio" name="typologie_compteurs_elec_${i}" value="-36"><span>&lt; 36 kVA</span><small>Tarif Bleu / PME</small></label>
+          <label class="pill-radio"><input type="radio" name="typologie_compteurs_elec_${i}" value="36-250"><span>36 à 250 kVA</span><small>Tarif Jaune / industriel léger</small></label>
+          <label class="pill-radio"><input type="radio" name="typologie_compteurs_elec_${i}" value="+250"><span>&gt; 250 kVA</span><small>Grands sites / tarif vert</small></label>`;
+        compteursContainer.appendChild(bloc);
+      }
+      for (let j = 1; j <= nbGaz; j++) {
+        const bloc = document.createElement('fieldset');
+        bloc.className = 'space-y-2';
+        bloc.innerHTML = `
+          <legend class="text-sm font-semibold text-slate-700 uppercase tracking-[0.2em] mb-1">
+            Compteur Gaz ${j}
+          </legend>
+          <label class="pill-radio"><input type="radio" name="typologie_compteurs_gaz_${j}" value="t1"><span>T1 / &lt; 6 MWh/an</span><small>Petits volumes</small></label>
+          <label class="pill-radio"><input type="radio" name="typologie_compteurs_gaz_${j}" value="t2"><span>T2 / 6 à 300 MWh</span><small>Sites multisites, restauration</small></label>
+          <label class="pill-radio"><input type="radio" name="typologie_compteurs_gaz_${j}" value="t3"><span>T3/T4 / +300 MWh</span><small>Industrie, gros volumes</small></label>`;
+        compteursContainer.appendChild(bloc);
+      }
+    }
+
+    function generateUploadZones(nbElec, nbGaz) {
+      docsContainer.innerHTML = '';
+      for (let i = 1; i <= nbElec; i++) {
+        docsContainer.innerHTML += `
+          <label class="block text-sm font-medium text-slate-700">
+            Factures compteur Électricité ${i}
+            <input type="file" name="facture_elec_${i}[]" multiple accept=".pdf,.jpg,.jpeg,.png"
+                   class="mt-2 block w-full rounded-xl border border-dashed border-primary-300 px-4 py-5 text-sm text-slate-600 file:mr-4 file:rounded-lg file:border-0 file:bg-primary-100 file:px-4 file:py-2 file:text-primary-700 hover:file:bg-primary-200">
+          </label>`;
+      }
+      for (let j = 1; j <= nbGaz; j++) {
+        docsContainer.innerHTML += `
+          <label class="block text-sm font-medium text-slate-700">
+            Factures compteur Gaz ${j}
+            <input type="file" name="facture_gaz_${j}[]" multiple accept=".pdf,.jpg,.jpeg,.png"
+                   class="mt-2 block w-full rounded-xl border border-dashed border-primary-300 px-4 py-5 text-sm text-slate-600 file:mr-4 file:rounded-lg file:border-0 file:bg-primary-100 file:px-4 file:py-2 file:text-primary-700 hover:file:bg-primary-200">
+          </label>`;
+      }
+    }
 
     function showStep(step) {
       currentStep = Math.min(Math.max(step, 0), panels.length - 1);
@@ -331,7 +354,16 @@
     }
 
     prevBtn.addEventListener('click', () => showStep(currentStep - 1));
-    nextBtn.addEventListener('click', () => showStep(currentStep + 1));
+    nextBtn.addEventListener('click', () => {
+      const nbElec = parseInt(form.nb_compteurs_elec.value || 0);
+      const nbGaz = parseInt(form.nb_compteurs_gaz.value || 0);
+
+      if (currentStep === 0) generateCompteurs(nbElec, nbGaz);
+      if (currentStep === 1) generateUploadZones(nbElec, nbGaz);
+
+      showStep(currentStep + 1);
+    });
+
     form.addEventListener('submit', e => {
       e.preventDefault();
       form.innerHTML = `
@@ -340,21 +372,8 @@
             <svg viewBox="0 0 24 24" class="size-8" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 13l4 4L19 7"/></svg>
           </div>
           <h3 class="text-2xl font-bold text-slate-900">Merci !</h3>
-          <p class="text-slate-600 max-w-xl mx-auto">Un conseiller Elga Energy reviendra vers vous sous 48 h ouvrées.</p>
-        </div>
-      `;
-    });
-
-    const pillInputs = form.querySelectorAll('.pill-radio input');
-    pillInputs.forEach(input => {
-      const refresh = () => {
-        document.querySelectorAll(`input[name="${input.name}"]`).forEach(i => {
-          const card = i.closest('.pill-radio');
-          if (card) card.classList.toggle('is-active', i.checked);
-        });
-      };
-      input.addEventListener('change', refresh);
-      refresh();
+          <p class="text-slate-600 max-w-xl mx-auto">Votre demande a été transmise à Elga Energy.</p>
+        </div>`;
     });
 
     showStep(0);
