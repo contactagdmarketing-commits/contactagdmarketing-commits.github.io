@@ -126,29 +126,79 @@
   </template>
 
   <!-- Chiffres clés -->
-  <section class="bg-white">
-    <div class="container py-12 md:py-16">
-      <h2 class="text-center text-2xl md:text-3xl font-bold mb-10">Pourquoi choisir Elga Energy ?</h2>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="rounded-2xl border p-6 text-center bg-white">
-          <div class="text-4xl font-extrabold text-primary-600" data-number>15&nbsp;000+</div>
-          <p class="mt-2 text-slate-600">Points de livraison gérés</p>
-        </div>
-        <div class="rounded-2xl border p-6 text-center bg-white">
-          <div class="text-4xl font-extrabold text-primary-600" data-number>30+</div>
-          <p class="mt-2 text-slate-600">Fournisseurs partenaires</p>
-        </div>
-        <div class="rounded-2xl border p-6 text-center bg-white">
-          <div class="text-4xl font-extrabold text-primary-600" data-number>20 h</div>
-          <p class="mt-2 text-slate-600">Gagnées par dossier</p>
-        </div>
-        <div class="rounded-2xl border p-6 text-center bg-white">
-          <div class="text-4xl font-extrabold text-primary-600" data-number>98%</div>
-          <p class="mt-2 text-slate-600">Clients satisfaits</p>
-        </div>
+  <!-- ===== Pourquoi choisir Elga Energy (animé + compteur) ===== -->
+<section id="avantages" class="bg-white py-14">
+  <div class="container text-center">
+    <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 mb-10">
+      Pourquoi choisir <span class="text-primary-600">Elga Energy</span> ?
+    </h2>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 justify-center">
+      
+      <!-- Stat 1 -->
+      <div class="stat-bubble opacity-0 translate-y-6 transition-all duration-700 ease-out flex flex-col items-center justify-center rounded-full size-36 md:size-40 bg-gradient-to-br from-primary-50 to-slate-50 shadow-md border border-slate-100">
+        <p class="stat-number text-2xl md:text-3xl font-extrabold text-primary-700" data-target="15000">0</p>
+        <p class="text-sm md:text-base text-slate-600 mt-1">Points de livraison</p>
       </div>
+
+      <!-- Stat 2 -->
+      <div class="stat-bubble opacity-0 translate-y-6 transition-all duration-700 ease-out delay-100 flex flex-col items-center justify-center rounded-full size-36 md:size-40 bg-gradient-to-br from-primary-50 to-slate-50 shadow-md border border-slate-100">
+        <p class="stat-number text-2xl md:text-3xl font-extrabold text-primary-700" data-target="30">0</p>
+        <p class="text-sm md:text-base text-slate-600 mt-1">Fournisseurs</p>
+      </div>
+
+      <!-- Stat 3 -->
+      <div class="stat-bubble opacity-0 translate-y-6 transition-all duration-700 ease-out delay-200 flex flex-col items-center justify-center rounded-full size-36 md:size-40 bg-gradient-to-br from-primary-50 to-slate-50 shadow-md border border-slate-100">
+        <p class="stat-number text-2xl md:text-3xl font-extrabold text-primary-700" data-target="20">0</p>
+        <p class="text-sm md:text-base text-slate-600 mt-1">Heures gagnées</p>
+      </div>
+
+      <!-- Stat 4 -->
+      <div class="stat-bubble opacity-0 translate-y-6 transition-all duration-700 ease-out delay-300 flex flex-col items-center justify-center rounded-full size-36 md:size-40 bg-gradient-to-br from-primary-50 to-slate-50 shadow-md border border-slate-100">
+        <p class="stat-number text-2xl md:text-3xl font-extrabold text-primary-700" data-target="98">0</p>
+        <p class="text-sm md:text-base text-slate-600 mt-1">Clients satisfaits (%)</p>
+      </div>
+
     </div>
-  </section>
+  </div>
+</section>
+
+<script>
+  // ✅ Apparition + animation du compteur
+  const stats = document.querySelectorAll('.stat-bubble');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Fade + montée
+        entry.target.classList.remove('opacity-0', 'translate-y-6');
+        entry.target.classList.add('opacity-100', 'translate-y-0');
+
+        // Compteur animé
+        const number = entry.target.querySelector('.stat-number');
+        const target = +number.getAttribute('data-target');
+        const duration = 1500; // ms
+        const startTime = performance.now();
+
+        const animate = (time) => {
+          const progress = Math.min((time - startTime) / duration, 1);
+          number.textContent = Math.floor(progress * target);
+          if (progress < 1) requestAnimationFrame(animate);
+          else {
+            if (target >= 1000) number.textContent = target.toLocaleString('fr-FR') + '+';
+            else if (target === 98) number.textContent = target + ' %';
+            else if (target === 20) number.textContent = target + ' h';
+            else number.textContent = target + '+';
+          }
+        };
+        requestAnimationFrame(animate);
+
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.4 });
+
+  stats.forEach(stat => observer.observe(stat));
+</script>
 
   <!-- Offre -->
   <section id="offre" class="bg-slate-50">
