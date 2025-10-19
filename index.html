@@ -234,6 +234,20 @@
           @media (prefers-reduced-motion:reduce){
             #parcours-elga .process-node::before{transition:none}
           }
+           /* ✅ Correction alignement mobile des étapes 2 et 4 */
+@media (max-width: 1024px) {
+  #parcours-elga .process-step.process-left .process-card,
+  #parcours-elga .process-step.process-right .process-card {
+    grid-column: 1 !important;
+    text-align: center !important;
+    justify-self: center !important;
+  }
+
+  #parcours-elga .process-node {
+    margin: 0 auto !important;
+  }
+}
+
         </style>
 
         <div class="process-header">
