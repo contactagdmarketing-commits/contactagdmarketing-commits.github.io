@@ -1869,51 +1869,54 @@ Le matching est terminé.
 </footer>
 
 <script>
-  async function copyPrompt(id){
-    const el = document.getElementById(id);
-    if (!el) return;
+async function copyPrompt(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
 
-    const text = (el.innerText || el.textContent || "").trim();
-    if (!text) return;
+  const text = (el.innerText || el.textContent || "").trim();
+  if (!text) return;
 
-    // 1) méthode moderne (HTTPS / localhost)
+  // --- Copie du texte ---
+  try {
     if (navigator.clipboard && window.isSecureContext) {
-      try {
-        await navigator.clipboard.writeText(text);
-        flashCopied();
-        return;
-      } catch (e) {
-        // fallback
-      }
+      await navigator.clipboard.writeText(text);
+    } else {
+      // Fallback si clipboard API indisponible
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      ta.setAttribute("readonly", "");
+      ta.style.position = "fixed";
+      ta.style.top = "-9999px";
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand("copy");
+      document.body.removeChild(ta);
     }
 
-    // 2) fallback universel
-    fallbackCopy(text);
+    // --- TRACKING GOOGLE ANALYTICS ---
+    if (typeof gtag === "function") {
+      gtag("event", "copy_prompt", {
+        event_category: "AXIOM",
+        event_label: id
+      });
+    }
+
+    // --- Feedback visuel ---
     flashCopied();
-  }
 
-  function fallbackCopy(text) {
-    const ta = document.createElement("textarea");
-    ta.value = text;
-    ta.setAttribute("readonly", "");
-    ta.style.position = "fixed";
-    ta.style.top = "-9999px";
-    ta.style.left = "-9999px";
-    document.body.appendChild(ta);
-    ta.select();
-    ta.setSelectionRange(0, ta.value.length);
-    document.execCommand("copy");
-    document.body.removeChild(ta);
+  } catch (err) {
+    console.error("Erreur copie prompt :", err);
   }
+}
 
-  function flashCopied(){
-    const toast = document.createElement("div");
-    toast.textContent = "✅ Prompt copié";
-    toast.className =
-      "fixed bottom-6 left-1/2 -translate-x-1/2 z-[9999] rounded-xl bg-slate-900 text-white text-sm px-4 py-2 shadow-soft";
-    document.body.appendChild(toast);
-    setTimeout(() => toast.remove(), 1200);
-  }
+function flashCopied() {
+  const toast = document.createElement("div");
+  toast.textContent = "✅ Prompt copié";
+  toast.className =
+    "fixed bottom-6 left-1/2 -translate-x-1/2 z-[9999] rounded-xl bg-slate-900 text-white text-sm px-4 py-2 shadow-soft";
+  document.body.appendChild(toast);
+  setTimeout(() => toast.remove(), 1200);
+}
 </script>
 
 </body>
