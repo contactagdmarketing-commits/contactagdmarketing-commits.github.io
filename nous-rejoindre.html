@@ -1876,12 +1876,11 @@ async function copyPrompt(id) {
   const text = (el.innerText || el.textContent || "").trim();
   if (!text) return;
 
-  // --- Copie du texte ---
   try {
+    // --- COPIE DU TEXTE ---
     if (navigator.clipboard && window.isSecureContext) {
       await navigator.clipboard.writeText(text);
     } else {
-      // Fallback si clipboard API indisponible
       const ta = document.createElement("textarea");
       ta.value = text;
       ta.setAttribute("readonly", "");
@@ -1895,13 +1894,15 @@ async function copyPrompt(id) {
 
     // --- TRACKING GOOGLE ANALYTICS ---
     if (typeof gtag === "function") {
-      gtag("event", "copy_prompt", {
-        event_category: "AXIOM",
-        event_label: id
-      });
+      if (id === "prompt-etape-1") {
+        gtag("event", "copie_du_prompt_1");
+      }
+      if (id === "prompt-etape-2") {
+        gtag("event", "copie_du_prompt_2");
+      }
     }
 
-    // --- Feedback visuel ---
+    // --- FEEDBACK VISUEL ---
     flashCopied();
 
   } catch (err) {
