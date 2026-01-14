@@ -1798,18 +1798,23 @@ Aucune analyse supplémentaire.
 
 Le matching est terminé.
       </div>
-      <div class="mt-4 flex gap-3">
-        <button type="button"
-        onclick="copyPrompt('prompt-etape-2')"
-        class="rounded-xl border px-4 py-2 text-sm font-semibold">
-  Copier le prompt
-</button>
 
-        <a href="https://chat.openai.com" target="_blank" class="rounded-xl bg-secondary-600 px-4 py-2 text-sm font-semibold text-white">
-          Ouvrir ChatGPT
-        </a>
-      </div>
-    </div>
+<div class="mt-4 space-y-3">
+
+  <div class="rounded-xl bg-slate-50 border border-slate-200 p-4 text-sm text-slate-600">
+    👉 Reprends la conversation ChatGPT ouverte lors de l’étape 1<br>
+    👉 Colle ce prompt <strong>à la suite du précédent</strong>, dans le même échange<br><br>
+    AXIOM a besoin de l’historique complet pour fonctionner correctement.
+  </div>
+
+  <button type="button"
+          onclick="copyPrompt('prompt-etape-2')"
+          class="rounded-xl border px-4 py-2 text-sm font-semibold">
+    Copier le prompt
+  </button>
+
+</div>
+
 
   </div>
 </section>
