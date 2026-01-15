@@ -13,6 +13,7 @@
       --border: #e5e7eb;
       --text: #1f2933;
       --muted: #6b7280;
+      --dark: #020617;
     }
 
     * {
@@ -130,10 +131,6 @@
       background: #e5e7eb;
     }
 
-    .btn-secondary:hover {
-      background: #d1d5db;
-    }
-
     /* WHY */
     .why ul {
       list-style: none;
@@ -165,38 +162,15 @@
       box-shadow: 0 10px 25px rgba(0,0,0,0.05);
     }
 
-    .card p {
-      text-align: left;
-    }
-
-    .prompt-box {
+    .placeholder {
       margin-top: 20px;
-    }
-
-    .prompt-box label {
-      font-size: 0.85rem;
+      padding: 30px;
+      border: 2px dashed var(--border);
+      border-radius: 8px;
+      background: #fafafa;
+      text-align: center;
+      font-size: 0.9rem;
       color: var(--muted);
-      display: block;
-      margin-bottom: 8px;
-    }
-
-    .prompt-box textarea {
-      width: 100%;
-      height: 160px;
-      resize: none;
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 12px;
-      font-size: 0.85rem;
-      background: #f9fafb;
-      font-family: monospace;
-    }
-
-    .copy-feedback {
-      margin-top: 10px;
-      font-size: 0.8rem;
-      color: var(--green);
-      display: none;
     }
 
     /* TRUST */
@@ -207,28 +181,60 @@
       flex-wrap: wrap;
       font-weight: 500;
       text-align: center;
+      padding-bottom: 40px;
     }
 
-    /* ================= FOOTER ================= */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 40px 20px;
-      background: #fff;
+    /* ================= FOOTER (INDEX STYLE) ================= */
+    .footer-dark {
+      background: var(--dark);
+      color: #e5e7eb;
+      margin-top: 80px;
     }
 
-    .footer-container {
+    .footer-inner {
       max-width: 1200px;
       margin: auto;
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 20px;
-      font-size: 0.9rem;
-      color: var(--muted);
+      padding: 60px 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 40px;
     }
 
-    .footer-links a {
-      margin-right: 20px;
+    .footer-col h4 {
+      margin-bottom: 12px;
+      font-size: 1rem;
+    }
+
+    .footer-col p,
+    .footer-col a {
+      font-size: 0.9rem;
+      color: #9ca3af;
+    }
+
+    .footer-col a:hover {
+      color: #ffffff;
+    }
+
+    .footer-logo {
+      height: 32px;
+      margin-bottom: 12px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-col li {
+      margin-bottom: 8px;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 15px 20px;
+      text-align: center;
+      font-size: 0.75rem;
+      color: #9ca3af;
     }
   </style>
 </head>
@@ -257,17 +263,15 @@
       AXIOM révèle comment vous fonctionnez vraiment —
       avant de décider si un poste vous correspond.
     </p>
-    <button class="btn btn-primary">
-      Démarrer l’expérience
-    </button>
+    <button class="btn btn-primary">Démarrer l’expérience</button>
   </section>
 
   <section class="why">
     <h2>Pourquoi AXIOM existe</h2>
-    <p>Un bon commercial peut échouer dans un mauvais cadre. Un cadre aligné change tout.</p>
+    <p>Un bon professionnel peut s’épuiser dans un mauvais cadre. Un cadre aligné change tout.</p>
     <ul>
       <li>✔ Ce qui vous motive vraiment</li>
-      <li>✔ Ce qui vous épuise</li>
+      <li>✔ Ce qui vous draine et vous épuise</li>
       <li>✔ Votre manière réelle de fonctionner</li>
     </ul>
   </section>
@@ -279,9 +283,9 @@
 
       <div class="card">
         <h3>Étape 1 — Générer ton profil</h3>
-        <div class="prompt-box">
-          <label>Prompt profil AXIOM</label>
-          <textarea readonly id="prompt-profil">Lance le prompt
+        <p>Une lecture claire et humaine de ton fonctionnement professionnel.</p>
+        <div class="placeholder">
+          Lance le prompt
 
 🧠 SUPER-PROMPT AXIOM_ELGAENERGY V8 — VERSION PRODUCTION (EN-TÊTE N3)
 
@@ -1621,33 +1625,15 @@ Soit ça t’en ferme une — proprement, honnêtement.
 
 Dans les deux cas, tu repars avec quelque chose de rare :  
 une clarté que la plupart des gens n’auront jamais.
-(L’utilisateur le copie tel quel)
-          </textarea>
-         <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:10px;">
-  <button class="btn btn-secondary" onclick="copyPrompt('prompt-profil','f1')">
-    Copier le prompt
-  </button>
-
-  <a
-    href="https://chat.openai.com/"
-    target="_blank"
-    rel="noopener"
-    class="btn btn-primary"
-  >
-    Ouvrir ChatGPT et démarrer
-  </a>
-</div>
-
-<div class="copy-feedback" id="f1">✔ Copié</div>
-
         </div>
+        <button class="btn btn-secondary">Copier le prompt</button>
       </div>
 
       <div class="card">
-        <h3>Étape 2 — Vérifier l’alignement</h3>
-        <div class="prompt-box">
-          <label>Prompt matching AXIOM</label>
-          <textarea readonly id="prompt-matching">🔷 PROMPT MATCHING — AXIOM_ELGAENERGY
+        <h3>Étape 2 — Vérifier l’alignement (optionnel)</h3>
+        <p>Pas pour convaincre. Pas pour vendre. Juste pour savoir.</p>
+        <div class="placeholder">
+          🔷 PROMPT MATCHING — AXIOM_ELGAENERGY
 (Phase 2 — Décision & Projection)
 
 ⛔ RÈGLE ABSOLUE DE CONTEXTE
@@ -1955,12 +1941,8 @@ Aucune question.
 Aucune analyse supplémentaire.
 
 Le matching est terminé.
-          </textarea>
-          <button class="btn btn-secondary" onclick="copyPrompt('prompt-matching','f2')">
-            Copier le prompt
-          </button>
-          <div class="copy-feedback" id="f2">✔ Copié</div>
         </div>
+        <button class="btn btn-secondary">Vérifier l’alignement</button>
       </div>
 
     </div>
@@ -1975,34 +1957,30 @@ Le matching est terminé.
 
 </main>
 
-	/* ================= FOOTER ================= */
-<footer class="bg-slate-950 text-slate-200">
-  <div class="container py-10 grid md:grid-cols-3 gap-8">
-    
-    <div>
-      <img src="/assets/logos/elga-energy-logo.svg"
-           alt="Elga Energy"
-           class="h-8 w-auto mb-3"
-           onerror="this.remove()">
-      <p class="text-sm text-slate-400">
-        ELGA Energy — Courtage & conseil en achats d'énergie.
-      </p>
+<!-- ================= FOOTER ================= -->
+<footer class="footer-dark">
+  <div class="footer-inner">
+
+    <div class="footer-col">
+      <img src="/assets/logos/elga-energy-logo.svg" alt="Elga Energy" class="footer-logo">
+      <p>ELGA Energy — Courtage & conseil en achats d'énergie.</p>
     </div>
 
-    <div>
-      <h4 class="font-semibold mb-3">Coordonnées</h4>
-      <p class="text-sm">
-        cotations@elgaenergy.fr<br/>
+    <div class="footer-col">
+      <h4>Coordonnées</h4>
+      <p>
+        cotations@elgaenergy.fr<br>
         +33 06 78 14 73 50
       </p>
-      <p class="text-sm mt-2">
-        6 place du président Wilson, 31000 TOULOUSE
+      <p>
+        6 place du président Wilson<br>
+        31000 TOULOUSE
       </p>
     </div>
 
-    <div>
-      <h4 class="font-semibold mb-3">Liens</h4>
-      <ul class="space-y-2 text-sm">
+    <div class="footer-col">
+      <h4>Liens</h4>
+      <ul>
         <li><a href="/#faq">FAQ</a></li>
         <li><a href="/actu.html">Blog</a></li>
         <li><a href="/nous-rejoindre.html">Nous rejoindre</a></li>
@@ -2013,11 +1991,10 @@ Le matching est terminé.
 
   </div>
 
-  <div class="border-t border-white/10">
-    <div class="container py-4 text-xs text-slate-400">
-      © 2025 Elga Energy
-    </div>
+  <div class="footer-bottom">
+    © 2025 Elga Energy
   </div>
 </footer>
+
 </body>
 </html>
