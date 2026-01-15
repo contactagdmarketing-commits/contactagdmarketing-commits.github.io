@@ -1,298 +1,139 @@
-<!DOCTYPE html>
-<html lang="fr">
+<!doctype html>
+<html lang="fr-FR" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <title>AXIOM – Recruter sans CV | ElgaEnergy</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nous rejoindre — Elga Energy</title>
+  <meta name="description" content="Rejoindre Elga Energy. Une approche du recrutement sans CV, basée sur le fonctionnement réel grâce à AXIOM." />
+  <link rel="icon" href="/assets/logos/favicon.svg" type="image/svg+xml" />
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50:'#ecfdf5',100:'#d1fae5',200:'#a7f3d0',300:'#6ee7b7',400:'#34d399',500:'#10b981',
+              600:'#0e8a57',700:'#0b6c45',800:'#0a5336',900:'#083f2a'
+            },
+            secondary: {
+              600:'#0b3d91'
+            }
+          },
+          container: { center: true, padding: '1rem' }
+        }
+      }
+    }
+  </script>
 
   <style>
-    :root {
-      --green: #2f7d57;
-      --green-dark: #256647;
-      --gray: #f4f6f8;
-      --border: #e5e7eb;
-      --text: #1f2933;
-      --muted: #6b7280;
-      --dark: #020617;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: system-ui, -apple-system, sans-serif;
-      background: #fff;
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    /* ================= HEADER ================= */
-    header {
-      border-bottom: 1px solid var(--border);
-      background: #fff;
-    }
-
-    .header-container {
-      max-width: 1200px;
-      margin: auto;
-      padding: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .logo {
-      font-weight: 700;
-      font-size: 1.2rem;
-      color: var(--green);
-    }
-
-    nav a {
-      margin-left: 30px;
-      font-weight: 500;
-      color: var(--muted);
-    }
-
-    nav a:hover {
-      color: var(--text);
-    }
-
-    /* ================= MAIN ================= */
-    main {
-      max-width: 1100px;
-      margin: auto;
-    }
-
-    section {
-      padding: 80px 20px;
-    }
-
-    h1 {
-      font-size: 3rem;
-      line-height: 1.2;
-      text-align: center;
-    }
-
-    h2 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-      text-align: center;
-    }
-
-    h3 {
-      font-size: 1.2rem;
-      margin-bottom: 10px;
-    }
-
-    p {
-      max-width: 720px;
-      margin: auto;
-      text-align: center;
-    }
-
-    /* HERO */
-    .hero {
-      background: var(--gray);
-      text-align: center;
-    }
-
-    .hero p {
-      margin-top: 20px;
-      color: var(--muted);
-    }
-
-    .btn {
-      margin-top: 30px;
-      padding: 14px 26px;
-      border-radius: 6px;
-      font-size: 1rem;
-      cursor: pointer;
-      border: none;
-    }
-
-    .btn-primary {
-      background: var(--green);
-      color: white;
-    }
-
-    .btn-primary:hover {
-      background: var(--green-dark);
-    }
-
-    .btn-secondary {
-      background: #e5e7eb;
-    }
-
-    /* WHY */
-    .why ul {
-      list-style: none;
-      margin-top: 30px;
-      text-align: center;
-    }
-
-    .why li {
-      margin: 10px 0;
-      font-weight: 500;
-    }
-
-    /* STEPS */
-    .steps {
-      background: var(--gray);
-    }
-
-    .steps-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 30px;
-      margin-top: 40px;
-    }
-
-    .card {
-      background: white;
-      border-radius: 10px;
-      padding: 30px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-    }
-
-    .placeholder {
-      margin-top: 20px;
-      padding: 30px;
-      border: 2px dashed var(--border);
-      border-radius: 8px;
-      background: #fafafa;
-      text-align: center;
-      font-size: 0.9rem;
-      color: var(--muted);
-    }
-
-    /* TRUST */
-    .trust {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      flex-wrap: wrap;
-      font-weight: 500;
-      text-align: center;
-      padding-bottom: 40px;
-    }
-
-    /* ================= FOOTER ================= */
-    .footer-dark {
-      background: var(--dark);
-      color: #e5e7eb;
-      margin-top: 80px;
-    }
-
-    .footer-inner {
-      max-width: 1200px;
-      margin: auto;
-      padding: 60px 20px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 40px;
-    }
-
-    .footer-col h4 {
-      margin-bottom: 12px;
-      font-size: 1rem;
-    }
-
-    .footer-col p,
-    .footer-col a {
-      font-size: 0.9rem;
-      color: #9ca3af;
-    }
-
-    .footer-col a:hover {
-      color: #ffffff;
-    }
-
-    .footer-logo {
-      height: 32px;
-      margin-bottom: 12px;
-    }
-
-    .footer-col ul {
-      list-style: none;
-    }
-
-    .footer-col li {
-      margin-bottom: 8px;
-    }
-
-    .footer-bottom {
-      border-top: 1px solid rgba(255,255,255,0.08);
-      padding: 15px 20px;
-      text-align: center;
-      font-size: 0.75rem;
-      color: #9ca3af;
+    .glass{backdrop-filter:saturate(180%) blur(12px);background:rgba(255,255,255,.75)}
+    .shadow-soft{box-shadow:0 10px 30px rgba(2,6,12,.08)}
+    .hero-overlay{background:linear-gradient(120deg,rgba(14,138,87,.85),rgba(11,61,145,.85))}
+    .prompt-box{
+      background:#fff;
+      border:1px solid #e5e7eb;
+      border-radius:16px;
+      padding:20px;
+      max-height:420px;
+      overflow:auto;
+      font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;
+      font-size:13px;
+      line-height:1.55;
+      white-space:pre-wrap;
+      box-shadow:0 6px 20px rgba(0,0,0,.04)
     }
   </style>
+	
+<!--BASILE GOOGLE -->
+	
+	<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SHXXPV14N7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SHXXPV14N7');
+</script>
 </head>
 
-<body>
+<body class="antialiased text-slate-800 bg-white">
 
-<header>
-  <div class="header-container">
-    <div class="logo">ElgaEnergy</div>
-    <nav>
-      <a href="/">Accueil</a>
-      <a href="/nos-offres">Nos offres</a>
-      <a href="/nous-rejoindre">Nous rejoindre</a>
-      <a href="/contact">Contact</a>
+<!-- HEADER (IDENTIQUE HOME) -->
+<header class="sticky top-0 z-50 border-b border-slate-200/60 bg-white/90 glass">
+  <div class="container flex items-center justify-between py-2.5">
+    <a href="/" class="flex items-center gap-3">
+      <img src="/assets/logos/elga-energy-logo.svg" class="h-20 w-auto" alt="Elga Energy">
+    </a>
+    <nav class="hidden md:flex gap-6 text-sm">
+      <a href="/#offre" class="hover:text-primary-700">Offre</a>
+      <a href="/#fournisseurs" class="hover:text-primary-700">Fournisseurs</a>
+      <a href="/#avis" class="hover:text-primary-700">Avis</a>
+      <a href="/#faq" class="hover:text-primary-700">FAQ</a>
+      <a href="/actu.html" class="hover:text-primary-700">Blog</a>
+      <a href="/#contact" class="hover:text-primary-700">Contact</a>
     </nav>
+    <a href="/devis.html" class="rounded-xl bg-primary-600 px-4 py-2 text-white text-sm font-medium shadow-soft hover:bg-primary-700">
+      Obtenir un devis
+    </a>
   </div>
 </header>
 
-<main>
-
-  <section class="hero">
-    <h1>Recruter sans CV.<br>Aligner les bons profils au bon cadre.</h1>
-    <p>
-      AXIOM révèle comment vous fonctionnez vraiment —
-      avant de décider si un poste vous correspond.
+<!-- HERO -->
+<section class="relative overflow-hidden">
+  <div class="absolute inset-0 hero-overlay"></div>
+  <div class="relative container py-16 md:py-20 text-white">
+    <h1 class="text-3xl md:text-5xl font-extrabold leading-tight max-w-3xl">
+      Recruter sans CV.<br>
+      Aligner les bons profils au bon cadre.
+    </h1>
+    <p class="mt-6 text-white/90 max-w-2xl text-lg">
+      Chez Elga Energy, on ne recrute pas un papier.<br>
+      On recrute un profil.
     </p>
-    <button class="btn btn-primary">Démarrer l’expérience</button>
-  </section>
+  </div>
+</section>
 
-  <section class="why">
-    <h2>Pourquoi AXIOM existe</h2>
-    <p>Un bon professionnel peut s’épuiser dans un mauvais cadre. Un cadre aligné change tout.</p>
-    <ul>
-      <li>✔ Ce qui vous motive vraiment</li>
-      <li>✔ Ce qui vous épuise</li>
-      <li>✔ Votre manière réelle de fonctionner</li>
-    </ul>
-  </section>
+<!-- POURQUOI -->
+<section class="bg-white py-14">
+  <div class="container max-w-4xl">
+    <h2 class="text-2xl md:text-3xl font-bold mb-6">
+      Faites votre bilan de personnalité avec AXIOM
+    </h2>
+    <p class="text-slate-600 leading-relaxed">
+      Avec le temps, on a constaté une chose simple :<br>
+      Un bon poste, c'est celui qui nous correspond.<br>
+	  AXIOM est né de ce constat.
+      <br><br>
+     Plus que deux clics, ne vous arrêtez pas maintenant !<br><br>
+	Vous pourriez être surpris par ce que vous allez découvrir sur vous-même 
+    </p>
+  </div>
+</section>
 
-  <section class="steps">
-    <h2>Comment fonctionne AXIOM</h2>
+<!-- AXIOM -->
+<section class="bg-slate-50 py-16">
+  <div class="container max-w-5xl space-y-12">
 
-    <div class="steps-grid">
+    <!-- ETAPE 1 -->
+    <div>
+      <h3 class="text-xl font-bold mb-3">
+        1️⃣ Comment ça marche ?
+      </h3>
+     <p class="text-slate-600 mb-4">
 
-      <div class="card">
-        <h3>Étape 1 — Générer ton profil professionnel</h3>
+  👉 Connecte-toi à ton compte ChatGPT, ou crée-en un<br>
+  👉 Copie-colle le prompt fourni<br>
+  👉 Laisse toi guider, à ton rythme<br><br>
 
-        <p style="text-align:left; margin-bottom:12px;">
-          AXIOM te permet de comprendre comment tu fonctionnes réellement dans le travail.
-        </p>
+  À la fin, tu repars avec une synthèse claire de ton profil.
+</p>
 
-        <p style="text-align:left; margin-bottom:20px;">
-          Ce n’est pas un test.<br>
-          Ce n’est pas une sélection.<br>
-          C’est une lecture honnête, basée uniquement sur tes réponses.
-        </p>
-
-        <div class="placeholder">
-          Lance le prompt
+      <div class="prompt-box" id="prompt-etape-1">
+Lance le prompt
 
 🧠 SUPER-PROMPT AXIOM_ELGAENERGY V8 — VERSION PRODUCTION (EN-TÊTE N3)
 
@@ -1631,35 +1472,36 @@ Soit ça ouvre une porte.
 Soit ça t’en ferme une — proprement, honnêtement.
 
 Dans les deux cas, tu repars avec quelque chose de rare :  
-une clarté que la plupart des gens n’auront jamais.<br><br>
-          <small>(Tu colleras le prompt ici)</small>
-        </div>
-
-        <button class="btn btn-primary" style="margin-top:25px;">
-          Copier le prompt & commencer
-        </button>
+une clarté que la plupart des gens n’auront jamais.
       </div>
+      <div class="mt-4 flex gap-3">
+        <button type="button"
+        onclick="copyPrompt('prompt-etape-1')"
+        class="rounded-xl border px-4 py-2 text-sm font-semibold">
+  Copier le prompt
+</button>
+        <a href="https://chat.openai.com" target="_blank" class="rounded-xl bg-secondary-600 px-4 py-2 text-sm font-semibold text-white">
+          Ouvrir ChatGPT
+        </a>
+      </div>
+    </div>
 
-      <div class="card">
-        <h3>Étape 2 — Vérifier l’alignement avec ElgaEnergy</h3>
+    <!-- ETAPE 2 -->
+    <div>
+      <h3 class="text-xl font-bold mb-3">
+        2️⃣ Vérifier l’alignement avec ElgaEnergy
+      </h3>
+      <p class="text-slate-600 mb-4">
+  Optionnel. Honnête. Sans engagement.<br>
+  AXIOM analyse si ton fonctionnement peut réellement s’exprimer dans le poste de courtier en énergie chez Elga Energy.<br><br>
 
-        <p style="text-align:left; margin-bottom:12px;">
-          Cette étape est entièrement facultative.
-        </p>
+  Pas pour convaincre.<br>
+  Pas pour vendre.<br>
+  Juste pour savoir.
+</p>
 
-        <p style="text-align:left; margin-bottom:20px;">
-          Elle sert à répondre à une seule question :
-          <strong>est-ce que ton fonctionnement peut vraiment s’exprimer dans ce cadre précis ?</strong>
-        </p>
-
-        <p style="text-align:left; margin-bottom:20px;">
-          Pas pour convaincre.<br>
-          Pas pour vendre.<br>
-          Juste pour savoir.
-        </p>
-
-        <div class="placeholder">
-          🔷 PROMPT MATCHING — AXIOM_ELGAENERGY
+      <div class="prompt-box" id="prompt-etape-2">
+🔷 PROMPT MATCHING — AXIOM_ELGAENERGY
 (Phase 2 — Décision & Projection)
 
 ⛔ RÈGLE ABSOLUE DE CONTEXTE
@@ -1966,64 +1808,117 @@ Aucune relance.
 Aucune question.
 Aucune analyse supplémentaire.
 
-Le matching est terminé.<br><br>
-          <small>(Tu colleras le prompt ici)</small>
-        </div>
-
-        <button class="btn btn-secondary" style="margin-top:25px;">
-          Vérifier l’alignement
-        </button>
+Le matching est terminé.
       </div>
 
+<div class="mt-4 space-y-3">
+
+  <div class="rounded-xl bg-slate-50 border border-slate-200 p-4 text-sm text-slate-600">
+    👉 Reprends la conversation ChatGPT ouverte lors de l’étape 1<br>
+    👉 Colle ce prompt <strong>à la suite du précédent</strong>, dans le même échange<br><br>
+    AXIOM a besoin de l’historique complet pour fonctionner correctement.<br>
+	  <strong>Ne crée pas un nouveau chat.</strong>
+  </div>
+
+  <button type="button"
+          onclick="copyPrompt('prompt-etape-2')"
+          class="rounded-xl border px-4 py-2 text-sm font-semibold">
+    Copier le prompt
+  </button>
+
+</div>
+
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="bg-gradient-to-r from-primary-600 to-secondary-600 text-white">
+  <div class="container py-12 text-center">
+    <h2 class="text-2xl font-bold mb-3">
+      Tu veux comprendre avant de t’engager ?
+    </h2>
+    <p class="text-white/90">
+      AXIOM est là pour ça. Sans CV. Sans pression.
+    </p>
+  </div>
+</section>
+
+<!-- FOOTER IDENTIQUE -->
+<footer class="bg-slate-950 text-slate-200">
+  <div class="container py-10 grid md:grid-cols-3 gap-8">
+    <div>
+      <img src="/assets/logos/elga-energy-logo.svg" class="h-8 mb-3">
+      <p class="text-sm text-slate-400">ELGA Energy — Courtage & conseil en achats d'énergie.</p>
     </div>
-  </section>
-
-  <section class="trust">
-    <span>✔ Sans CV</span>
-    <span>✔ Sans engagement</span>
-    <span>✔ Confidentiel</span>
-    <span>✔ À ton rythme</span>
-  </section>
-
-</main>
-
-<footer class="footer-dark">
-  <div class="footer-inner">
-
-    <div class="footer-col">
-      <img src="/assets/logos/elga-energy-logo.svg" alt="Elga Energy" class="footer-logo">
-      <p>ELGA Energy — Courtage & conseil en achats d'énergie.</p>
+    <div>
+      <h4 class="font-semibold mb-3">Coordonnées</h4>
+      <p class="text-sm">cotations@elgaenergy.fr<br>+33 06 78 14 73 50</p>
     </div>
-
-    <div class="footer-col">
-      <h4>Coordonnées</h4>
-      <p>
-        cotations@elgaenergy.fr<br>
-        +33 06 78 14 73 50
-      </p>
-      <p>
-        6 place du président Wilson<br>
-        31000 Toulouse
-      </p>
-    </div>
-
-    <div class="footer-col">
-      <h4>Liens</h4>
-      <ul>
-        <li><a href="/#faq">FAQ</a></li>
-        <li><a href="/actu.html">Blog</a></li>
-        <li><a href="/nous-rejoindre.html">Nous rejoindre</a></li>
-        <li><a href="/mentions-legales.html">Mentions légales</a></li>
-        <li><a href="/confidentialite.html">Politique de confidentialité</a></li>
+    <div>
+      <h4 class="font-semibold mb-3">Liens</h4>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/#faq" class="hover:text-white">FAQ</a></li>
+        <li><a href="/actu.html" class="hover:text-white">Blog</a></li>
       </ul>
     </div>
-
   </div>
-
-  <div class="footer-bottom">
-    © 2025 Elga Energy
+  <div class="border-t border-white/10">
+    <div class="container py-4 text-xs text-slate-400">© 2025 Elga Energy</div>
   </div>
 </footer>
+
+<script>
+async function copyPrompt(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+
+  const text = (el.innerText || el.textContent || "").trim();
+  if (!text) return;
+
+  try {
+    // --- COPIE DU TEXTE ---
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(text);
+    } else {
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      ta.setAttribute("readonly", "");
+      ta.style.position = "fixed";
+      ta.style.top = "-9999px";
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand("copy");
+      document.body.removeChild(ta);
+    }
+
+    // --- TRACKING GOOGLE ANALYTICS ---
+    if (typeof gtag === "function") {
+      if (id === "prompt-etape-1") {
+        gtag("event", "copie_du_prompt_1");
+      }
+      if (id === "prompt-etape-2") {
+        gtag("event", "copie_du_prompt_2");
+      }
+    }
+
+    // --- FEEDBACK VISUEL ---
+    flashCopied();
+
+  } catch (err) {
+    console.error("Erreur copie prompt :", err);
+  }
+}
+
+function flashCopied() {
+  const toast = document.createElement("div");
+  toast.textContent = "✅ Prompt copié";
+  toast.className =
+    "fixed bottom-6 left-1/2 -translate-x-1/2 z-[9999] rounded-xl bg-slate-900 text-white text-sm px-4 py-2 shadow-soft";
+  document.body.appendChild(toast);
+  setTimeout(() => toast.remove(), 1200);
+}
+</script>
 
 </body>
 </html>
