@@ -1987,17 +1987,6 @@ Le matching est terminé.
   </div>
 </footer>
 
-<script>
-  function copyPrompt(id, feedback) {
-    const el = document.getElementById(id);
-    el.select();
-    navigator.clipboard.writeText(el.value);
-    document.getElementById(feedback).style.display = 'block';
-    setTimeout(() => {
-      document.getElementById(feedback).style.display = 'none';
-    }, 2000);
-  }
-</script>
 
 	 <!-- Footer -->
 <footer class="bg-slate-950 text-slate-200">
