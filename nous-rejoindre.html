@@ -1623,10 +1623,23 @@ Dans les deux cas, tu repars avec quelque chose de rare :
 une clarté que la plupart des gens n’auront jamais.
 (L’utilisateur le copie tel quel)
           </textarea>
-          <button class="btn btn-secondary" onclick="copyPrompt('prompt-profil','f1')">
-            Copier le prompt
-          </button>
-          <div class="copy-feedback" id="f1">✔ Copié</div>
+         <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:10px;">
+  <button class="btn btn-secondary" onclick="copyPrompt('prompt-profil','f1')">
+    Copier le prompt
+  </button>
+
+  <a
+    href="https://chat.openai.com/"
+    target="_blank"
+    rel="noopener"
+    class="btn btn-primary"
+  >
+    Ouvrir ChatGPT et démarrer
+  </a>
+</div>
+
+<div class="copy-feedback" id="f1">✔ Copié</div>
+
         </div>
       </div>
 
