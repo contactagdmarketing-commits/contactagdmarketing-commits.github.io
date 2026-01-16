@@ -148,7 +148,13 @@
     }
     .video-card {
       position: relative;
-      min-height: 400px;
+      min-height: 500px;
+    }
+    .video-section {
+      position: relative;
+      height: 50%;
+      min-height: 250px;
+      overflow: hidden;
     }
     .video-background {
       position: absolute;
@@ -168,9 +174,13 @@
       background: rgba(0, 0, 0, 0.4);
       z-index: 2;
     }
-    .video-card > div {
+    .video-content {
       position: relative;
       z-index: 3;
+    }
+    .text-section {
+      height: 50%;
+      min-height: 250px;
     }
   </style>
 </head>
@@ -274,31 +284,29 @@
         </div>
 
         <!-- Card 2 -->
-        <div class="video-card rounded-2xl shadow-lg p-8 flex flex-col relative overflow-hidden">
-          <video class="video-background" autoplay muted loop playsinline>
-            <source src="/assets/videos/background-video.mp4" type="video/mp4">
-            <source src="/assets/videos/background-video.webm" type="video/webm">
-          </video>
-          <div class="video-overlay"></div>
-          <div class="relative z-10">
-            <h4 class="text-xl font-bold text-white mb-6">
-              Ouvre la Discussion
-            </h4>
-            <div class="flex-grow flex flex-col justify-center items-center">
-              <a href="https://chat.openai.com" target="_blank" rel="noopener noreferrer" class="chat-button mb-5 inline-block transition-transform duration-200 hover:scale-110">
-                <svg class="w-14 h-14 text-white mx-auto cursor-pointer" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                </svg>
-              </a>
-              <p class="text-sm text-white text-center mb-5 font-medium">
-                Clique pour ouvrir ChatGPT
-              </p>
-              <p class="text-sm text-white text-center leading-relaxed">
-                Colles le protocole et laisse AXIOM<br>
-                vous guider. Un échange passionnant<br>
-                sur vos forces et envies.
-              </p>
-            </div>
+        <div class="video-card rounded-2xl shadow-lg flex flex-col relative overflow-hidden">
+          <!-- Partie supérieure avec vidéo -->
+          <div class="video-section relative">
+            <video id="backgroundVideo" class="video-background" autoplay muted loop playsinline preload="auto">
+              <source src="assets/videos/background-video.mp4" type="video/mp4">
+              <source src="assets/videos/background-video.webm" type="video/webm">
+            </video>
+          </div>
+          <!-- Partie inférieure avec texte -->
+          <div class="text-section p-8 bg-white flex flex-col justify-center items-center">
+            <a href="https://chat.openai.com" target="_blank" rel="noopener noreferrer" class="chat-button mb-5 inline-block transition-transform duration-200 hover:scale-110">
+              <svg class="w-14 h-14 text-primary-500 mx-auto cursor-pointer" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+              </svg>
+            </a>
+            <p class="text-sm text-slate-600 text-center mb-5 font-medium">
+              Clique pour ouvrir ChatGPT
+            </p>
+            <p class="text-sm text-slate-600 text-center leading-relaxed">
+              Colles le protocole et laisse AXIOM<br>
+              vous guider. Un échange passionnant<br>
+              sur vos forces et envies.
+            </p>
           </div>
         </div>
 
@@ -1698,6 +1706,31 @@ Soit ça t'en ferme une — proprement, honnêtement.
 
 Dans les deux cas, tu repars avec quelque chose de rare :  
 une clarté que la plupart des gens n'auront jamais.`;
+
+    // Force la lecture de la vidéo en arrière-plan
+    const backgroundVideo = document.getElementById('backgroundVideo');
+    if (backgroundVideo) {
+      backgroundVideo.addEventListener('loadeddata', function() {
+        this.play().catch(function(error) {
+          console.log('Erreur de lecture vidéo:', error);
+        });
+      });
+      
+      backgroundVideo.addEventListener('error', function() {
+        console.log('Erreur de chargement de la vidéo. Vérifiez que le fichier existe dans assets/videos/');
+        // Fallback : on peut ajouter une image de fond si la vidéo ne charge pas
+        this.style.display = 'none';
+      });
+      
+      // Force la lecture au chargement de la page
+      window.addEventListener('load', function() {
+        if (backgroundVideo.readyState >= 2) {
+          backgroundVideo.play().catch(function(error) {
+            console.log('Erreur de lecture vidéo:', error);
+          });
+        }
+      });
+    }
 
     document.getElementById('generateAxiomBtn').addEventListener('click', async function() {
       try {
