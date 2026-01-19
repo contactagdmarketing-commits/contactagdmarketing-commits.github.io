@@ -186,7 +186,7 @@
       min-height: 250px;
     }
     .step-card {
-      transition: opacity 0.5s ease-in-out;
+      transition: opacity 0.2s ease-in-out;
       min-height: 400px;
     }
   </style>
@@ -334,12 +334,12 @@
                 Étape 2 : Lancez AXIOM
               </h4>
               <button id="openChatGPTBtn" class="lighthouse-button w-full text-white font-semibold py-4 px-6 rounded-full shadow-md mb-5 relative overflow-hidden">
-                <span class="relative z-10">Clique pour ouvrir ChatGPT</span>
+                <span class="relative z-10">Ouvrir ChatGPT et démarrer AXIOM</span>
               </button>
               <p class="text-sm text-slate-600 text-center leading-relaxed mb-6">
-                Collez la clé générée et laissez AXIOM<br>
-                vous guider. Un échange passionnant<br>
-                sur vos forces et envies.
+                <strong>Le premier prompt est dans votre presse-papiers</strong><br>
+                Collez-le dans ChatGPT pour démarrer le test AXIOM<br>
+                et laissez-vous guider.
               </p>
               <button onclick="showCard(1)" class="text-slate-500 hover:text-primary-600 text-sm font-medium flex items-center gap-2 transition-colors">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -408,10 +408,22 @@
               </div>
               <div class="w-full bg-primary-50 border border-primary-200 rounded-xl p-6 text-center mb-6">
                 <p class="text-sm text-primary-800 font-semibold mb-2">
-                  📋 Clé copiée dans le presse-papiers
+                  📋 Prompt de matching copié !
                 </p>
-                <p class="text-xs text-primary-700">
-                  Collez-la directement dans ChatGPT pour obtenir votre matching final
+                <p class="text-xs text-primary-700 mb-4">
+                  Le bouton ci-dessous vous ramène sur ChatGPT.<br>
+                  <strong>Collez simplement</strong> (Cmd+V / Ctrl+V) dans le chat et envoyez.
+                </p>
+                <button id="returnToChatGPT" class="lighthouse-button w-full text-white font-semibold py-3 px-6 rounded-full shadow-md relative overflow-hidden">
+                  <span class="relative z-10 flex items-center justify-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                    Retourner sur ChatGPT
+                  </span>
+                </button>
+                <p id="chatGPTWarning" class="text-xs text-orange-600 mt-3 hidden">
+                  ⚠️ Impossible d'accéder à votre conversation. Veuillez retourner manuellement sur votre discussion ChatGPT ouverte pour coller la clé.
                 </p>
               </div>
               <button onclick="showCard(3)" class="text-slate-500 hover:text-primary-600 text-sm font-medium flex items-center gap-2 transition-colors">
@@ -451,6 +463,9 @@
   </footer>
 
   <script>
+    // Variable globale pour stocker la référence de l'onglet ChatGPT
+    let chatGPTWindow = null;
+    
     const axiomPrompt = `Lance le prompt
 
 🧠 SUPER-PROMPT AXIOM_ELGAENERGY V8 — VERSION PRODUCTION (EN-TÊTE N3)
@@ -2187,15 +2202,17 @@ Le matching est terminé.`;
         card.classList.add('hidden');
       });
       
-      // Affiche la carte demandée avec une animation
+      // Affiche la carte demandée avec une animation rapide
       const targetCard = document.getElementById('card' + cardNumber);
       if (targetCard) {
         targetCard.classList.remove('hidden');
         targetCard.style.opacity = '0';
-        setTimeout(() => {
-          targetCard.style.transition = 'opacity 0.5s ease-in-out';
+        targetCard.style.transition = 'opacity 0.2s ease-in-out';
+        
+        // Animation rapide
+        requestAnimationFrame(() => {
           targetCard.style.opacity = '1';
-        }, 10);
+        });
         
         // Scroll vers la carte
         targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -2212,10 +2229,10 @@ Le matching est terminé.`;
         this.querySelector('span').textContent = '✓ Copié dans le presse-papiers !';
         this.style.transform = 'scale(0.98)';
         
+        // Changement de carte immédiat
         setTimeout(() => {
-          // Passer à la carte 2
           showCard(2);
-        }, 1500);
+        }, 200);
       } catch (err) {
         // Fallback pour les navigateurs plus anciens
         const textArea = document.createElement('textarea');
@@ -2230,7 +2247,7 @@ Le matching est terminé.`;
           this.querySelector('span').textContent = '✓ Copié !';
           setTimeout(() => {
             showCard(2);
-          }, 1500);
+          }, 200);
         } catch (fallbackErr) {
           alert('Impossible de copier automatiquement. Le texte est trop long.');
         }
@@ -2239,14 +2256,23 @@ Le matching est terminé.`;
     });
 
     // Étape 2 : Ouvrir ChatGPT
-    document.getElementById('openChatGPTBtn').addEventListener('click', function() {
-      // Ouvrir ChatGPT dans un nouvel onglet
-      window.open('https://chat.openai.com', '_blank');
+    document.getElementById('openChatGPTBtn').addEventListener('click', async function() {
+      // Re-copier le premier prompt (axiomPrompt) au cas où il aurait été perdu
+      try {
+        await navigator.clipboard.writeText(axiomPrompt);
+        console.log('✓ Premier prompt re-copié dans le presse-papiers');
+      } catch (err) {
+        console.log('⚠️ Impossible de re-copier le prompt:', err);
+      }
       
-      // Passer à la carte 3
-      setTimeout(() => {
-        showCard(3);
-      }, 300);
+      // Ouvrir ChatGPT dans un nouvel onglet et stocker la référence
+      chatGPTWindow = window.open('https://chat.openai.com', '_blank');
+      
+      // Debug: confirmer l'ouverture
+      console.log('ChatGPT window opened:', chatGPTWindow);
+      
+      // Passer à la carte 3 immédiatement
+      showCard(3);
     });
 
     // Étape 3 : Générer le matching
@@ -2259,10 +2285,10 @@ Le matching est terminé.`;
         this.querySelector('span').textContent = '✓ Copié dans le presse-papiers !';
         this.style.transform = 'scale(0.98)';
         
+        // Changement de carte immédiat
         setTimeout(() => {
-          // Passer à la carte 4
           showCard(4);
-        }, 1500);
+        }, 200);
       } catch (err) {
         // Fallback pour les navigateurs plus anciens
         const textArea = document.createElement('textarea');
@@ -2277,11 +2303,56 @@ Le matching est terminé.`;
           this.querySelector('span').textContent = '✓ Copié !';
           setTimeout(() => {
             showCard(4);
-          }, 1500);
+          }, 200);
         } catch (fallbackErr) {
           alert('Impossible de copier automatiquement. Le texte est trop long.');
         }
         document.body.removeChild(textArea);
+      }
+    });
+
+    // Étape 4 : Retourner sur ChatGPT
+    document.getElementById('returnToChatGPT').addEventListener('click', async function() {
+      const warningMsg = document.getElementById('chatGPTWarning');
+      
+      console.log('Tentative de retour sur ChatGPT...');
+      console.log('chatGPTWindow existe:', !!chatGPTWindow);
+      
+      // Re-copier le prompt 2 (matchingPrompt) pour que l'utilisateur n'ait qu'à le coller
+      try {
+        await navigator.clipboard.writeText(matchingPrompt);
+        console.log('✓ Prompt 2 (matching) re-copié dans le presse-papiers');
+      } catch (err) {
+        console.log('⚠️ Impossible de re-copier le prompt 2:', err);
+      }
+      
+      // Si on a une référence à l'onglet, essayer de le focus
+      // Note : on ne peut pas vérifier chatGPTWindow.closed à cause des restrictions cross-origin
+      if (chatGPTWindow) {
+        try {
+          // Essayer de focus (marche si l'onglet est ouvert, même si closed=true à cause du cross-origin)
+          chatGPTWindow.focus();
+          
+          console.log('✓ Focus réussi sur ChatGPT');
+          
+          // Cacher le message d'avertissement
+          if (warningMsg) {
+            warningMsg.classList.add('hidden');
+          }
+        } catch (err) {
+          console.log('✗ Erreur lors du focus:', err);
+          // Erreur - afficher le message
+          if (warningMsg) {
+            warningMsg.classList.remove('hidden');
+          }
+        }
+      } else {
+        console.log('✗ Aucune référence d\'onglet ChatGPT');
+        
+        // Afficher le message d'avertissement
+        if (warningMsg) {
+          warningMsg.classList.remove('hidden');
+        }
       }
     });
   </script>
