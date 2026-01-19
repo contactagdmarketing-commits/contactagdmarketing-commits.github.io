@@ -402,28 +402,26 @@
                   Dernière étape !
                 </p>
                 <p class="text-base text-slate-600 leading-relaxed">
-                  Retournez sur votre discussion avec AXIOM<br>
-                  et collez la clé de matching que vous venez de copier.
+                  <strong>1.</strong> Retournez sur l'onglet ChatGPT<br>
+                  <strong>2.</strong> Collez (Cmd+V ou Ctrl+V) dans le chat<br>
+                  <strong>3.</strong> Envoyez pour obtenir votre matching
                 </p>
               </div>
               <div class="w-full bg-primary-50 border border-primary-200 rounded-xl p-6 text-center mb-6">
-                <p class="text-sm text-primary-800 font-semibold mb-2">
-                  📋 Prompt de matching copié !
+                <p class="text-sm text-primary-800 font-semibold mb-3">
+                  ✅ Prompt de matching copié !
                 </p>
-                <p class="text-xs text-primary-700 mb-4">
-                  Le bouton ci-dessous vous ramène sur ChatGPT.<br>
-                  <strong>Collez simplement</strong> (Cmd+V / Ctrl+V) dans le chat et envoyez.
-                </p>
-                <button id="returnToChatGPT" class="lighthouse-button w-full text-white font-semibold py-3 px-6 rounded-full shadow-md relative overflow-hidden">
-                  <span class="relative z-10 flex items-center justify-center gap-2">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                    </svg>
-                    Retourner sur ChatGPT
-                  </span>
-                </button>
-                <p id="chatGPTWarning" class="text-xs text-orange-600 mt-3 hidden">
-                  ⚠️ Impossible d'accéder à votre conversation. Veuillez retourner manuellement sur votre discussion ChatGPT ouverte pour coller la clé.
+                <div class="bg-white/70 rounded-lg p-4 mb-3">
+                  <p class="text-xs text-slate-600 mb-2">
+                    Le prompt est dans votre presse-papiers
+                  </p>
+                  <p class="text-lg font-bold text-primary-600">
+                    Cmd+V <span class="text-slate-400">/</span> Ctrl+V
+                  </p>
+                </div>
+                <p class="text-xs text-primary-700">
+                  👆 Cliquez sur l'onglet <strong>"Début d'analyse AXIOM"</strong> dans votre navigateur,<br>
+                  collez le prompt dans ChatGPT et envoyez pour voir votre matching !
                 </p>
               </div>
               <button onclick="showCard(3)" class="text-slate-500 hover:text-primary-600 text-sm font-medium flex items-center gap-2 transition-colors">
@@ -463,9 +461,6 @@
   </footer>
 
   <script>
-    // Variable globale pour stocker la référence de l'onglet ChatGPT
-    let chatGPTWindow = null;
-    
     const axiomPrompt = `Lance le prompt
 
 🧠 SUPER-PROMPT AXIOM_ELGAENERGY V8 — VERSION PRODUCTION (EN-TÊTE N3)
@@ -2224,6 +2219,8 @@ Le matching est terminé.`;
       try {
         await navigator.clipboard.writeText(axiomPrompt);
         
+        console.log('✓ Prompt 1 (test AXIOM) copié dans le presse-papiers');
+        
         // Feedback visuel temporaire
         const originalText = this.querySelector('span').textContent;
         this.querySelector('span').textContent = '✓ Copié dans le presse-papiers !';
@@ -2234,6 +2231,7 @@ Le matching est terminé.`;
           showCard(2);
         }, 200);
       } catch (err) {
+        console.log('⚠️ Impossible de copier le prompt 1:', err);
         // Fallback pour les navigateurs plus anciens
         const textArea = document.createElement('textarea');
         textArea.value = axiomPrompt;
@@ -2260,16 +2258,13 @@ Le matching est terminé.`;
       // Re-copier le premier prompt (axiomPrompt) au cas où il aurait été perdu
       try {
         await navigator.clipboard.writeText(axiomPrompt);
-        console.log('✓ Premier prompt re-copié dans le presse-papiers');
+        console.log('✓ Prompt 1 (test AXIOM) copié dans le presse-papiers');
       } catch (err) {
-        console.log('⚠️ Impossible de re-copier le prompt:', err);
+        console.log('⚠️ Impossible de copier le prompt 1:', err);
       }
       
-      // Ouvrir ChatGPT dans un nouvel onglet et stocker la référence
-      chatGPTWindow = window.open('https://chat.openai.com', '_blank');
-      
-      // Debug: confirmer l'ouverture
-      console.log('ChatGPT window opened:', chatGPTWindow);
+      // Ouvrir ChatGPT dans un nouvel onglet
+      window.open('https://chat.openai.com', '_blank');
       
       // Passer à la carte 3 immédiatement
       showCard(3);
@@ -2279,6 +2274,8 @@ Le matching est terminé.`;
     document.getElementById('generateMatchingBtn').addEventListener('click', async function() {
       try {
         await navigator.clipboard.writeText(matchingPrompt);
+        
+        console.log('✓ Prompt 2 (matching) copié dans le presse-papiers');
         
         // Feedback visuel temporaire
         const originalText = this.querySelector('span').textContent;
@@ -2290,6 +2287,7 @@ Le matching est terminé.`;
           showCard(4);
         }, 200);
       } catch (err) {
+        console.log('⚠️ Impossible de copier le prompt 2:', err);
         // Fallback pour les navigateurs plus anciens
         const textArea = document.createElement('textarea');
         textArea.value = matchingPrompt;
@@ -2311,50 +2309,8 @@ Le matching est terminé.`;
       }
     });
 
-    // Étape 4 : Retourner sur ChatGPT
-    document.getElementById('returnToChatGPT').addEventListener('click', async function() {
-      const warningMsg = document.getElementById('chatGPTWarning');
-      
-      console.log('Tentative de retour sur ChatGPT...');
-      console.log('chatGPTWindow existe:', !!chatGPTWindow);
-      
-      // Re-copier le prompt 2 (matchingPrompt) pour que l'utilisateur n'ait qu'à le coller
-      try {
-        await navigator.clipboard.writeText(matchingPrompt);
-        console.log('✓ Prompt 2 (matching) re-copié dans le presse-papiers');
-      } catch (err) {
-        console.log('⚠️ Impossible de re-copier le prompt 2:', err);
-      }
-      
-      // Si on a une référence à l'onglet, essayer de le focus
-      // Note : on ne peut pas vérifier chatGPTWindow.closed à cause des restrictions cross-origin
-      if (chatGPTWindow) {
-        try {
-          // Essayer de focus (marche si l'onglet est ouvert, même si closed=true à cause du cross-origin)
-          chatGPTWindow.focus();
-          
-          console.log('✓ Focus réussi sur ChatGPT');
-          
-          // Cacher le message d'avertissement
-          if (warningMsg) {
-            warningMsg.classList.add('hidden');
-          }
-        } catch (err) {
-          console.log('✗ Erreur lors du focus:', err);
-          // Erreur - afficher le message
-          if (warningMsg) {
-            warningMsg.classList.remove('hidden');
-          }
-        }
-      } else {
-        console.log('✗ Aucune référence d\'onglet ChatGPT');
-        
-        // Afficher le message d'avertissement
-        if (warningMsg) {
-          warningMsg.classList.remove('hidden');
-        }
-      }
-    });
+    // Note : Pas besoin d'event listener pour l'étape 4
+    // Le prompt est déjà copié à l'étape 3, l'utilisateur n'a plus qu'à retourner sur ChatGPT manuellement
   </script>
 
 </body>
