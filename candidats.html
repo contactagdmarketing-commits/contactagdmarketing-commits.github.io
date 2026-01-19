@@ -185,6 +185,10 @@
       height: 50%;
       min-height: 250px;
     }
+    .step-card {
+      transition: opacity 0.5s ease-in-out;
+      min-height: 400px;
+    }
   </style>
 </head>
 
@@ -295,79 +299,113 @@
       </h3>
     </section>
 
-    <!-- Three Step Cards -->
+    <!-- Sequential Step Cards -->
     <section class="py-8">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-        
-        <!-- Card 1 -->
-        <div class="bg-white rounded-2xl shadow-lg p-8 flex flex-col">
-          <h4 class="text-xl font-bold text-slate-900 mb-6">
-            Étape 1 : Récupèrez votre Clé
-          </h4>
-          <div class="flex-grow flex flex-col justify-center">
-            <button id="generateAxiomBtn" class="lighthouse-button w-full text-white font-semibold py-4 px-6 rounded-full shadow-md mb-3 relative overflow-hidden">
-              <span class="relative z-10">GÉNÉRER MON ACCÈS AXIOM</span>
-            </button>
-            <p class="text-sm text-slate-500 text-center">
-              Cliquez ici pour obtenir votre Clé unique
-            </p>
+      <div class="flex justify-center">
+        <div class="w-full max-w-2xl">
+          
+          <!-- Card 1 - Étape 1 -->
+          <div id="card1" class="step-card bg-white rounded-2xl shadow-lg p-8 flex flex-col">
+            <h4 class="text-xl font-bold text-slate-900 mb-6">
+              Étape 1 : Récupèrez votre Clé
+            </h4>
+            <div class="flex-grow flex flex-col justify-center">
+              <button id="generateAxiomBtn" class="lighthouse-button w-full text-white font-semibold py-4 px-6 rounded-full shadow-md mb-3 relative overflow-hidden">
+                <span class="relative z-10">GÉNÉRER MON ACCÈS AXIOM</span>
+              </button>
+              <p class="text-sm text-slate-500 text-center">
+                Cliquez ici pour obtenir votre Clé unique
+              </p>
+            </div>
           </div>
-        </div>
 
-        <!-- Card 2 -->
-        <div class="video-card rounded-2xl shadow-lg flex flex-col relative overflow-hidden">
-          <!-- Partie supérieure avec vidéo -->
-          <div class="video-section relative">
-            <video id="backgroundVideo" class="video-background" autoplay muted loop playsinline preload="auto">
-              <source src="assets/videos/background-video.mp4" type="video/mp4">
-              <source src="assets/videos/background-video.webm" type="video/webm">
-            </video>
+          <!-- Card 2 - Étape 2 -->
+          <div id="card2" class="step-card hidden video-card rounded-2xl shadow-lg flex flex-col relative overflow-hidden">
+            <!-- Partie supérieure avec vidéo -->
+            <div class="video-section relative">
+              <video id="backgroundVideo" class="video-background" autoplay muted loop playsinline preload="auto">
+                <source src="assets/videos/background-video.mp4" type="video/mp4">
+                <source src="assets/videos/background-video.webm" type="video/webm">
+              </video>
+            </div>
+            <!-- Partie inférieure avec texte -->
+            <div class="text-section p-8 bg-white flex flex-col justify-center items-center">
+              <h4 class="text-xl font-bold text-slate-900 mb-6">
+                Étape 2 : Lancez AXIOM
+              </h4>
+              <button id="openChatGPTBtn" class="lighthouse-button w-full text-white font-semibold py-4 px-6 rounded-full shadow-md mb-5 relative overflow-hidden">
+                <span class="relative z-10">Clique pour ouvrir ChatGPT</span>
+              </button>
+              <p class="text-sm text-slate-600 text-center leading-relaxed">
+                Collez la clé générée et laissez AXIOM<br>
+                vous guider. Un échange passionnant<br>
+                sur vos forces et envies.
+              </p>
+            </div>
           </div>
-          <!-- Partie inférieure avec texte -->
-          <div class="text-section p-8 bg-white flex flex-col justify-center items-center">
-            <a href="https://chat.openai.com" target="_blank" rel="noopener noreferrer" class="lighthouse-button w-full text-white font-semibold py-4 px-6 rounded-full shadow-md mb-5 relative overflow-hidden">
-              <span class="relative z-10">Clique pour ouvrir ChatGPT</span>
-            </a>
-            <p class="text-sm text-slate-600 text-center leading-relaxed">
-              Collez la clé générée et laissez AXIOM<br>
-              vous guider. Un échange passionnant<br>
-              sur vos forces et envies.
-            </p>
-          </div>
-        </div>
 
-        <!-- Card 3 -->
-        <div class="bg-white rounded-2xl shadow-lg p-8 flex flex-col">
-          <h4 class="text-xl font-bold text-slate-900 mb-6">
-            Étape 3 : Découvrez le résultat en un clic
-          </h4>
-          <div class="flex-grow flex flex-col justify-center">
-            <button id="generateMatchingBtn" class="lighthouse-button w-full text-white font-semibold py-4 px-6 rounded-full shadow-md mb-6 relative overflow-hidden">
-              <span class="relative z-10">GÉNÉRER MON MATCHING</span>
-            </button>
-            <div class="badges-container">
-              <div class="badge-item">
-                <div class="status-badge bg-primary-500 text-white text-center">
-                  Aligné
+          <!-- Card 3 - Étape 3 -->
+          <div id="card3" class="step-card hidden bg-white rounded-2xl shadow-lg p-8 flex flex-col">
+            <h4 class="text-xl font-bold text-slate-900 mb-6">
+              Étape 3 : Découvrez le résultat en un clic
+            </h4>
+            <div class="flex-grow flex flex-col justify-center">
+              <button id="generateMatchingBtn" class="lighthouse-button w-full text-white font-semibold py-4 px-6 rounded-full shadow-md mb-6 relative overflow-hidden">
+                <span class="relative z-10">GÉNÉRER MON MATCHING</span>
+              </button>
+              <div class="badges-container">
+                <div class="badge-item">
+                  <div class="status-badge bg-primary-500 text-white text-center">
+                    Aligné
+                  </div>
+                </div>
+                <div class="badge-item">
+                  <div class="status-badge bg-blue-500 text-white text-center">
+                    Alignement conditionnel
+                  </div>
+                </div>
+                <div class="badge-item">
+                  <div class="status-badge bg-orange-500 text-white text-center">
+                    Pas aligné actuellement
+                  </div>
                 </div>
               </div>
-              <div class="badge-item">
-                <div class="status-badge bg-blue-500 text-white text-center">
-                  Alignement conditionnel
-                </div>
+              <p class="text-sm text-slate-600 text-center mt-6">
+                Si ça a matché, on se rencontre pour de vrai.
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 4 - Étape 4 (Nouvelle) -->
+          <div id="card4" class="step-card hidden bg-white rounded-2xl shadow-lg p-8 flex flex-col">
+            <h4 class="text-xl font-bold text-slate-900 mb-6">
+              Étape 4 : Finalisez votre matching
+            </h4>
+            <div class="flex-grow flex flex-col justify-center items-center">
+              <div class="mb-6 text-center">
+                <svg class="w-20 h-20 mx-auto mb-4 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+                </svg>
+                <p class="text-lg text-slate-700 font-medium mb-4">
+                  Dernière étape !
+                </p>
+                <p class="text-base text-slate-600 leading-relaxed">
+                  Retournez sur votre discussion avec AXIOM<br>
+                  et collez la clé de matching que vous venez de copier.
+                </p>
               </div>
-              <div class="badge-item">
-                <div class="status-badge bg-orange-500 text-white text-center">
-                  Pas aligné actuellement
-                </div>
+              <div class="w-full bg-primary-50 border border-primary-200 rounded-xl p-6 text-center">
+                <p class="text-sm text-primary-800 font-semibold mb-2">
+                  📋 Clé copiée dans le presse-papiers
+                </p>
+                <p class="text-xs text-primary-700">
+                  Collez-la directement dans ChatGPT pour obtenir votre matching final
+                </p>
               </div>
             </div>
-            <p class="text-sm text-slate-600 text-center mt-6">
-              Si ça a matché, on se rencontre pour de vrai.
-            </p>
           </div>
-        </div>
 
+        </div>
       </div>
     </section>
 
@@ -2124,6 +2162,29 @@ Le matching est terminé.`;
       });
     }
 
+    // Fonction pour passer à une carte spécifique
+    function showCard(cardNumber) {
+      // Cache toutes les cartes
+      document.querySelectorAll('.step-card').forEach(card => {
+        card.classList.add('hidden');
+      });
+      
+      // Affiche la carte demandée avec une animation
+      const targetCard = document.getElementById('card' + cardNumber);
+      if (targetCard) {
+        targetCard.classList.remove('hidden');
+        targetCard.style.opacity = '0';
+        setTimeout(() => {
+          targetCard.style.transition = 'opacity 0.5s ease-in-out';
+          targetCard.style.opacity = '1';
+        }, 10);
+        
+        // Scroll vers la carte
+        targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }
+
+    // Étape 1 : Générer la clé AXIOM
     document.getElementById('generateAxiomBtn').addEventListener('click', async function() {
       try {
         await navigator.clipboard.writeText(axiomPrompt);
@@ -2134,9 +2195,9 @@ Le matching est terminé.`;
         this.style.transform = 'scale(0.98)';
         
         setTimeout(() => {
-          this.querySelector('span').textContent = originalText;
-          this.style.transform = '';
-        }, 2000);
+          // Passer à la carte 2
+          showCard(2);
+        }, 1500);
       } catch (err) {
         // Fallback pour les navigateurs plus anciens
         const textArea = document.createElement('textarea');
@@ -2150,8 +2211,8 @@ Le matching est terminé.`;
           const originalText = this.querySelector('span').textContent;
           this.querySelector('span').textContent = '✓ Copié !';
           setTimeout(() => {
-            this.querySelector('span').textContent = originalText;
-          }, 2000);
+            showCard(2);
+          }, 1500);
         } catch (fallbackErr) {
           alert('Impossible de copier automatiquement. Le texte est trop long.');
         }
@@ -2159,6 +2220,18 @@ Le matching est terminé.`;
       }
     });
 
+    // Étape 2 : Ouvrir ChatGPT
+    document.getElementById('openChatGPTBtn').addEventListener('click', function() {
+      // Ouvrir ChatGPT dans un nouvel onglet
+      window.open('https://chat.openai.com', '_blank');
+      
+      // Passer à la carte 3
+      setTimeout(() => {
+        showCard(3);
+      }, 300);
+    });
+
+    // Étape 3 : Générer le matching
     document.getElementById('generateMatchingBtn').addEventListener('click', async function() {
       try {
         await navigator.clipboard.writeText(matchingPrompt);
@@ -2169,9 +2242,9 @@ Le matching est terminé.`;
         this.style.transform = 'scale(0.98)';
         
         setTimeout(() => {
-          this.querySelector('span').textContent = originalText;
-          this.style.transform = '';
-        }, 2000);
+          // Passer à la carte 4
+          showCard(4);
+        }, 1500);
       } catch (err) {
         // Fallback pour les navigateurs plus anciens
         const textArea = document.createElement('textarea');
@@ -2185,8 +2258,8 @@ Le matching est terminé.`;
           const originalText = this.querySelector('span').textContent;
           this.querySelector('span').textContent = '✓ Copié !';
           setTimeout(() => {
-            this.querySelector('span').textContent = originalText;
-          }, 2000);
+            showCard(4);
+          }, 1500);
         } catch (fallbackErr) {
           alert('Impossible de copier automatiquement. Le texte est trop long.');
         }
