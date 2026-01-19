@@ -336,11 +336,17 @@
               <button id="openChatGPTBtn" class="lighthouse-button w-full text-white font-semibold py-4 px-6 rounded-full shadow-md mb-5 relative overflow-hidden">
                 <span class="relative z-10">Clique pour ouvrir ChatGPT</span>
               </button>
-              <p class="text-sm text-slate-600 text-center leading-relaxed">
+              <p class="text-sm text-slate-600 text-center leading-relaxed mb-6">
                 Collez la clé générée et laissez AXIOM<br>
                 vous guider. Un échange passionnant<br>
                 sur vos forces et envies.
               </p>
+              <button onclick="showCard(1)" class="text-slate-500 hover:text-primary-600 text-sm font-medium flex items-center gap-2 transition-colors">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                </svg>
+                Précédent
+              </button>
             </div>
           </div>
 
@@ -370,9 +376,15 @@
                   </div>
                 </div>
               </div>
-              <p class="text-sm text-slate-600 text-center mt-6">
+              <p class="text-sm text-slate-600 text-center mt-6 mb-4">
                 Si ça a matché, on se rencontre pour de vrai.
               </p>
+              <button onclick="showCard(2)" class="text-slate-500 hover:text-primary-600 text-sm font-medium flex items-center gap-2 transition-colors mx-auto">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                </svg>
+                Précédent
+              </button>
             </div>
           </div>
 
@@ -394,7 +406,7 @@
                   et collez la clé de matching que vous venez de copier.
                 </p>
               </div>
-              <div class="w-full bg-primary-50 border border-primary-200 rounded-xl p-6 text-center">
+              <div class="w-full bg-primary-50 border border-primary-200 rounded-xl p-6 text-center mb-6">
                 <p class="text-sm text-primary-800 font-semibold mb-2">
                   📋 Clé copiée dans le presse-papiers
                 </p>
@@ -402,6 +414,12 @@
                   Collez-la directement dans ChatGPT pour obtenir votre matching final
                 </p>
               </div>
+              <button onclick="showCard(3)" class="text-slate-500 hover:text-primary-600 text-sm font-medium flex items-center gap-2 transition-colors">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                </svg>
+                Précédent
+              </button>
             </div>
           </div>
 
@@ -2162,8 +2180,8 @@ Le matching est terminé.`;
       });
     }
 
-    // Fonction pour passer à une carte spécifique
-    function showCard(cardNumber) {
+    // Fonction pour passer à une carte spécifique (accessible globalement)
+    window.showCard = function(cardNumber) {
       // Cache toutes les cartes
       document.querySelectorAll('.step-card').forEach(card => {
         card.classList.add('hidden');
