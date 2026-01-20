@@ -168,6 +168,21 @@
       object-fit: contain;
       z-index: 1;
     }
+    .video-background-mobile {
+      position: relative;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      z-index: 1;
+      display: block;
+    }
+    @media (max-width: 767px) {
+      .video-section {
+        height: auto;
+        min-height: auto;
+        overflow: visible;
+      }
+    }
     .video-overlay {
       position: absolute;
       top: 0;
@@ -618,20 +633,8 @@
           </div>
 
           <!-- Card 2 - Étape 2 -->
-          <div id="card2" class="step-card hidden video-card rounded-2xl shadow-lg flex flex-col relative overflow-hidden">
-            <!-- Partie supérieure avec vidéo -->
-            <div class="video-section relative">
-              <!-- Vidéo pour desktop -->
-              <video id="backgroundVideoDesktop" class="video-background hidden md:block" muted loop playsinline preload="auto">
-                <source src="assets/videos/background-video.mp4" type="video/mp4">
-                <source src="assets/videos/background-video.webm" type="video/webm">
-              </video>
-              <!-- Vidéo pour mobile -->
-              <video id="backgroundVideoMobile" class="video-background block md:hidden" muted loop playsinline preload="auto">
-                <source src="assets/videos/Videoetape2mobile.mp4" type="video/mp4">
-              </video>
-            </div>
-            <!-- Partie inférieure avec texte -->
+          <div id="card2" class="step-card hidden video-card rounded-2xl shadow-lg flex flex-col-reverse md:flex-col relative overflow-hidden">
+            <!-- Partie avec texte (en haut sur mobile, en bas sur desktop) -->
             <div class="text-section p-8 bg-white flex flex-col justify-center items-center">
               <h4 class="text-xl font-bold text-slate-900 mb-6">
                 Étape 2 : Lancez AXIOM
@@ -650,6 +653,18 @@
                 </svg>
                 Précédent
               </button>
+            </div>
+            <!-- Partie avec vidéo (en bas sur mobile, en haut sur desktop) -->
+            <div class="video-section relative">
+              <!-- Vidéo pour desktop -->
+              <video id="backgroundVideoDesktop" class="video-background hidden md:block" muted loop playsinline preload="auto">
+                <source src="assets/videos/background-video.mp4" type="video/mp4">
+                <source src="assets/videos/background-video.webm" type="video/webm">
+              </video>
+              <!-- Vidéo pour mobile -->
+              <video id="backgroundVideoMobile" class="video-background-mobile block md:hidden" muted loop playsinline preload="auto">
+                <source src="assets/videos/Videoetape2mobile.mp4" type="video/mp4">
+              </video>
             </div>
           </div>
 
