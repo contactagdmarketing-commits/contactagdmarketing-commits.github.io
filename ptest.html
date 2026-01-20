@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Candidats — Elga Energy</title>
+  <title>Candidats (Test) — Elga Energy</title>
   <meta name="description" content="Un recrutement qui s'Intéresse à vous. Rejoignez Elga Energy via AXIOM." />
   <link rel="icon" href="/assets/logos/favicon.svg" type="image/svg+xml" />
 
@@ -2659,10 +2659,12 @@ Le matching est terminé.`;
         // Scroll vers la carte
         targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
         
-        // Marquer si l'utilisateur arrive sur la carte 4
-        if (cardNumber === 4) {
-          reachedCard4 = true;
-        }
+        // Tracking Google Analytics - Navigation entre cartes
+        gtag('event', 'funnel_navigation', {
+          'event_category': 'Funnel',
+          'event_label': 'Carte ' + cardNumber,
+          'value': cardNumber
+        });
       }
     }
 
@@ -2839,8 +2841,6 @@ Le matching est terminé.`;
     let scroll80Sent = false; // Flag pour éviter d'envoyer l'événement 80% plusieurs fois
     let scrollLessThan50Sent = false; // Flag pour éviter d'envoyer l'événement < 50% plusieurs fois
     let maxScrollReached = 0; // Pour suivre le scroll maximum atteint
-    let reachedCard4 = false; // Flag pour savoir si l'utilisateur est arrivé sur la carte 4
-    let leftAfterCard4Sent = false; // Flag pour éviter d'envoyer l'événement plusieurs fois
     
     // Fonction pour calculer le pourcentage de scroll
     function getScrollPercentage() {
@@ -2861,19 +2861,8 @@ Le matching est terminé.`;
       }, 150); // Debounce pour éviter trop d'appels
     });
     
-    // Détecter quand l'utilisateur quitte la page
+    // Détecter quand l'utilisateur quitte la page sans avoir scrollé plus de 50%
     window.addEventListener('beforeunload', function() {
-      // Événement : Quitte après être arrivé sur l'étape 4 (va sur ChatGPT)
-      if (reachedCard4 && !leftAfterCard4Sent) {
-        leftAfterCard4Sent = true;
-        gtag('event', 'funnel_completed_and_left', {
-          'event_category': 'Funnel',
-          'event_label': 'Complète le funnel et quitte pour ChatGPT',
-          'value': 4
-        });
-      }
-      
-      // Événement : Quitte avant 50% de scroll
       if (maxScrollReached < 50 && !scrollLessThan50Sent && !scroll80Sent) {
         // Utiliser sendBeacon pour envoyer l'événement même si la page se ferme
         if (navigator.sendBeacon) {
@@ -2887,18 +2876,6 @@ Le matching est terminé.`;
     document.addEventListener('visibilitychange', function() {
       if (document.hidden) {
         // L'utilisateur quitte ou change d'onglet
-        
-        // Événement : Quitte après être arrivé sur l'étape 4 (va sur ChatGPT)
-        if (reachedCard4 && !leftAfterCard4Sent) {
-          leftAfterCard4Sent = true;
-          gtag('event', 'funnel_completed_and_left', {
-            'event_category': 'Funnel',
-            'event_label': 'Complète le funnel et quitte pour ChatGPT',
-            'value': 4
-          });
-        }
-        
-        // Événement : Quitte avant 50% de scroll
         if (maxScrollReached < 50 && !scrollLessThan50Sent && !scroll80Sent) {
           scrollLessThan50Sent = true;
           gtag('event', 'scroll_less_than_50', {
@@ -2922,6 +2899,8 @@ Le matching est terminé.`;
               'event_label': 'Scroll jusqu\'à 80% - Bloc AXIOM visible',
               'value': 80
             });
+            // Une fois que 80% est atteint, on ne veut plus envoyer l'événement 50%
+            // (mais on garde scroll50Sent pour éviter de l'envoyer si l'utilisateur scroll rapidement)
           }
         });
       }, {
