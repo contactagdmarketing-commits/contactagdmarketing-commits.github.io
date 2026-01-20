@@ -192,7 +192,6 @@
     /* Animation typing effect */
     .cursor {
       display: inline-block;
-      animation: blink 0.7s infinite;
       color: #0e8a57;
       font-weight: 300;
       margin-left: 2px;
@@ -205,12 +204,26 @@
     #typing-quote {
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
-      justify-content: flex-end;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      text-align: center;
     }
     .typed-text-line1 {
-      display: inline;
-      line-height: inherit;
+      display: block;
+      line-height: 1.6;
+      text-align: left;
+      width: 100%;
+      white-space: pre;
+      min-height: 1.6em;
+    }
+    .typed-text-line2 {
+      display: block;
+      line-height: 1.6;
+      text-align: center;
+      width: 100%;
+      white-space: pre;
+      min-height: 1.6em;
     }
     .typed-text-line2 {
       display: inline;
@@ -272,6 +285,48 @@
       </div>
     </section>
 
+    <!-- Bloc 3 -->
+    <section class="py-8">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="bg-gradient-to-br from-primary-50 to-primary-100/50 rounded-2xl p-8 md:p-10 border border-primary-200/50">
+          <h3 class="text-2xl md:text-3xl font-bold text-slate-900 mb-6">
+            Pourquoi on innove
+          </h3>
+          <div class="space-y-5">
+            <p class="text-base md:text-lg text-slate-700 leading-relaxed">
+              Nous innovons dans notre façon de recruter.
+            </p>
+            <p class="text-base md:text-lg text-slate-700 leading-relaxed">
+              L'intelligence artificielle est accessible à tous aujourd'hui. Elle peut analyser des milliers de profils en quelques secondes.
+            </p>
+          
+            <div class="space-y-3 pl-4 border-l-2 border-primary-300">
+              <p class="text-base md:text-lg text-slate-700 leading-relaxed">
+                Certains l'utilisent pour trier plus vite, filtrer massivement, réduire les coûts.
+              </p>
+              <p class="text-base md:text-lg text-slate-700 leading-relaxed">
+                Nous, nous l'utilisons pour comprendre mieux, creuser plus profond.
+              </p>
+            </div>
+            <p class="text-base md:text-lg text-slate-700 leading-relaxed">
+              L'IA nous permet de poser les bonnes questions, d'écouter vraiment, et de donner à chaque candidat le temps qu'il mérite.
+            </p>
+          </div>
+          <div class="mt-8 pt-6 border-t border-primary-200">
+            <div class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-primary-600 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+              </svg>
+              <p class="text-base md:text-lg font-semibold text-primary-700 leading-relaxed">
+                AXIOM est né de cette idée :<br>
+                <span class="font-normal text-slate-700">utiliser l'intelligence artificielle pour rendre le recrutement plus flexible, plus précis, et surtout plus humain.</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Bloc 1 -->
     <section class="py-8">
       <div class="max-w-7xl mx-auto px-4">
@@ -304,44 +359,16 @@
       </div>
     </section>
 
-    <!-- Bloc 3 -->
+    <!-- Citation avec effet typing -->
     <section class="py-8">
-      <div class="max-w-7xl mx-auto px-4">
-        <div class="bg-gradient-to-br from-primary-50 to-primary-100/50 rounded-2xl p-8 md:p-10 border border-primary-200/50">
-          <h3 class="text-2xl md:text-3xl font-bold text-slate-900 mb-6">
-            Pourquoi on innove
-          </h3>
-          <div class="space-y-5">
-            <p class="text-base md:text-lg text-slate-700 leading-relaxed">
-              Nous innovons dans notre façon de recruter. Pas par effet de mode, mais par nécessité.
-            </p>
-            <div class="space-y-3 pl-4 border-l-2 border-primary-300">
-              <p class="text-base md:text-lg text-slate-700 leading-relaxed">
-                Les outils ont évolué.
-              </p>
-              <p class="text-base md:text-lg text-slate-700 leading-relaxed">
-                Les métiers aussi.
-              </p>
-              <p class="text-base md:text-lg text-slate-700 leading-relaxed">
-                Les attentes des candidats encore plus.
-              </p>
-            </div>
-            <p class="text-base md:text-lg text-slate-700 leading-relaxed">
-              Plutôt que d'utiliser ces outils pour trier plus vite,<br>
-              nous avons choisi de les utiliser pour comprendre mieux.
-            </p>
-          </div>
-          <div class="mt-8 pt-6 border-t border-primary-200">
-            <div class="flex items-start gap-3">
-              <svg class="w-6 h-6 text-primary-600 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-              </svg>
-              <p class="text-base md:text-lg font-semibold text-primary-700 leading-relaxed">
-                AXIOM est né de cette idée :<br>
-                <span class="font-normal text-slate-700">rendre le recrutement plus flexible, plus précis, et surtout plus humain.</span>
-              </p>
-            </div>
-          </div>
+      <div class="max-w-4xl mx-auto px-4">
+        <div id="typing-quote" class="text-xl md:text-2xl lg:text-3xl font-light text-slate-700 italic leading-relaxed py-6 min-h-[100px] w-full">
+          <p class="mb-3 w-full">
+            <span class="typed-text-line1"></span>
+          </p>
+          <p class="w-full">
+            <span class="typed-text-line2"></span>
+          </p>
         </div>
       </div>
     </section>
@@ -435,25 +462,9 @@
       </div>
     </section>
 
-    <!-- Citation avec effet typing -->
-    <section class="py-8 flex justify-center bg-gradient-to-b from-white to-slate-50">
-      <div class="max-w-3xl w-full px-4">
-        <div id="typing-quote" class="text-2xl md:text-3xl font-light text-slate-700 italic leading-relaxed px-6 py-8 min-h-[120px] flex flex-col justify-center items-center">
-          <div class="w-full max-w-2xl">
-            <p class="text-left w-full mb-4">
-              <span class="typed-text-line1"></span>
-            </p>
-            <p class="text-center w-full">
-              <span class="typed-text-line2"></span><span class="cursor">|</span>
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- Bloc 4 -->
     <section class="py-8">
-      <div class="max-w-4xl mx-auto">
+      <div class="max-w-7xl mx-auto px-4">
         <div class="bg-white rounded-2xl p-8 md:p-10 shadow-lg border border-slate-200">
           <div class="text-center mb-8">
             <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary-100 mb-4">
@@ -541,72 +552,6 @@
               L'objectif n'est pas de vous faire rentrer dans une case.<br>
               <span class="font-normal text-slate-700">Mais de comprendre quels aspects du métier résonnent chez vous.</span>
             </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Bloc 5 -->
-    <section class="py-16">
-      <div class="max-w-4xl mx-auto">
-        <div class="bg-gradient-to-br from-slate-50 to-white rounded-2xl p-8 md:p-10 shadow-lg border border-slate-200">
-          <div class="text-center mb-8">
-            <h3 class="text-2xl md:text-3xl font-bold text-slate-900 mb-4">
-              La rencontre entre vous et le poste
-            </h3>
-            <p class="text-base md:text-lg text-slate-700 leading-relaxed">
-              À l'issue de cet échange, AXIOM établit une <strong class="text-primary-700">lecture claire de votre compatibilité</strong> avec le poste.
-            </p>
-          </div>
-          
-          <div class="bg-white rounded-xl p-8 mb-8 border-l-4 border-primary-500 shadow-sm">
-            <div class="space-y-4">
-              <p class="text-base md:text-lg text-slate-700 leading-relaxed">
-                Non pas pour dire OUI ou NON de manière brutale.
-              </p>
-              <p class="text-base md:text-lg text-slate-700 leading-relaxed">
-                Mais pour répondre à une vraie question :
-              </p>
-            </div>
-            <div class="mt-6 pt-6 border-t border-slate-200">
-              <p class="text-xl md:text-2xl font-bold text-slate-900 text-center leading-relaxed">
-                Est-ce que ce poste peut avoir du sens pour vous ?<br>
-                <span class="text-lg md:text-xl font-normal text-slate-700">Et est-ce que vous pouvez vous y projeter durablement ?</span>
-              </p>
-            </div>
-          </div>
-          
-          <div class="grid md:grid-cols-2 gap-6">
-            <div class="bg-white rounded-xl p-6 border-2 border-primary-200 shadow-sm">
-              <div class="mb-4 flex items-center gap-3">
-                <div class="flex-shrink-0">
-                  <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-                <span class="text-base md:text-lg font-semibold text-primary-800">
-                  Si l'alignement est là
-                </span>
-              </div>
-              <p class="text-sm md:text-base text-slate-700 leading-relaxed pl-9">
-                Nous prenons le temps d'en discuter ensemble.
-              </p>
-            </div>
-            <div class="bg-white rounded-xl p-6 border-2 border-red-200 shadow-sm">
-              <div class="mb-4 flex items-center gap-3">
-                <div class="flex-shrink-0">
-                  <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                  </svg>
-                </div>
-                <span class="text-base md:text-lg font-semibold text-red-700">
-                  Sinon
-                </span>
-              </div>
-              <p class="text-sm md:text-base text-slate-700 leading-relaxed pl-9">
-                Vous repartez avec une meilleure compréhension de vous-même — et c'est déjà une valeur.
-              </p>
-            </div>
           </div>
         </div>
       </div>
@@ -2669,7 +2614,6 @@ Le matching est terminé.`;
     const quoteText = "- L'alignement parfait ne doit plus être du hasard...\nMais une évidence -";
     const typedTextLine1 = document.querySelector('.typed-text-line1');
     const typedTextLine2 = document.querySelector('.typed-text-line2');
-    const cursorElement = document.querySelector('.cursor');
     const typingQuoteSection = document.getElementById('typing-quote');
     
     let hasAnimated = false; // Flag pour s'assurer que l'animation ne se déclenche qu'une fois
@@ -2705,13 +2649,6 @@ Le matching est terminé.`;
             }
             charIndex++;
             setTimeout(typeText, typingSpeed);
-          } else {
-            // Faire clignoter le curseur pendant 3 secondes puis le faire disparaître
-            setTimeout(() => {
-              if (cursorElement) {
-                cursorElement.style.display = 'none';
-              }
-            }, 3000);
           }
         }
         
