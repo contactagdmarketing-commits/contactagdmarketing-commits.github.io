@@ -188,6 +188,26 @@
         overflow: visible;
       }
     }
+    .video-progress-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background-color: rgba(0, 0, 0, 0.3);
+      z-index: 20;
+      cursor: pointer;
+      pointer-events: none;
+    }
+    .video-section {
+      position: relative;
+    }
+    .video-progress-fill {
+      height: 100%;
+      width: 0%;
+      background-color: #dc2626;
+      transition: width 0.1s linear;
+    }
     .video-overlay {
       position: absolute;
       top: 0;
@@ -366,7 +386,7 @@
                 AXIOM est né de cette idée :<br>
                 <span class="font-normal text-slate-700">Utiliser l'intelligence artificielle pour rendre le recrutement plus flexible et plus précis.</span>
               </p>
-            </div>
+        </div>
           </div>
         </div>
       </div>
@@ -382,7 +402,7 @@
           <p class="w-full">
             <span class="typed-text-line2"></span>
           </p>
-        </div>
+          </div>
       </div>
     </section>
 
@@ -394,8 +414,8 @@
             <div class="flex-shrink-0">
               <svg class="w-8 h-8 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-              </svg>
-            </div>
+            </svg>
+          </div>
             <div class="flex-grow">
               <h3 class="text-2xl md:text-3xl font-bold text-slate-900 mb-6">
                 Un recrutement qui ne commence pas par un CV.
@@ -406,7 +426,7 @@
                   <div class="flex items-start gap-3">
                     <svg class="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
+            </svg>
                     <div>
                       <p class="text-base md:text-lg font-semibold text-slate-900 mb-2">
                         Pourquoi ?
@@ -574,6 +594,14 @@ AXIOM identifie le bon cadre avant de parler de résultats.
               <video id="backgroundVideoMobile" class="video-background-mobile block md:hidden" muted loop playsinline preload="auto">
                 <source src="assets/videos/Videoetape2mobile.mp4" type="video/mp4">
               </video>
+              <!-- Barre de progression desktop -->
+              <div class="video-progress-bar hidden md:block" id="progressBarDesktop">
+                <div class="video-progress-fill" id="progressFillDesktop"></div>
+              </div>
+              <!-- Barre de progression mobile -->
+              <div class="video-progress-bar block md:hidden" id="progressBarMobile">
+                <div class="video-progress-fill" id="progressFillMobile"></div>
+              </div>
             </div>
           </div>
 
@@ -589,6 +617,14 @@ AXIOM identifie le bon cadre avant de parler de résultats.
               <video id="backgroundVideoMobile3" class="video-background block md:hidden" muted loop playsinline preload="auto" style="display: none;">
                 <!-- Source mobile à ajouter quand disponible -->
               </video>
+              <!-- Barre de progression desktop -->
+              <div class="video-progress-bar hidden md:block" id="progressBarDesktop3">
+                <div class="video-progress-fill" id="progressFillDesktop3"></div>
+              </div>
+              <!-- Barre de progression mobile -->
+              <div class="video-progress-bar block md:hidden" id="progressBarMobile3" style="display: none;">
+                <div class="video-progress-fill" id="progressFillMobile3"></div>
+              </div>
             </div>
             <!-- Partie inférieure avec texte -->
             <div class="text-section p-8 bg-white flex flex-col justify-center items-center">
@@ -2442,9 +2478,14 @@ Le matching est terminé.`;
       // Arrête la vidéo quand on quitte le survol (desktop)
       card2.addEventListener('mouseleave', function() {
         const activeVideo = getActiveVideo();
+        const isMobile = window.innerWidth < 768;
+        const progressFill = isMobile ? document.getElementById('progressFillMobile') : document.getElementById('progressFillDesktop');
         if (activeVideo) {
           activeVideo.pause();
           activeVideo.currentTime = 0; // Remet la vidéo au début
+          if (progressFill) {
+            progressFill.style.width = '0%'; // Réinitialise la barre de progression
+          }
         }
       });
       
@@ -2479,6 +2520,25 @@ Le matching est terminé.`;
           }
         }, 250);
       });
+      
+      // Mise à jour de la barre de progression pour l'étape 2
+      function updateProgressBar2() {
+        const isMobile = window.innerWidth < 768;
+        const activeVideo = isMobile ? backgroundVideoMobile : backgroundVideoDesktop;
+        const progressFill = isMobile ? document.getElementById('progressFillMobile') : document.getElementById('progressFillDesktop');
+        
+        if (activeVideo && progressFill) {
+          const progress = (activeVideo.currentTime / activeVideo.duration) * 100;
+          progressFill.style.width = progress + '%';
+        }
+      }
+      
+      if (backgroundVideoDesktop) {
+        backgroundVideoDesktop.addEventListener('timeupdate', updateProgressBar2);
+      }
+      if (backgroundVideoMobile) {
+        backgroundVideoMobile.addEventListener('timeupdate', updateProgressBar2);
+      }
     }
 
     // Gestion de la vidéo au survol de la carte étape 3 (desktop et mobile)
@@ -2517,9 +2577,14 @@ Le matching est terminé.`;
       // Arrête la vidéo quand on quitte le survol (desktop)
       card3.addEventListener('mouseleave', function() {
         const activeVideo = getActiveVideo3();
+        const isMobile = window.innerWidth < 768;
+        const progressFill = isMobile ? document.getElementById('progressFillMobile3') : document.getElementById('progressFillDesktop3');
         if (activeVideo) {
           activeVideo.pause();
           activeVideo.currentTime = 0; // Remet la vidéo au début
+          if (progressFill) {
+            progressFill.style.width = '0%'; // Réinitialise la barre de progression
+          }
         }
       });
       
@@ -2554,6 +2619,25 @@ Le matching est terminé.`;
           }
         }, 250);
       });
+      
+      // Mise à jour de la barre de progression pour l'étape 3
+      function updateProgressBar3() {
+        const isMobile = window.innerWidth < 768;
+        const activeVideo = isMobile ? backgroundVideoMobile3 : backgroundVideoDesktop3;
+        const progressFill = isMobile ? document.getElementById('progressFillMobile3') : document.getElementById('progressFillDesktop3');
+        
+        if (activeVideo && progressFill) {
+          const progress = (activeVideo.currentTime / activeVideo.duration) * 100;
+          progressFill.style.width = progress + '%';
+        }
+      }
+      
+      if (backgroundVideoDesktop3) {
+        backgroundVideoDesktop3.addEventListener('timeupdate', updateProgressBar3);
+      }
+      if (backgroundVideoMobile3) {
+        backgroundVideoMobile3.addEventListener('timeupdate', updateProgressBar3);
+      }
     }
 
     // Fonction pour passer à une carte spécifique (accessible globalement)
