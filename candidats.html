@@ -189,6 +189,33 @@
       transition: opacity 0.2s ease-in-out;
       min-height: 400px;
     }
+    /* Animation typing effect */
+    .cursor {
+      display: inline-block;
+      animation: blink 0.7s infinite;
+      color: #0e8a57;
+      font-weight: 300;
+      margin-left: 2px;
+    }
+    @keyframes blink {
+      0%, 49% { opacity: 1; }
+      50%, 100% { opacity: 0; }
+    }
+    /* Conteneur de citation fixe */
+    #typing-quote {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-end;
+    }
+    .typed-text-line1 {
+      display: inline;
+      line-height: inherit;
+    }
+    .typed-text-line2 {
+      display: inline;
+      line-height: inherit;
+    }
   </style>
 </head>
 
@@ -235,21 +262,133 @@
   <!-- Main Content -->
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
     
-    <!-- Hero Section -->
-    <section class="pt-12 pb-8">
-      <div class="max-w-4xl">
-        <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 leading-tight mb-8">
-          Enfin un recrutement qui s'intéresse à votre profil.
-        </h2>
-        <p class="text-lg md:text-xl text-slate-600 leading-relaxed max-w-2xl">
-          Combien de CV avez-vous déjà envoyé ?<br>
-          Chez Elga Energy, on recrute des personnalités,<br>
-          pas des morceaux de papier.<br>
-        </p>
+    <!-- Titre -->
+    <section class="pt-16 pb-12 text-center">
+      <div class="max-w-3xl mx-auto px-4">
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 leading-tight mb-4">
+          Pourquoi AXIOM existe.
+        </h1>
+        <div class="w-24 h-1 bg-primary-500 mx-auto rounded-full"></div>
       </div>
     </section>
 
-    <!-- Center Card with Avatar and Bubble -->
+    <!-- Bloc 1 -->
+    <section class="py-8">
+      <div class="max-w-4xl mx-auto">
+        <div class="bg-white rounded-2xl p-8 md:p-10 shadow-lg border-2 border-primary-200">
+          <div class="text-center mb-8">
+            <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mb-6 leading-tight">
+              Nous ne cherchons pas des profils parfaits.<br>
+              <span class="text-primary-600">Nous cherchons des alignements justes.</span>
+            </h2>
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary-100 mb-6">
+              <svg class="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+          </div>
+          <div class="space-y-4 mb-8">
+            <p class="text-base md:text-lg text-slate-700 leading-relaxed text-center">
+              Si vous êtes curieux, ouvert à une approche différente,
+            </p>
+            <p class="text-base md:text-lg text-slate-700 leading-relaxed text-center">
+              et que vous avez envie de comprendre ce qui vous anime vraiment dans votre travail,
+            </p>
+          </div>
+          <div class="text-center pt-4 border-t border-slate-200">
+            <p class="text-xl md:text-2xl font-bold text-primary-700">
+              AXIOM est fait pour vous.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bloc 3 -->
+    <section class="py-8">
+      <div class="max-w-4xl mx-auto">
+        <div class="bg-gradient-to-br from-primary-50 to-primary-100/50 rounded-2xl p-8 md:p-10 border border-primary-200/50">
+          <h3 class="text-2xl md:text-3xl font-bold text-slate-900 mb-6">
+            Pourquoi on innove
+          </h3>
+          <div class="space-y-5">
+            <p class="text-base md:text-lg text-slate-700 leading-relaxed">
+              Nous innovons dans notre façon de recruter. Pas par effet de mode, mais par nécessité.
+            </p>
+            <div class="space-y-3 pl-4 border-l-2 border-primary-300">
+              <p class="text-base md:text-lg text-slate-700 leading-relaxed">
+                Les outils ont évolué.
+              </p>
+              <p class="text-base md:text-lg text-slate-700 leading-relaxed">
+                Les métiers aussi.
+              </p>
+              <p class="text-base md:text-lg text-slate-700 leading-relaxed">
+                Les attentes des candidats encore plus.
+              </p>
+            </div>
+            <p class="text-base md:text-lg text-slate-700 leading-relaxed">
+              Plutôt que d'utiliser ces outils pour trier plus vite,<br>
+              nous avons choisi de les utiliser pour comprendre mieux.
+            </p>
+          </div>
+          <div class="mt-8 pt-6 border-t border-primary-200">
+            <div class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-primary-600 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+              </svg>
+              <p class="text-base md:text-lg font-semibold text-primary-700 leading-relaxed">
+                AXIOM est né de cette idée :<br>
+                <span class="font-normal text-slate-700">rendre le recrutement plus flexible, plus précis, et surtout plus humain.</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bloc 2 -->
+    <section class="py-8">
+      <div class="max-w-4xl mx-auto">
+        <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-8 md:p-10 border border-slate-200/50 shadow-lg">
+          <div class="flex items-start gap-4 mb-6">
+            <div class="flex-shrink-0">
+              <svg class="w-8 h-8 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+            </div>
+            <div class="flex-grow">
+              <h3 class="text-2xl md:text-3xl font-bold text-slate-900 mb-6">
+                Un recrutement qui ne commence pas par un CV.
+              </h3>
+              <div class="space-y-5">
+                <p class="text-base md:text-lg text-slate-700 leading-relaxed">
+                  Chez Elga Energy, nous avons fait un choix simple :<br>
+                  prendre le temps de comprendre qui vous êtes vraiment, avant de parler de compétences ou d'expérience.
+                </p>
+                <div class="bg-slate-50 rounded-xl p-5 border-l-4 border-primary-500">
+                  <div class="flex items-start gap-3">
+                    <svg class="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <div>
+                      <p class="text-base md:text-lg font-semibold text-slate-900 mb-2">
+                        Pourquoi ?
+                      </p>
+                      <p class="text-base md:text-lg text-slate-700 leading-relaxed">
+                        Parce qu'un poste peut être "bon sur le papier"…<br>
+                        et ne rien avoir de sens dans la réalité.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bloc tinder -->
     <section class="py-16 flex justify-center">
       <div class="w-full max-w-md">
         <div class="center-card">
@@ -263,10 +402,14 @@
             
             <!-- Speech Bubble -->
             <div class="speech-bubble w-full">
-              <p class="text-slate-800 font-medium text-center text-base">
-                On oublie votre CV.<br>
-                Parlons de vous.
-              </p>
+              <div class="space-y-2">
+                <p class="text-slate-800 font-medium text-center text-base leading-relaxed">
+                  On oublie votre CV.
+                </p>
+                <p class="text-slate-800 font-medium text-center text-base leading-relaxed">
+                  Parlons de vous.
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -292,30 +435,240 @@
       </div>
     </section>
 
-    <!-- Section Title -->
-    <section class="py-16 text-center">
-      <h3 class="text-3xl md:text-4xl font-bold text-slate-900">
-        Pourquoi AXIOM existe.
-      </h3>
+    <!-- Citation avec effet typing -->
+    <section class="py-8 flex justify-center bg-gradient-to-b from-white to-slate-50">
+      <div class="max-w-3xl w-full px-4">
+        <div id="typing-quote" class="text-2xl md:text-3xl font-light text-slate-700 italic leading-relaxed px-6 py-8 min-h-[120px] flex flex-col justify-center items-center">
+          <div class="w-full max-w-2xl">
+            <p class="text-left w-full mb-4">
+              <span class="typed-text-line1"></span>
+            </p>
+            <p class="text-center w-full">
+              <span class="typed-text-line2"></span><span class="cursor">|</span>
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Sequential Step Cards -->
+    <!-- Bloc 4 -->
+    <section class="py-8">
+      <div class="max-w-4xl mx-auto">
+        <div class="bg-white rounded-2xl p-8 md:p-10 shadow-lg border border-slate-200">
+          <div class="text-center mb-8">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary-100 mb-4">
+              <svg class="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+              </svg>
+            </div>
+            <h3 class="text-2xl md:text-3xl font-bold text-slate-900 mb-4">
+              Ce que fait vraiment AXIOM
+            </h3>
+            <p class="text-base md:text-lg text-slate-700 leading-relaxed">
+              AXIOM vous propose une expérience immersive.
+            </p>
+          </div>
+          
+          <div class="grid md:grid-cols-2 gap-4 mb-8">
+            <div class="flex items-center gap-3 p-4 bg-red-50 rounded-xl border border-red-200">
+              <svg class="w-6 h-6 text-red-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+              <p class="text-sm font-semibold text-red-700">Pas un test</p>
+            </div>
+            <div class="flex items-center gap-3 p-4 bg-red-50 rounded-xl border border-red-200">
+              <svg class="w-6 h-6 text-red-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+              <p class="text-sm font-semibold text-red-700">Pas un questionnaire froid</p>
+            </div>
+            <div class="flex items-center gap-3 p-4 bg-red-50 rounded-xl border border-red-200">
+              <svg class="w-6 h-6 text-red-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+              <p class="text-sm font-semibold text-red-700">Pas une évaluation déguisée</p>
+            </div>
+            <div class="flex items-center gap-3 p-4 bg-primary-50 rounded-xl border-2 border-primary-200">
+              <svg class="w-6 h-6 text-primary-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <p class="text-sm font-semibold text-primary-700">Un échange structuré</p>
+            </div>
+          </div>
+          
+          <div class="mb-8">
+            <p class="text-base md:text-lg text-slate-700 leading-relaxed mb-5 text-center">
+              Un échange qui permet de mettre en lumière :
+            </p>
+            <div class="space-y-4">
+              <div class="flex items-start gap-4 p-4 bg-slate-50 rounded-lg">
+                <svg class="w-5 h-5 text-primary-600 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+                <p class="text-base md:text-lg text-slate-700 leading-relaxed flex-grow">
+                  ce qui vous motive réellement dans un travail
+                </p>
+              </div>
+              <div class="flex items-start gap-4 p-4 bg-slate-50 rounded-lg">
+                <svg class="w-5 h-5 text-primary-600 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+                <p class="text-base md:text-lg text-slate-700 leading-relaxed flex-grow">
+                  ce qui vous épuise
+                </p>
+              </div>
+              <div class="flex items-start gap-4 p-4 bg-slate-50 rounded-lg">
+                <svg class="w-5 h-5 text-primary-600 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+                <p class="text-base md:text-lg text-slate-700 leading-relaxed flex-grow">
+                  ce qui vous donne envie de vous investir
+                </p>
+              </div>
+              <div class="flex items-start gap-4 p-4 bg-slate-50 rounded-lg">
+                <svg class="w-5 h-5 text-primary-600 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+                <p class="text-base md:text-lg text-slate-700 leading-relaxed flex-grow">
+                  ce qui a du sens pour vous, concrètement, au quotidien
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-primary-50 rounded-xl p-6 border-l-4 border-primary-500">
+            <p class="text-base md:text-lg font-semibold text-slate-900 leading-relaxed text-center">
+              L'objectif n'est pas de vous faire rentrer dans une case.<br>
+              <span class="font-normal text-slate-700">Mais de comprendre quels aspects du métier résonnent chez vous.</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bloc 5 -->
+    <section class="py-16">
+      <div class="max-w-4xl mx-auto">
+        <div class="bg-gradient-to-br from-slate-50 to-white rounded-2xl p-8 md:p-10 shadow-lg border border-slate-200">
+          <div class="text-center mb-8">
+            <h3 class="text-2xl md:text-3xl font-bold text-slate-900 mb-4">
+              La rencontre entre vous et le poste
+            </h3>
+            <p class="text-base md:text-lg text-slate-700 leading-relaxed">
+              À l'issue de cet échange, AXIOM établit une <strong class="text-primary-700">lecture claire de votre compatibilité</strong> avec le poste.
+            </p>
+          </div>
+          
+          <div class="bg-white rounded-xl p-8 mb-8 border-l-4 border-primary-500 shadow-sm">
+            <div class="space-y-4">
+              <p class="text-base md:text-lg text-slate-700 leading-relaxed">
+                Non pas pour dire OUI ou NON de manière brutale.
+              </p>
+              <p class="text-base md:text-lg text-slate-700 leading-relaxed">
+                Mais pour répondre à une vraie question :
+              </p>
+            </div>
+            <div class="mt-6 pt-6 border-t border-slate-200">
+              <p class="text-xl md:text-2xl font-bold text-slate-900 text-center leading-relaxed">
+                Est-ce que ce poste peut avoir du sens pour vous ?<br>
+                <span class="text-lg md:text-xl font-normal text-slate-700">Et est-ce que vous pouvez vous y projeter durablement ?</span>
+              </p>
+            </div>
+          </div>
+          
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="bg-white rounded-xl p-6 border-2 border-primary-200 shadow-sm">
+              <div class="mb-4 flex items-center gap-3">
+                <div class="flex-shrink-0">
+                  <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <span class="text-base md:text-lg font-semibold text-primary-800">
+                  Si l'alignement est là
+                </span>
+              </div>
+              <p class="text-sm md:text-base text-slate-700 leading-relaxed pl-9">
+                Nous prenons le temps d'en discuter ensemble.
+              </p>
+            </div>
+            <div class="bg-white rounded-xl p-6 border-2 border-red-200 shadow-sm">
+              <div class="mb-4 flex items-center gap-3">
+                <div class="flex-shrink-0">
+                  <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                  </svg>
+                </div>
+                <span class="text-base md:text-lg font-semibold text-red-700">
+                  Sinon
+                </span>
+              </div>
+              <p class="text-sm md:text-base text-slate-700 leading-relaxed pl-9">
+                Vous repartez avec une meilleure compréhension de vous-même — et c'est déjà une valeur.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sequential Step Cards (Funnel) -->
     <section class="py-8">
       <div class="flex justify-center">
         <div class="w-full max-w-2xl">
           
           <!-- Card 1 - Étape 1 -->
           <div id="card1" class="step-card bg-white rounded-2xl shadow-lg p-8 flex flex-col">
-            <h4 class="text-xl font-bold text-slate-900 mb-6">
-              Étape 1 : Récupèrez votre Clé
-            </h4>
-            <div class="flex-grow flex flex-col justify-center">
-              <button id="generateAxiomBtn" class="lighthouse-button w-full text-white font-semibold py-4 px-6 rounded-full shadow-md mb-3 relative overflow-hidden">
-                <span class="relative z-10">GÉNÉRER MON ACCÈS AXIOM</span>
-              </button>
-              <p class="text-sm text-slate-500 text-center">
-                Cliquez ici pour obtenir votre Clé unique
+            <div class="text-center mb-6">
+              <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary-100 mb-4">
+                <svg class="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
+                </svg>
+              </div>
+              <h4 class="text-2xl font-bold text-slate-900 mb-3">
+                Étape 1 : Récupérez votre Clé
+              </h4>
+              <p class="text-base text-slate-600 leading-relaxed max-w-md mx-auto">
+                Cette clé est votre accès unique à AXIOM.<br>
+                Elle contient tout ce dont vous avez besoin pour démarrer votre analyse personnalisée.
               </p>
+            </div>
+            
+            <div class="bg-primary-50 rounded-xl p-4 mb-6 border border-primary-200">
+              <div class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-primary-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <div>
+                  <p class="text-sm font-semibold text-primary-900 mb-1">
+                    Comment ça marche ?
+                  </p>
+                  <p class="text-sm text-primary-700 leading-relaxed">
+                    En cliquant sur le bouton, la clé sera automatiquement copiée dans votre presse-papiers.<br>
+                    Vous n'aurez plus qu'à la coller dans ChatGPT à l'étape suivante.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex-grow flex flex-col justify-center">
+              <button id="generateAxiomBtn" class="lighthouse-button w-full text-white font-semibold py-4 px-6 rounded-full shadow-md mb-4 relative overflow-hidden">
+                <span class="relative z-10 flex items-center justify-center gap-2">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                  </svg>
+                  GÉNÉRER MON ACCÈS AXIOM
+                </span>
+              </button>
+              
+              <div class="text-center space-y-2">
+                <p class="text-sm text-slate-500">
+                  ✓ Clé copiée automatiquement
+                </p>
+                <p class="text-xs text-slate-400">
+                  Temps estimé : 2 secondes
+                </p>
+              </div>
             </div>
           </div>
 
@@ -357,7 +710,7 @@
             </h4>
             <div class="flex-grow flex flex-col justify-center">
               <button id="generateMatchingBtn" class="lighthouse-button w-full text-white font-semibold py-4 px-6 rounded-full shadow-md mb-6 relative overflow-hidden">
-                <span class="relative z-10">GÉNÉRER MON MATCHING</span>
+                <span class="relative z-10">GÉNÉRER MA LECTURE DE COMPATIBILITÉ</span>
               </button>
               <div class="badges-container">
                 <div class="badge-item">
@@ -391,7 +744,7 @@
           <!-- Card 4 - Étape 4 (Nouvelle) -->
           <div id="card4" class="step-card hidden bg-white rounded-2xl shadow-lg p-8 flex flex-col">
             <h4 class="text-xl font-bold text-slate-900 mb-6">
-              Étape 4 : Finalisez votre matching
+              Étape 4 : Obtenez votre lecture de compatibilité
             </h4>
             <div class="flex-grow flex flex-col justify-center items-center">
               <div class="mb-6 text-center">
@@ -404,12 +757,12 @@
                 <p class="text-base text-slate-600 leading-relaxed">
                   <strong>1.</strong> Retournez sur l'onglet ChatGPT<br>
                   <strong>2.</strong> Collez (Cmd+V ou Ctrl+V) dans le chat<br>
-                  <strong>3.</strong> Envoyez pour obtenir votre matching
+                  <strong>3.</strong> Envoyez pour obtenir votre lecture de compatibilité
                 </p>
               </div>
               <div class="w-full bg-primary-50 border border-primary-200 rounded-xl p-6 text-center mb-6">
                 <p class="text-sm text-primary-800 font-semibold mb-3">
-                  ✅ Prompt de matching copié !
+                  ✅ Prompt de lecture de compatibilité copié !
                 </p>
                 <div class="bg-white/70 rounded-lg p-4 mb-3">
                   <p class="text-xs text-slate-600 mb-2">
@@ -421,7 +774,7 @@
                 </div>
                 <p class="text-xs text-primary-700">
                   👆 Cliquez sur l'onglet <strong>"Début d'analyse AXIOM"</strong> dans votre navigateur,<br>
-                  collez le prompt dans ChatGPT et envoyez pour voir votre matching !
+                  collez le prompt dans ChatGPT et envoyez pour voir votre lecture de compatibilité !
                 </p>
               </div>
               <button onclick="showCard(3)" class="text-slate-500 hover:text-primary-600 text-sm font-medium flex items-center gap-2 transition-colors">
@@ -2311,6 +2664,78 @@ Le matching est terminé.`;
 
     // Note : Pas besoin d'event listener pour l'étape 4
     // Le prompt est déjà copié à l'étape 3, l'utilisateur n'a plus qu'à retourner sur ChatGPT manuellement
+
+    // Effet de typing pour la citation - déclenché au scroll
+    const quoteText = "- L'alignement parfait ne doit plus être du hasard...\nMais une évidence -";
+    const typedTextLine1 = document.querySelector('.typed-text-line1');
+    const typedTextLine2 = document.querySelector('.typed-text-line2');
+    const cursorElement = document.querySelector('.cursor');
+    const typingQuoteSection = document.getElementById('typing-quote');
+    
+    let hasAnimated = false; // Flag pour s'assurer que l'animation ne se déclenche qu'une fois
+    
+    if (typedTextLine1 && typedTextLine2 && typingQuoteSection) {
+      const typingSpeed = 80; // millisecondes par caractère
+      
+      function startTyping() {
+        if (hasAnimated) return; // Ne pas relancer si déjà animé
+        hasAnimated = true;
+        
+        let charIndex = 0;
+        let line1Text = '';
+        let line2Text = '';
+        let isLine2 = false;
+        
+        function typeText() {
+          if (charIndex < quoteText.length) {
+            const char = quoteText.charAt(charIndex);
+            // Gérer les sauts de ligne
+            if (char === '\n') {
+              isLine2 = true;
+            } else {
+              // Échapper les caractères HTML spéciaux
+              const escapedChar = char.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+              if (isLine2) {
+                line2Text += escapedChar;
+                typedTextLine2.textContent = line2Text;
+              } else {
+                line1Text += escapedChar;
+                typedTextLine1.textContent = line1Text;
+              }
+            }
+            charIndex++;
+            setTimeout(typeText, typingSpeed);
+          } else {
+            // Faire clignoter le curseur pendant 3 secondes puis le faire disparaître
+            setTimeout(() => {
+              if (cursorElement) {
+                cursorElement.style.display = 'none';
+              }
+            }, 3000);
+          }
+        }
+        
+        // Attendre 300ms avant de commencer l'animation
+        setTimeout(() => {
+          typeText();
+        }, 300);
+      }
+      
+      // Intersection Observer pour détecter quand la section entre dans le viewport
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !hasAnimated) {
+            startTyping();
+            // Désobserver après le premier déclenchement
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.3 // Déclenche quand 30% de la section est visible
+      });
+      
+      observer.observe(typingQuoteSection);
+    }
   </script>
 
 </body>
