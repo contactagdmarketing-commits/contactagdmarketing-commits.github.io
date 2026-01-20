@@ -621,9 +621,14 @@
           <div id="card2" class="step-card hidden video-card rounded-2xl shadow-lg flex flex-col relative overflow-hidden">
             <!-- Partie supérieure avec vidéo -->
             <div class="video-section relative">
-              <video id="backgroundVideo" class="video-background" autoplay muted loop playsinline preload="auto">
+              <!-- Vidéo pour desktop -->
+              <video id="backgroundVideoDesktop" class="video-background hidden md:block" muted loop playsinline preload="auto">
                 <source src="assets/videos/background-video.mp4" type="video/mp4">
                 <source src="assets/videos/background-video.webm" type="video/webm">
+              </video>
+              <!-- Vidéo pour mobile -->
+              <video id="backgroundVideoMobile" class="video-background block md:hidden" muted loop playsinline preload="auto">
+                <source src="assets/videos/Videoetape2mobile.mp4" type="video/mp4">
               </video>
             </div>
             <!-- Partie inférieure avec texte -->
@@ -2463,28 +2468,78 @@ Le matching est terminé.`;
       });
     }
 
-    // Force la lecture de la vidéo en arrière-plan
-    const backgroundVideo = document.getElementById('backgroundVideo');
-    if (backgroundVideo) {
-      backgroundVideo.addEventListener('loadeddata', function() {
-        this.play().catch(function(error) {
-          console.log('Erreur de lecture vidéo:', error);
-        });
-      });
-      
-      backgroundVideo.addEventListener('error', function() {
-        console.log('Erreur de chargement de la vidéo. Vérifiez que le fichier existe dans assets/videos/');
-        // Fallback : on peut ajouter une image de fond si la vidéo ne charge pas
-        this.style.display = 'none';
-      });
-      
-      // Force la lecture au chargement de la page
-      window.addEventListener('load', function() {
-        if (backgroundVideo.readyState >= 2) {
-          backgroundVideo.play().catch(function(error) {
+    // Gestion de la vidéo au survol de la carte étape 2 (desktop et mobile)
+    const backgroundVideoDesktop = document.getElementById('backgroundVideoDesktop');
+    const backgroundVideoMobile = document.getElementById('backgroundVideoMobile');
+    const card2 = document.getElementById('card2');
+    
+    // Fonction pour obtenir la vidéo active (desktop ou mobile)
+    function getActiveVideo() {
+      // Vérifie si on est sur mobile (largeur < 768px)
+      const isMobile = window.innerWidth < 768;
+      return isMobile ? backgroundVideoMobile : backgroundVideoDesktop;
+    }
+    
+    if (card2) {
+      // Lance la vidéo au survol de la carte (desktop) ou au touch (mobile)
+      card2.addEventListener('mouseenter', function() {
+        const activeVideo = getActiveVideo();
+        if (activeVideo) {
+          activeVideo.play().catch(function(error) {
             console.log('Erreur de lecture vidéo:', error);
           });
         }
+      });
+      
+      // Pour mobile : lance la vidéo au touch
+      card2.addEventListener('touchstart', function() {
+        const activeVideo = getActiveVideo();
+        if (activeVideo) {
+          activeVideo.play().catch(function(error) {
+            console.log('Erreur de lecture vidéo:', error);
+          });
+        }
+      });
+      
+      // Arrête la vidéo quand on quitte le survol (desktop)
+      card2.addEventListener('mouseleave', function() {
+        const activeVideo = getActiveVideo();
+        if (activeVideo) {
+          activeVideo.pause();
+          activeVideo.currentTime = 0; // Remet la vidéo au début
+        }
+      });
+      
+      // Gestion des erreurs pour les deux vidéos
+      if (backgroundVideoDesktop) {
+        backgroundVideoDesktop.addEventListener('error', function() {
+          console.log('Erreur de chargement de la vidéo desktop. Vérifiez que le fichier existe dans assets/videos/');
+          this.style.display = 'none';
+        });
+      }
+      
+      if (backgroundVideoMobile) {
+        backgroundVideoMobile.addEventListener('error', function() {
+          console.log('Erreur de chargement de la vidéo mobile. Vérifiez que le fichier existe dans assets/videos/');
+          this.style.display = 'none';
+        });
+      }
+      
+      // Gère le changement de vidéo lors du redimensionnement de la fenêtre
+      let resizeTimeout;
+      window.addEventListener('resize', function() {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(function() {
+          // Met en pause la vidéo inactive et remet au début
+          const isMobile = window.innerWidth < 768;
+          if (isMobile && backgroundVideoDesktop) {
+            backgroundVideoDesktop.pause();
+            backgroundVideoDesktop.currentTime = 0;
+          } else if (!isMobile && backgroundVideoMobile) {
+            backgroundVideoMobile.pause();
+            backgroundVideoMobile.currentTime = 0;
+          }
+        }, 250);
       });
     }
 
