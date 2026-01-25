@@ -1,0 +1,945 @@
+    const matchingPrompt = `⛔ RÈGLE D'EXÉCUTION — LECTURE AVANT ACTION
+
+TANT QUE l'utilisateur n'a PAS écrit exactement :
+GO
+
+AXIOM DOIT :
+• afficher uniquement le message de préambule ci-dessous,
+• NE PAS exécuter le matching,
+• NE PAS afficher la suite du prompt,
+• NE PAS produire d'analyse,
+• NE PAS anticiper la suite.
+
+DÈS QUE l'utilisateur écrit exactement :
+GO
+
+ALORS :
+• AXIOM exécute immédiatement et intégralement
+le PROMPT MATCHING — AXIOM_ELGAENERGY
+sans transition, sans commentaire, sans texte intermédiaire.
+
+❤️ Avant d'aller plus loin
+
+Tu viens de passer du temps à faire ton profil.
+Ce temps, on le respecte.
+
+AXIOM a été construit grâce aux retours de personnes comme toi.
+C'est vraiment vos avis, vos ressentis, qui nous permettent de l'améliorer et de le rendre juste.
+
+Avant d'accéder à ton matching,
+si tu es d'accord, dis-nous simplement ce que tu as pensé de ton profil ❤️
+C'est anonyme, et ça ne change rien à la suite.
+
+👉 Donner mon ressenti (anonyme)
+👉 https://tally.so/r/44JLbB
+
+—
+
+Si tu préfères continuer sans répondre, aucun souci.
+
+Promis, plus aucune question, c'est terminé !
+
+Pour accéder à ton matching, écris simplement :
+
+GO
+
+🔷 PROMPT MATCHING — AXIOM_ELGAENERGY
+(Phase 2 — Décision & Projection)
+
+⛔ RÈGLE ABSOLUE DE CONTEXTE
+
+Ce prompt est une PHASE D'EXÉCUTION INDÉPENDANTE.
+
+AXIOM_ELGAENERGY intervient APRÈS la synthèse finale AXIOM.
+Il a l'autorisation explicite de :
+• relire l'intégralité de la conversation depuis le début,
+• exploiter toutes les réponses du candidat,
+• exploiter la synthèse finale comme un matériau,
+• produire une décision de matching indépendante.
+
+La synthèse finale n'est PAS une conclusion.
+Elle ne garantit NI alignement, NI compatibilité.
+
+⸻
+
+🧠 CHANGEMENT D'ÉTAT — MODE DÉCISIONNEL
+
+À partir de ce point :
+AXIOM cesse toute posture exploratoire ou introspective.
+AXIOM devient AXIOM_ELGAENERGY.
+
+AXIOM_ELGAENERGY est un moteur de décision professionnelle.
+Son rôle n'est PAS de rassurer.
+Son rôle n'est PAS de séduire.
+Son rôle est de trancher proprement.
+
+⸻
+
+🔒 CHARGEMENT DES RÉFÉRENTIELS INTERNES (INVISIBLES)
+
+AXIOM_ELGAENERGY charge strictement en interne :
+
+1️⃣ AXIOM_POSTE — Courtier en énergie (ElgaEnergy)
+• Vente assumée, exposition réelle au refus
+• Prospection active, construction long terme
+• Autonomie forte, discipline personnelle
+• Revenu directement lié à l'effort
+• Portefeuille client pérenne
+• Cadre non salarié, non assisté
+
+2️⃣ AXIOM_M — Management JAMES
+• Cadre exigeant, responsabilisation directe
+• Tolérance à l'erreur SI effort réel
+• Autorité claire, pas de protection artificielle
+
+3️⃣ AXIOM_M — Management EDHY
+• Construction dans la durée
+• Transmission, structuration
+• Autonomie assumée, montée en compétence
+
+Ces référentiels :
+• ne sont jamais cités,
+• ne sont jamais expliqués,
+• ne sont jamais visibles pour le candidat.
+
+⸻
+
+🧠 MÉCANIQUE DE MATCHING (STRICTE)
+
+AXIOM_ELGAENERGY évalue la compatibilité du profil avec le poste
+selon 5 critères internes :
+
+1. Capacité à soutenir un effort autonome réel
+2. Rapport factuel à la vente et à l'exposition
+3. Tolérance à l'incertitude économique
+4. Compatibilité avec une logique long terme (portefeuille)
+5. Cohérence globale du profil
+   (alignement entre :
+   - le moteur profond exprimé,
+   - les contraintes réelles du poste,
+   - et les frictions identifiées)
+
+🔹 RÈGLE DE PONDÉRATION — MOTEUR VS FRICTIONS
+
+AXIOM_ELGAENERGY DOIT distinguer :
+
+• les frictions STRUCTURELLES,
+• des frictions COMPENSABLES par un moteur personnel explicite.
+
+SI le candidat exprime :
+• un objectif personnel clair,
+• concret,
+• non abstrait,
+• ancré dans une réalité de vie (revenu, famille, liberté, sécurité),
+
+ALORS :
+• une ou deux frictions sur la vente, l'exposition ou l'incertitude
+PEUVENT conduire à 🔵 ALIGNEMENT CONDITIONNEL,
+à condition que ces frictions ne soient pas rejetées mais reconnues.
+
+EN REVANCHE :
+SI le candidat rejette explicitement :
+• la vente,
+• l'exposition,
+• ou la logique de revenu lié à l'effort,
+
+ALORS :
+• la friction est considérée comme STRUCTURELLE → 🟠 PAS ALIGNÉ ACTUELLEMENT.
+
+AXIOM_ELGAENERGY DOIT déterminer UNE SEULE ISSUE :
+
+
+🟢 ALIGNÉ  
+🔵 ALIGNEMENT CONDITIONNEL  
+🟠 PAS ALIGNÉ ACTUELLEMENT  
+
+Aucune issue intermédiaire.
+Aucune ambiguïté.
+Aucune reformulation douce.
+
+⸻
+
+⛔ INTERDICTION FORMELLE
+
+AXIOM_ELGAENERGY N'A PAS LE DROIT :
+• de promettre un résultat,
+• de projeter une réussite,
+• de minimiser les exigences du poste,
+• d'adapter le poste au profil.
+
+Le matching évalue une compatibilité.
+Pas un potentiel abstrait.
+
+⸻
+
+🧾 STRUCTURE DE SORTIE — OBLIGATOIRE
+
+La sortie DOIT respecter STRICTEMENT l'ordre suivant :
+
+━━━━━━━━━━━━━━━━━━
+🟢 / 🔵 / 🟠 MATCHING AXIOM — [ISSUE]
+━━━━━━━━━━━━━━━━━━
+
+• 1 phrase de verdict clair
+• 1 paragraphe explicatif maximum
+• Ton mentor, posé, honnête
+• Aucun discours commercial
+• Aucune reformulation de la synthèse AXIOM
+
+🔎 STRUCTURE D'EXPLICATION DU VERDICT (OBLIGATOIRE)
+
+Après l'annonce du verdict,
+AXIOM_ELGAENERGY DOIT produire une lecture structurée
+de la compatibilité entre le profil et le poste.
+
+Cette lecture DOIT :
+• être visuellement lisible,
+• être factuelle,
+• éviter toute justification globale ou floue.
+
+La structure est STRICTEMENT la suivante :
+
+🔎 Lecture de compatibilité
+
+- Rapport au cœur du métier  
+→ expliquer clairement la compatibilité OU la friction
+avec la réalité du poste
+(vente, exposition, effort, incertitude).
+
+- Rapport à la durée  
+→ expliquer la capacité OU la limite
+à soutenir un effort répété dans le temps.
+
+- Cohérence globale  
+→ conclure sur l'alignement ou la dissonance
+entre le fonctionnement réel du profil
+et le cadre réel du poste.
+
+Chaque point :
+• UNE phrase maximum,
+• aucun jugement,
+• aucun conseil,
+aucune projection.
+
+🧭 CADRAGE HUMAIN — OBLIGATOIRE SELON L'ISSUE
+
+AXIOM_ELGAENERGY DOIT ajouter UNE phrase de cadrage humain,
+différente selon l'ISSUE,
+sans jamais édulcorer la décision.
+
+SI ISSUE = 🟠 PAS ALIGNÉ ACTUELLEMENT :
+Ajouter UNE phrase indiquant clairement que
+ce verdict ne remet PAS en cause la valeur du profil,
+mais signale uniquement une incompatibilité
+avec ce poste précis à ce stade.
+Rappeler implicitement que c'est précisément
+le rôle d'AXIOM d'éviter ces mauvais alignements.
+
+SI ISSUE = 🔵 ALIGNEMENT CONDITIONNEL :
+Ajouter UNE phrase indiquant clairement que
+le matching n'est ni un oui automatique,
+ni un non définitif,
+et que certaines conditions devront être réunies
+pour que le poste convienne réellement.
+
+SI ISSUE = 🟢 ALIGNÉ :
+Ajouter UNE phrase indiquant clairement que
+le poste ne demande pas de changer de posture,
+mais permet au fonctionnement naturel du profil
+de s'exprimer pleinement.
+
+Ces phrases ne doivent :
+• ni rassurer artificiellement,
+• ni promettre un résultat,
+• ni minimiser les exigences du poste.
+⸻
+⛔ RÈGLE CONDITIONNELLE DE PROJECTION
+
+Les sections suivantes :
+• 💼 PROJECTION CONCRÈTE — COMMENT ÇA SE TRADUIT
+• 🧭 LE CADRE — POUR T'ACCOMPAGNER DANS LA DURÉE
+
+NE DOIVENT ÊTRE AFFICHÉES QUE SI :
+• ISSUE = 🟢 ALIGNÉ
+• ou ISSUE = 🔵 ALIGNEMENT CONDITIONNEL
+
+SI ISSUE = 🟠 PAS ALIGNÉ ACTUELLEMENT :
+Ces sections sont STRICTEMENT INTERDITES.
+Aucune projection.
+Aucun cadre.
+Aucune anticipation.
+
+💼 PROJECTION CONCRÈTE — COMMENT ÇA SE TRADUIT
+
+AXIOM_ELGAENERGY DOIT :
+
+1. Afficher OBLIGATOIREMENT l'exemple chiffré suivant,
+STRICTEMENT à l'identique, sans aucune modification :
+
+"Une entreprise qui consomme 100 MWh par an sur un contrat de 4 ans, c'est 400 MWh sur la durée.
+Avec une commission moyenne de 3 € par MWh, cela représente 1 200 € pour un seul client."
+
+2. Produire ensuite une lecture personnalisée (2 à 3 phrases maximum) :
+• directement reliée au fonctionnement réel du candidat,
+• basée uniquement sur ce qui a été observé dans son profil,
+• sans phrase générique,
+• sans valorisation automatique.
+
+INTERDICTION FORMELLE :
+• phrases universelles,
+• phrases réutilisables d'un profil à l'autre,
+• formulations du type "c'est là que ton profil prend tout son sens".
+⸻
+
+🧭 LE CADRE — POUR T'ACCOMPAGNER DANS LA DURÉE
+
+AXIOM_ELGAENERGY DOIT :
+
+• décrire le cadre d'accompagnement tel qu'il serait vécu par CE candidat précis,
+• mettre l'accent sur les éléments réellement nécessaires à son fonctionnement
+(structure, exigence, autonomie, sécurisation — selon le profil),
+• rester factuel, incarné, concret.
+
+La formulation doit :
+• varier d'un candidat à l'autre,
+• ne jamais reprendre une phrase existante,
+• éviter toute posture marketing ou slogan.
+
+INTERDICTION :
+• phrases génériques,
+• formules toutes faites,
+• répétitions mot pour mot d'un profil à l'autre.
+⸻
+
+🚀 POUR ALLER PLUS LOIN (BLOC FIGÉ — OBLIGATOIRE)
+
+⚠️ CE BLOC DOIT ÊTRE REPRODUIT À L'IDENTIQUE
+⚠️ AUCUNE MODIFICATION AUTORISÉE
+
+🚀 POUR ALLER PLUS LOIN
+
+🎯 OUVRIR LA DISCUSSION
+
+Si, en lisant ce matching, quelque chose a résonné —
+par curiosité, par projection, ou par vraie envie d'aller plus loin —
+
+alors tu peux ouvrir la discussion.
+
+Pas pour "postuler".
+Pas pour promettre quoi que ce soit.
+Juste pour voir si ce cadre peut réellement devenir concret pour toi.
+
+📩 Envoie ton rapport à :
+contact@elgaenergy.fr
+
+On prendra le temps d'un échange simple, clair et sérieux.
+
+ET Si tu n'as pas laissé ton avis n'oublie pas que ca nous aide énormément ❤️  
+c'est anonyme  
+
+🧠 Contribuer à AXIOM (anonyme)  
+Ton ressenti est ce qui permet à AXIOM de rester juste et utile.  
+Un retour rapide, sans engagement :  
+👉 https://tally.so/r/44JLbB  
+
+⸻
+
+🔒 FIN D'EXÉCUTION — AXIOM_ELGAENERGY
+
+Aucune relance.
+Aucune question.
+Aucune analyse supplémentaire.
+
+Le matching est terminé.`;
+
+    // Menu mobile
+    const menuBtn = document.getElementById('menuBtn');
+    if (menuBtn) {
+      menuBtn.addEventListener('click', () => {
+        const mobileMenu = document.getElementById('mobileMenu');
+        if (mobileMenu) mobileMenu.classList.toggle('hidden');
+      });
+    }
+
+    // Gestion de la vidéo au survol de la carte étape 2 (desktop et mobile)
+    const backgroundVideoDesktop = document.getElementById('backgroundVideoDesktop');
+    const backgroundVideoMobile = document.getElementById('backgroundVideoMobile');
+    const card2 = document.getElementById('card2');
+    
+    // Fonction pour obtenir la vidéo active (desktop ou mobile)
+    function getActiveVideo() {
+      // Vérifie si on est sur mobile (largeur < 768px)
+      const isMobile = window.innerWidth < 768;
+      return isMobile ? backgroundVideoMobile : backgroundVideoDesktop;
+    }
+    
+    if (card2) {
+      // Lance la vidéo au survol de la carte (desktop) ou au touch (mobile)
+      card2.addEventListener('mouseenter', function() {
+        const activeVideo = getActiveVideo();
+        if (activeVideo) {
+          activeVideo.play().catch(function(error) {
+          console.log('Erreur de lecture vidéo:', error);
+        });
+          // Tracking Google Analytics - Vidéo étape 2 démarrée
+          gtag('event', 'video_play', {
+            'event_category': 'Video',
+            'event_label': 'Vidéo étape 2',
+            'value': 2
+          });
+        }
+      });
+      
+      // Pour mobile : lance la vidéo au touch
+      card2.addEventListener('touchstart', function() {
+        const activeVideo = getActiveVideo();
+        if (activeVideo) {
+          activeVideo.play().catch(function(error) {
+            console.log('Erreur de lecture vidéo:', error);
+          });
+          // Tracking Google Analytics - Vidéo étape 2 démarrée (mobile)
+          gtag('event', 'video_play', {
+            'event_category': 'Video',
+            'event_label': 'Vidéo étape 2 (mobile)',
+            'value': 2
+          });
+        }
+      });
+      
+      // Arrête la vidéo quand on quitte le survol (desktop)
+      card2.addEventListener('mouseleave', function() {
+        const activeVideo = getActiveVideo();
+        const isMobile = window.innerWidth < 768;
+        const progressFill = isMobile ? document.getElementById('progressFillMobile') : document.getElementById('progressFillDesktop');
+        if (activeVideo) {
+          activeVideo.pause();
+          activeVideo.currentTime = 0; // Remet la vidéo au début
+          if (progressFill) {
+            progressFill.style.width = '0%'; // Réinitialise la barre de progression
+          }
+        }
+      });
+      
+      // Gestion des erreurs pour les deux vidéos
+      if (backgroundVideoDesktop) {
+        backgroundVideoDesktop.addEventListener('error', function() {
+          console.log('Erreur de chargement de la vidéo desktop. Vérifiez que le fichier existe dans assets/videos/');
+        this.style.display = 'none';
+      });
+      }
+      
+      if (backgroundVideoMobile) {
+        backgroundVideoMobile.addEventListener('error', function() {
+          console.log('Erreur de chargement de la vidéo mobile. Vérifiez que le fichier existe dans assets/videos/');
+          this.style.display = 'none';
+        });
+      }
+      
+      // Gère le changement de vidéo lors du redimensionnement de la fenêtre
+      let resizeTimeout;
+      window.addEventListener('resize', function() {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(function() {
+          // Met en pause la vidéo inactive et remet au début
+          const isMobile = window.innerWidth < 768;
+          if (isMobile && backgroundVideoDesktop) {
+            backgroundVideoDesktop.pause();
+            backgroundVideoDesktop.currentTime = 0;
+          } else if (!isMobile && backgroundVideoMobile) {
+            backgroundVideoMobile.pause();
+            backgroundVideoMobile.currentTime = 0;
+          }
+        }, 250);
+      });
+      
+      // Mise à jour de la barre de progression pour l'étape 2
+      function updateProgressBar2() {
+        const isMobile = window.innerWidth < 768;
+        const activeVideo = isMobile ? backgroundVideoMobile : backgroundVideoDesktop;
+        const progressFill = isMobile ? document.getElementById('progressFillMobile') : document.getElementById('progressFillDesktop');
+        
+        if (activeVideo && progressFill) {
+          const progress = (activeVideo.currentTime / activeVideo.duration) * 100;
+          progressFill.style.width = progress + '%';
+        }
+      }
+      
+      if (backgroundVideoDesktop) {
+        backgroundVideoDesktop.addEventListener('timeupdate', updateProgressBar2);
+      }
+      if (backgroundVideoMobile) {
+        backgroundVideoMobile.addEventListener('timeupdate', updateProgressBar2);
+      }
+    }
+
+    // Gestion de la vidéo au survol de la carte étape 3 (desktop et mobile)
+    const backgroundVideoDesktop3 = document.getElementById('backgroundVideoDesktop3');
+    const backgroundVideoMobile3 = document.getElementById('backgroundVideoMobile3');
+    const card3 = document.getElementById('card3');
+    
+    // Fonction pour obtenir la vidéo active de l'étape 3 (desktop ou mobile)
+    function getActiveVideo3() {
+      // Vérifie si on est sur mobile (largeur < 768px)
+      const isMobile = window.innerWidth < 768;
+      return isMobile ? backgroundVideoMobile3 : backgroundVideoDesktop3;
+    }
+    
+    if (card3) {
+      // Lance la vidéo au survol de la carte (desktop) ou au touch (mobile)
+      card3.addEventListener('mouseenter', function() {
+        const activeVideo = getActiveVideo3();
+        if (activeVideo) {
+          activeVideo.play().catch(function(error) {
+            console.log('Erreur de lecture vidéo étape 3:', error);
+          });
+          // Tracking Google Analytics - Vidéo étape 3 démarrée
+          gtag('event', 'video_play', {
+            'event_category': 'Video',
+            'event_label': 'Vidéo étape 3',
+            'value': 3
+          });
+        }
+      });
+      
+      // Pour mobile : lance la vidéo au touch
+      card3.addEventListener('touchstart', function() {
+        const activeVideo = getActiveVideo3();
+        if (activeVideo) {
+          activeVideo.play().catch(function(error) {
+            console.log('Erreur de lecture vidéo étape 3:', error);
+          });
+          // Tracking Google Analytics - Vidéo étape 3 démarrée (mobile)
+          gtag('event', 'video_play', {
+            'event_category': 'Video',
+            'event_label': 'Vidéo étape 3 (mobile)',
+            'value': 3
+          });
+        }
+      });
+      
+      // Arrête la vidéo quand on quitte le survol (desktop)
+      card3.addEventListener('mouseleave', function() {
+        const activeVideo = getActiveVideo3();
+        const isMobile = window.innerWidth < 768;
+        const progressFill = isMobile ? document.getElementById('progressFillMobile3') : document.getElementById('progressFillDesktop3');
+        if (activeVideo) {
+          activeVideo.pause();
+          activeVideo.currentTime = 0; // Remet la vidéo au début
+          if (progressFill) {
+            progressFill.style.width = '0%'; // Réinitialise la barre de progression
+          }
+        }
+      });
+      
+      // Gestion des erreurs pour les deux vidéos
+      if (backgroundVideoDesktop3) {
+        backgroundVideoDesktop3.addEventListener('error', function() {
+          console.log('Erreur de chargement de la vidéo desktop étape 3. Vérifiez que le fichier existe dans assets/videos/');
+          this.style.display = 'none';
+        });
+      }
+      
+      if (backgroundVideoMobile3) {
+        backgroundVideoMobile3.addEventListener('error', function() {
+          console.log('Erreur de chargement de la vidéo mobile étape 3. Vérifiez que le fichier existe dans assets/videos/');
+          this.style.display = 'none';
+        });
+      }
+      
+      // Gère le changement de vidéo lors du redimensionnement de la fenêtre
+      let resizeTimeout3;
+      window.addEventListener('resize', function() {
+        clearTimeout(resizeTimeout3);
+        resizeTimeout3 = setTimeout(function() {
+          // Met en pause la vidéo inactive et remet au début
+          const isMobile = window.innerWidth < 768;
+          if (isMobile && backgroundVideoDesktop3) {
+            backgroundVideoDesktop3.pause();
+            backgroundVideoDesktop3.currentTime = 0;
+          } else if (!isMobile && backgroundVideoMobile3) {
+            backgroundVideoMobile3.pause();
+            backgroundVideoMobile3.currentTime = 0;
+          }
+        }, 250);
+      });
+      
+      // Mise à jour de la barre de progression pour l'étape 3
+      function updateProgressBar3() {
+        const isMobile = window.innerWidth < 768;
+        const activeVideo = isMobile ? backgroundVideoMobile3 : backgroundVideoDesktop3;
+        const progressFill = isMobile ? document.getElementById('progressFillMobile3') : document.getElementById('progressFillDesktop3');
+        
+        if (activeVideo && progressFill) {
+          const progress = (activeVideo.currentTime / activeVideo.duration) * 100;
+          progressFill.style.width = progress + '%';
+        }
+      }
+      
+      if (backgroundVideoDesktop3) {
+        backgroundVideoDesktop3.addEventListener('timeupdate', updateProgressBar3);
+      }
+      if (backgroundVideoMobile3) {
+        backgroundVideoMobile3.addEventListener('timeupdate', updateProgressBar3);
+      }
+    }
+
+    // Fonction pour passer à une carte spécifique (accessible globalement)
+    window.showCard = function(cardNumber) {
+      // Cache toutes les cartes
+      document.querySelectorAll('.step-card').forEach(card => {
+        card.classList.add('hidden');
+      });
+      
+      // Affiche la carte demandée avec une animation rapide
+      const targetCard = document.getElementById('card' + cardNumber);
+      if (targetCard) {
+        targetCard.classList.remove('hidden');
+        targetCard.style.opacity = '0';
+        targetCard.style.transition = 'opacity 0.2s ease-in-out';
+        
+        // Animation rapide
+        requestAnimationFrame(() => {
+          targetCard.style.opacity = '1';
+        });
+        
+        // Scroll vers la carte
+        targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        
+        // Marquer si l'utilisateur arrive sur la carte 4
+        if (cardNumber === 4) {
+          reachedCard4 = true;
+        }
+      }
+    }
+
+    // Étape 1 : Générer la clé AXIOM
+    document.getElementById('generateAxiomBtn').addEventListener('click', async function() {
+      try {
+        await navigator.clipboard.writeText(axiomPrompt);
+        
+        console.log('✓ Prompt 1 (test AXIOM) copié dans le presse-papiers');
+        
+        // Tracking Google Analytics - Étape 1 complétée
+        gtag('event', 'funnel_step_1_completed', {
+          'event_category': 'Funnel',
+          'event_label': 'Génération clé AXIOM',
+          'value': 1
+        });
+        
+        // Feedback visuel temporaire
+        const originalText = this.querySelector('span').textContent;
+        this.querySelector('span').textContent = '✓ Copié dans le presse-papiers !';
+        this.style.transform = 'scale(0.98)';
+        
+        // Changement de carte immédiat
+        setTimeout(() => {
+          showCard(2);
+        }, 200);
+      } catch (err) {
+        console.log('⚠️ Impossible de copier le prompt 1:', err);
+        // Fallback pour les navigateurs plus anciens
+        const textArea = document.createElement('textarea');
+        textArea.value = axiomPrompt;
+        textArea.style.position = 'fixed';
+        textArea.style.opacity = '0';
+        document.body.appendChild(textArea);
+        textArea.select();
+        try {
+          document.execCommand('copy');
+          
+          // Tracking Google Analytics - Étape 1 complétée (fallback)
+          gtag('event', 'funnel_step_1_completed', {
+            'event_category': 'Funnel',
+            'event_label': 'Génération clé AXIOM (fallback)',
+            'value': 1
+          });
+          
+          const originalText = this.querySelector('span').textContent;
+          this.querySelector('span').textContent = '✓ Copié !';
+          setTimeout(() => {
+            showCard(2);
+          }, 200);
+        } catch (fallbackErr) {
+          alert('Impossible de copier automatiquement. Le texte est trop long.');
+        }
+        document.body.removeChild(textArea);
+      }
+    });
+
+    // Étape 2 : Ouvrir ChatGPT
+    document.getElementById('openChatGPTBtn').addEventListener('click', async function() {
+      // Re-copier le premier prompt (axiomPrompt) au cas où il aurait été perdu
+      try {
+        await navigator.clipboard.writeText(axiomPrompt);
+        console.log('✓ Prompt 1 (test AXIOM) copié dans le presse-papiers');
+      } catch (err) {
+        console.log('⚠️ Impossible de copier le prompt 1:', err);
+      }
+      
+      // Tracking Google Analytics - Étape 2 complétée
+      gtag('event', 'funnel_step_2_completed', {
+        'event_category': 'Funnel',
+        'event_label': 'Ouverture ChatGPT',
+        'value': 2
+      });
+      
+      // Ouvrir ChatGPT dans un nouvel onglet
+      window.open('https://chat.openai.com', '_blank');
+      
+      // Passer à la carte 3 immédiatement
+        showCard(3);
+    });
+
+    // Étape 3 : Générer le matching
+    document.getElementById('generateMatchingBtn').addEventListener('click', async function() {
+      try {
+        await navigator.clipboard.writeText(matchingPrompt);
+        
+        console.log('✓ Prompt 2 (matching) copié dans le presse-papiers');
+        
+        // Tracking Google Analytics - Étape 3 complétée
+        gtag('event', 'funnel_step_3_completed', {
+          'event_category': 'Funnel',
+          'event_label': 'Génération lecture de compatibilité',
+          'value': 3
+        });
+        
+        // Feedback visuel temporaire
+        const originalText = this.querySelector('span').textContent;
+        this.querySelector('span').textContent = '✓ Copié dans le presse-papiers !';
+        this.style.transform = 'scale(0.98)';
+        
+        // Changement de carte immédiat
+        setTimeout(() => {
+          showCard(4);
+        }, 200);
+      } catch (err) {
+        console.log('⚠️ Impossible de copier le prompt 2:', err);
+        // Fallback pour les navigateurs plus anciens
+        const textArea = document.createElement('textarea');
+        textArea.value = matchingPrompt;
+        textArea.style.position = 'fixed';
+        textArea.style.opacity = '0';
+        document.body.appendChild(textArea);
+        textArea.select();
+        try {
+          document.execCommand('copy');
+          
+          // Tracking Google Analytics - Étape 3 complétée (fallback)
+          gtag('event', 'funnel_step_3_completed', {
+            'event_category': 'Funnel',
+            'event_label': 'Génération lecture de compatibilité (fallback)',
+            'value': 3
+          });
+          
+          const originalText = this.querySelector('span').textContent;
+          this.querySelector('span').textContent = '✓ Copié !';
+          setTimeout(() => {
+            showCard(4);
+          }, 200);
+        } catch (fallbackErr) {
+          alert('Impossible de copier automatiquement. Le texte est trop long.');
+        }
+        document.body.removeChild(textArea);
+      }
+    });
+
+    // Note : Pas besoin d'event listener pour l'étape 4
+    // Le prompt est déjà copié à l'étape 3, l'utilisateur n'a plus qu'à retourner sur ChatGPT manuellement
+
+    // Tracking des boutons "Précédent"
+    const prevBtnCard2 = document.getElementById('prevBtnCard2');
+    if (prevBtnCard2) {
+      prevBtnCard2.addEventListener('click', function() {
+        gtag('event', 'funnel_previous_button', {
+          'event_category': 'Funnel',
+          'event_label': 'Bouton précédent - Carte 2 vers Carte 1',
+          'value': 1
+        });
+      });
+    }
+
+    const prevBtnCard3 = document.getElementById('prevBtnCard3');
+    if (prevBtnCard3) {
+      prevBtnCard3.addEventListener('click', function() {
+        gtag('event', 'funnel_previous_button', {
+          'event_category': 'Funnel',
+          'event_label': 'Bouton précédent - Carte 3 vers Carte 2',
+          'value': 2
+        });
+      });
+    }
+
+    const prevBtnCard4 = document.getElementById('prevBtnCard4');
+    if (prevBtnCard4) {
+      prevBtnCard4.addEventListener('click', function() {
+        gtag('event', 'funnel_previous_button', {
+          'event_category': 'Funnel',
+          'event_label': 'Bouton précédent - Carte 4 vers Carte 3',
+          'value': 3
+        });
+      });
+    }
+
+    // Tracking du scroll - Mesure de l'engagement
+    let scroll80Sent = false; // Flag pour éviter d'envoyer l'événement 80% plusieurs fois
+    let scrollLessThan50Sent = false; // Flag pour éviter d'envoyer l'événement < 50% plusieurs fois
+    let maxScrollReached = 0; // Pour suivre le scroll maximum atteint
+    let reachedCard4 = false; // Flag pour savoir si l'utilisateur est arrivé sur la carte 4
+    let leftAfterCard4Sent = false; // Flag pour éviter d'envoyer l'événement plusieurs fois
+    
+    // Fonction pour calculer le pourcentage de scroll
+    function getScrollPercentage() {
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const scrollPercentage = (scrollTop / (documentHeight - windowHeight)) * 100;
+      return Math.min(scrollPercentage, 100); // Limiter à 100%
+    }
+    
+    // Event listener pour le scroll - Suivre le scroll maximum atteint
+    let scrollTimeout;
+    window.addEventListener('scroll', function() {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(function() {
+        const scrollPercentage = getScrollPercentage();
+        maxScrollReached = Math.max(maxScrollReached, scrollPercentage);
+      }, 150); // Debounce pour éviter trop d'appels
+    });
+    
+    // Détecter quand l'utilisateur quitte la page
+    window.addEventListener('beforeunload', function() {
+      // Événement : Quitte après être arrivé sur l'étape 4 (va sur ChatGPT)
+      if (reachedCard4 && !leftAfterCard4Sent) {
+        leftAfterCard4Sent = true;
+        gtag('event', 'funnel_completed_and_left', {
+          'event_category': 'Funnel',
+          'event_label': 'Complète le funnel et quitte pour ChatGPT',
+          'value': 4
+        });
+      }
+      
+      // Événement : Quitte avant 50% de scroll
+      if (maxScrollReached < 50 && !scrollLessThan50Sent && !scroll80Sent) {
+        // Utiliser sendBeacon pour envoyer l'événement même si la page se ferme
+        if (navigator.sendBeacon) {
+          // Note: sendBeacon nécessite une URL, on ne peut pas l'utiliser directement avec gtag
+          // On va plutôt utiliser visibilitychange qui est plus fiable
+        }
+      }
+    });
+    
+    // Alternative plus fiable : utiliser visibilitychange
+    document.addEventListener('visibilitychange', function() {
+      if (document.hidden) {
+        // L'utilisateur quitte ou change d'onglet
+        
+        // Événement : Quitte après être arrivé sur l'étape 4 (va sur ChatGPT)
+        if (reachedCard4 && !leftAfterCard4Sent) {
+          leftAfterCard4Sent = true;
+          gtag('event', 'funnel_completed_and_left', {
+            'event_category': 'Funnel',
+            'event_label': 'Complète le funnel et quitte pour ChatGPT',
+            'value': 4
+          });
+        }
+        
+        // Événement : Quitte avant 50% de scroll
+        if (maxScrollReached < 50 && !scrollLessThan50Sent && !scroll80Sent) {
+          scrollLessThan50Sent = true;
+          gtag('event', 'scroll_less_than_50', {
+            'event_category': 'Engagement',
+            'event_label': 'Quitte la page avant 50% de scroll - Pas de lecture',
+            'value': maxScrollReached
+          });
+        }
+      }
+    });
+    
+    // IntersectionObserver pour détecter quand le bloc AXIOM est visible (80% de scroll)
+    const blocAxiom = document.getElementById('bloc-axiom');
+    if (blocAxiom) {
+      const observerAxiom = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !scroll80Sent) {
+            scroll80Sent = true;
+            gtag('event', 'scroll_80_percent', {
+              'event_category': 'Engagement',
+              'event_label': 'Scroll jusqu\'à 80% - Bloc AXIOM visible',
+              'value': 80
+            });
+          }
+        });
+      }, {
+        threshold: 0.5 // Déclenche quand au moins 50% du bloc est visible
+      });
+      
+      observerAxiom.observe(blocAxiom);
+    }
+
+    // Effet de typing pour la citation - déclenché au scroll
+    const quoteText = "- L'alignement parfait ne doit plus être du hasard...\nMais une évidence -";
+    const typedTextLine1 = document.querySelector('.typed-text-line1');
+    const typedTextLine2 = document.querySelector('.typed-text-line2');
+    const typingQuoteSection = document.getElementById('typing-quote');
+    
+    let hasAnimated = false; // Flag pour s'assurer que l'animation ne se déclenche qu'une fois
+    
+    if (typedTextLine1 && typedTextLine2 && typingQuoteSection) {
+      const typingSpeed = 80; // millisecondes par caractère
+      
+      function startTyping() {
+        if (hasAnimated) return; // Ne pas relancer si déjà animé
+        hasAnimated = true;
+        
+        let charIndex = 0;
+        let line1Text = '';
+        let line2Text = '';
+        let isLine2 = false;
+        
+        function typeText() {
+          if (charIndex < quoteText.length) {
+            const char = quoteText.charAt(charIndex);
+            // Gérer les sauts de ligne
+            if (char === '\n') {
+              isLine2 = true;
+            } else {
+              // Échapper les caractères HTML spéciaux
+              const escapedChar = char.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+              if (isLine2) {
+                line2Text += escapedChar;
+                typedTextLine2.textContent = line2Text;
+              } else {
+                line1Text += escapedChar;
+                typedTextLine1.textContent = line1Text;
+              }
+            }
+            charIndex++;
+            setTimeout(typeText, typingSpeed);
+          }
+        }
+        
+        // Attendre 300ms avant de commencer l'animation
+        setTimeout(() => {
+          typeText();
+        }, 300);
+      }
+      
+      // Intersection Observer pour détecter quand la section entre dans le viewport
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !hasAnimated) {
+            startTyping();
+            // Désobserver après le premier déclenchement
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.3 // Déclenche quand 30% de la section est visible
+      });
+      
+      observer.observe(typingQuoteSection);
+    }
+  </script>
+
+</body>
