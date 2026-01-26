@@ -539,20 +539,20 @@ AXIOM identifie le bon cadre avant de parler de résultats.
             <!-- Partie avec texte (en haut) -->
             <div class="text-section p-8 bg-white flex flex-col justify-center items-center">
               <h4 class="text-xl font-bold text-slate-900 mb-6">
-                Étape 2 : Copiez le prompt et allez sur ChatGPT
+                Étape 2 : Ouvrez ChatGPT
               </h4>
-              <button id="copyAxiomPromptBtn" class="lighthouse-button w-full text-white font-semibold py-4 px-6 rounded-full shadow-md mb-5 relative overflow-hidden">
+              <button id="openChatGPTBtn" class="lighthouse-button w-full text-white font-semibold py-4 px-6 rounded-full shadow-md mb-5 relative overflow-hidden">
                 <span class="relative z-10 flex items-center justify-center gap-2">
                   <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                   </svg>
-                  COPIER LE PROMPT AXIOM
+                  OUVRIR CHATGPT
                 </span>
               </button>
               <p class="text-sm text-slate-600 text-center leading-relaxed mb-6">
-                <strong>Le prompt est copié !</strong><br>
-                Ouvrez ChatGPT dans un nouvel onglet,<br>
-                collez le prompt et commencez votre profil AXIOM.
+                <strong>Le prompt est déjà copié !</strong><br>
+                Cliquez sur le bouton pour ouvrir ChatGPT dans un nouvel onglet,<br>
+                puis collez le prompt et commencez votre profil AXIOM.
               </p>
             </div>
             <!-- Partie avec vidéo (en bas) -->
@@ -601,11 +601,16 @@ AXIOM identifie le bon cadre avant de parler de résultats.
             <!-- Partie inférieure avec texte -->
             <div class="text-section p-8 bg-white flex flex-col justify-center items-center">
             <h4 class="text-xl font-bold text-slate-900 mb-6">
-              Étape 3 : Découvrez le résultat en un clic
+              Étape 3 : Copiez le deuxième prompt
             </h4>
               <div class="flex-grow flex flex-col justify-center w-full">
               <button id="generateMatchingBtn" class="lighthouse-button w-full text-white font-semibold py-4 px-6 rounded-full shadow-md mb-6 relative overflow-hidden">
-                <span class="relative z-10">GÉNÉRER MA LECTURE DE COMPATIBILITÉ</span>
+                <span class="relative z-10 flex items-center justify-center gap-2">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                  </svg>
+                  COPIER LE PROMPT DE MATCHING
+                </span>
               </button>
               <div class="badges-container">
                 <div class="badge-item">
@@ -634,7 +639,7 @@ AXIOM identifie le bon cadre avant de parler de résultats.
           <!-- Card 4 - Étape 4 (Nouvelle) -->
           <div id="card4" class="step-card hidden bg-white rounded-2xl shadow-lg p-8 flex flex-col">
             <h4 class="text-xl font-bold text-slate-900 mb-6">
-              Étape 4 : Obtenez votre lecture de compatibilité
+              Étape 4 : Collez le deuxième prompt dans ChatGPT
             </h4>
             <div class="flex-grow flex flex-col justify-center items-center">
               <div class="mb-6 text-center">
@@ -644,18 +649,18 @@ AXIOM identifie le bon cadre avant de parler de résultats.
                 <p class="text-lg text-slate-700 font-medium mb-4">
                   Dernière étape !
                 </p>
-                <p class="text-base text-slate-600 leading-relaxed">
-                  Une fois votre profil AXIOM complété dans ChatGPT,<br>
-                  vous recevrez votre lecture de compatibilité<br>
-                  directement dans la conversation.
+                <p class="text-base text-slate-600 leading-relaxed mb-4">
+                  Le deuxième prompt est copié dans votre presse-papiers.<br>
+                  Retournez sur ChatGPT et collez-le<br>
+                  <strong>à la suite de votre conversation</strong> pour obtenir votre lecture de compatibilité.
                 </p>
               </div>
               <div class="w-full bg-primary-50 border border-primary-200 rounded-xl p-6 text-center mb-6">
                 <p class="text-sm text-primary-800 font-semibold mb-3">
-                  ✅ Votre profil AXIOM est en cours dans ChatGPT
+                  ✅ Le prompt de matching est copié !
                 </p>
                 <p class="text-xs text-primary-700">
-                  👆 Retournez sur ChatGPT pour continuer et voir vos résultats !
+                  👆 Retournez sur ChatGPT, collez le prompt à la suite de la conversation et obtenez vos résultats !
                 </p>
               </div>
             </div>
@@ -2698,58 +2703,27 @@ Le matching est terminé.`;
       }
     });
 
-    // Étape 2 : Copier le prompt AXIOM
-    document.getElementById('copyAxiomPromptBtn').addEventListener('click', async function() {
-      try {
-        await navigator.clipboard.writeText(axiomPrompt);
-        
-        console.log('✓ Prompt AXIOM copié dans le presse-papiers');
-        
-        // Tracking Google Analytics - Étape 2 complétée
-        gtag('event', 'funnel_step_2_completed', {
-          'event_category': 'Funnel',
-          'event_label': 'Copie prompt AXIOM',
-          'value': 2
-        });
-        
-        // Feedback visuel temporaire
-        const originalText = this.querySelector('span').textContent;
-        this.querySelector('span').textContent = '✓ Copié dans le presse-papiers !';
-        this.style.transform = 'scale(0.98)';
-        
-        // Changement de carte après un court délai
-        setTimeout(() => {
-          showCard(3);
-        }, 200);
-      } catch (err) {
-        console.log('⚠️ Impossible de copier le prompt AXIOM:', err);
-        // Fallback pour les navigateurs plus anciens
-        const textArea = document.createElement('textarea');
-        textArea.value = axiomPrompt;
-        textArea.style.position = 'fixed';
-        textArea.style.opacity = '0';
-        document.body.appendChild(textArea);
-        textArea.select();
-        try {
-          document.execCommand('copy');
-          
-          // Tracking Google Analytics - Étape 2 complétée (fallback)
-          gtag('event', 'funnel_step_2_completed', {
-            'event_category': 'Funnel',
-            'event_label': 'Copie prompt AXIOM (fallback)',
-            'value': 2
-          });
-          
-          const originalText = this.querySelector('span').textContent;
-          this.querySelector('span').textContent = '✓ Copié !';
-          setTimeout(() => {
-            showCard(3);
-          }, 200);
-        } catch (fallbackErr) {
-          alert('Impossible de copier automatiquement. Le texte est trop long.');
-        }
-        document.body.removeChild(textArea);
-      }
+    // Étape 2 : Ouvrir ChatGPT dans un nouvel onglet
+    document.getElementById('openChatGPTBtn').addEventListener('click', function() {
+      // Ouvrir ChatGPT dans un nouvel onglet
+      window.open('https://chat.openai.com', '_blank');
+      
+      // Tracking Google Analytics - Étape 2 complétée
+      gtag('event', 'funnel_step_2_completed', {
+        'event_category': 'Funnel',
+        'event_label': 'Ouverture ChatGPT',
+        'value': 2
+      });
+      
+      // Feedback visuel temporaire
+      const originalText = this.querySelector('span').textContent;
+      this.querySelector('span').textContent = '✓ ChatGPT ouvert !';
+      this.style.transform = 'scale(0.98)';
+      
+      // Changement de carte après un court délai
+      setTimeout(() => {
+        showCard(3);
+      }, 500);
     });
 
     // Étape 3 : Générer le matching
