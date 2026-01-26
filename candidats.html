@@ -539,15 +539,20 @@ AXIOM identifie le bon cadre avant de parler de résultats.
             <!-- Partie avec texte (en haut) -->
             <div class="text-section p-8 bg-white flex flex-col justify-center items-center">
               <h4 class="text-xl font-bold text-slate-900 mb-6">
-                Étape 2 : Lancez AXIOM
+                Étape 2 : Lancez AXIOM dans ChatGPT
               </h4>
-              <a href="/axiom" id="openAxiomBtn" class="lighthouse-button w-full text-white font-semibold py-4 px-6 rounded-full shadow-md mb-5 relative overflow-hidden block text-center">
-                <span class="relative z-10">Démarrer AXIOM</span>
-              </a>
+              <button id="copyAxiomPromptBtn" class="lighthouse-button w-full text-white font-semibold py-4 px-6 rounded-full shadow-md mb-5 relative overflow-hidden">
+                <span class="relative z-10 flex items-center justify-center gap-2">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                  </svg>
+                  COPIER LE PROMPT AXIOM
+                </span>
+              </button>
               <p class="text-sm text-slate-600 text-center leading-relaxed mb-6">
-                <strong>Commencez votre profil AXIOM</strong><br>
-                Répondez aux questions pour découvrir votre profil<br>
-                et voir si vous matchez avec le poste.
+                <strong>Ouvrez ChatGPT dans un nouvel onglet</strong><br>
+                Collez le prompt copié et commencez votre profil AXIOM.<br>
+                Répondez aux questions pour découvrir votre profil.
               </p>
             </div>
             <!-- Partie avec vidéo (en bas) -->
@@ -640,17 +645,17 @@ AXIOM identifie le bon cadre avant de parler de résultats.
                   Dernière étape !
                 </p>
                 <p class="text-base text-slate-600 leading-relaxed">
-                  Une fois votre profil AXIOM complété,<br>
-                  vous recevrez automatiquement votre lecture de compatibilité<br>
-                  directement sur la plateforme.
+                  Une fois votre profil AXIOM complété dans ChatGPT,<br>
+                  vous recevrez votre lecture de compatibilité<br>
+                  directement dans la conversation.
                 </p>
               </div>
               <div class="w-full bg-primary-50 border border-primary-200 rounded-xl p-6 text-center mb-6">
                 <p class="text-sm text-primary-800 font-semibold mb-3">
-                  ✅ Votre profil AXIOM est en cours
+                  ✅ Votre profil AXIOM est en cours dans ChatGPT
                 </p>
                 <p class="text-xs text-primary-700">
-                  👆 Retournez sur la plateforme AXIOM pour continuer et voir vos résultats !
+                  👆 Retournez sur ChatGPT pour continuer et voir vos résultats !
                 </p>
               </div>
             </div>
@@ -2693,40 +2698,59 @@ Le matching est terminé.`;
       }
     });
 
-    // Étape 2 : Rediriger vers la plateforme AXIOM native
-    const openAxiomBtn = document.getElementById('openAxiomBtn');
-    if (openAxiomBtn) {
-      openAxiomBtn.addEventListener('click', function(e) {
-        e.preventDefault(); // Empêcher la redirection par défaut
+    // Étape 2 : Copier le prompt AXIOM
+    document.getElementById('copyAxiomPromptBtn').addEventListener('click', async function() {
+      try {
+        await navigator.clipboard.writeText(axiomPrompt);
+        
+        console.log('✓ Prompt AXIOM copié dans le presse-papiers');
         
         // Tracking Google Analytics - Étape 2 complétée
-        if (typeof gtag !== 'undefined') {
+        gtag('event', 'funnel_step_2_completed', {
+          'event_category': 'Funnel',
+          'event_label': 'Copie prompt AXIOM',
+          'value': 2
+        });
+        
+        // Feedback visuel temporaire
+        const originalText = this.querySelector('span').textContent;
+        this.querySelector('span').textContent = '✓ Copié dans le presse-papiers !';
+        this.style.transform = 'scale(0.98)';
+        
+        // Changement de carte après un court délai
+        setTimeout(() => {
+          showCard(3);
+        }, 200);
+      } catch (err) {
+        console.log('⚠️ Impossible de copier le prompt AXIOM:', err);
+        // Fallback pour les navigateurs plus anciens
+        const textArea = document.createElement('textarea');
+        textArea.value = axiomPrompt;
+        textArea.style.position = 'fixed';
+        textArea.style.opacity = '0';
+        document.body.appendChild(textArea);
+        textArea.select();
+        try {
+          document.execCommand('copy');
+          
+          // Tracking Google Analytics - Étape 2 complétée (fallback)
           gtag('event', 'funnel_step_2_completed', {
             'event_category': 'Funnel',
-            'event_label': 'Redirection vers plateforme AXIOM',
+            'event_label': 'Copie prompt AXIOM (fallback)',
             'value': 2
           });
+          
+          const originalText = this.querySelector('span').textContent;
+          this.querySelector('span').textContent = '✓ Copié !';
+          setTimeout(() => {
+            showCard(3);
+          }, 200);
+        } catch (fallbackErr) {
+          alert('Impossible de copier automatiquement. Le texte est trop long.');
         }
-        
-        // Déterminer l'URL AXIOM selon l'environnement
-        const hostname = window.location.hostname;
-        let axiomUrl = '/axiom'; // Par défaut : production
-        
-        if (hostname === 'localhost' || hostname === '127.0.0.1') {
-          // Environnement local : rediriger vers le serveur Node.js sur le port 3000
-          axiomUrl = 'http://localhost:3000/axiom';
-        } else if (hostname.includes('manus.computer')) {
-          // Environnement Manus
-          axiomUrl = 'https://3000-iarv8cewnrhgf63blt2ts-301cacd5.us2.manus.computer/axiom';
-        } else if (hostname.includes('elgaenergy.com')) {
-          // Production : utiliser le chemin relatif
-          axiomUrl = '/axiom';
-        }
-        
-        // Redirection vers la plateforme AXIOM
-        window.location.href = axiomUrl;
-      });
-    }
+        document.body.removeChild(textArea);
+      }
+    });
 
     // Étape 3 : Générer le matching
     document.getElementById('generateMatchingBtn').addEventListener('click', async function() {
@@ -2781,9 +2805,6 @@ Le matching est terminé.`;
         document.body.removeChild(textArea);
       }
     });
-
-    // Note : Les boutons "Précédent" ont été supprimés car l'intégration native AXIOM
-    // gère maintenant la navigation directement dans la plateforme
 
     // Tracking du scroll - Mesure de l'engagement
     let scroll80Sent = false; // Flag pour éviter d'envoyer l'événement 80% plusieurs fois
