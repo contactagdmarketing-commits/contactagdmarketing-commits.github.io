@@ -541,20 +541,14 @@ AXIOM identifie le bon cadre avant de parler de résultats.
               <h4 class="text-xl font-bold text-slate-900 mb-6">
                 Étape 2 : Lancez AXIOM
               </h4>
-              <button id="openChatGPTBtn" class="lighthouse-button w-full text-white font-semibold py-4 px-6 rounded-full shadow-md mb-5 relative overflow-hidden">
-                <span class="relative z-10">Ouvrir ChatGPT et démarrer AXIOM</span>
-              </button>
+              <a href="/axiom" id="openAxiomBtn" class="lighthouse-button w-full text-white font-semibold py-4 px-6 rounded-full shadow-md mb-5 relative overflow-hidden block text-center">
+                <span class="relative z-10">Démarrer AXIOM</span>
+              </a>
               <p class="text-sm text-slate-600 text-center leading-relaxed mb-6">
-                <strong>Le premier prompt est dans votre presse-papiers</strong><br>
-                Collez-le dans ChatGPT pour démarrer le test AXIOM<br>
-                et laissez-vous guider.
+                <strong>Commencez votre profil AXIOM</strong><br>
+                Répondez aux questions pour découvrir votre profil<br>
+                et voir si vous matchez avec le poste.
               </p>
-              <button id="prevBtnCard2" onclick="showCard(1)" class="text-slate-500 hover:text-primary-600 text-sm font-medium flex items-center gap-2 transition-colors">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-                </svg>
-                Précédent
-              </button>
             </div>
             <!-- Partie avec vidéo (en bas) -->
             <div class="video-section relative">
@@ -628,12 +622,6 @@ AXIOM identifie le bon cadre avant de parler de résultats.
               <p class="text-sm text-slate-600 text-center mt-6 mb-4">
                 Si ça a matché, on se rencontre pour de vrai.
               </p>
-              <button id="prevBtnCard3" onclick="showCard(2)" class="text-slate-500 hover:text-primary-600 text-sm font-medium flex items-center gap-2 transition-colors mx-auto">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-                </svg>
-                Précédent
-              </button>
               </div>
             </div>
           </div>
@@ -652,34 +640,19 @@ AXIOM identifie le bon cadre avant de parler de résultats.
                   Dernière étape !
                 </p>
                 <p class="text-base text-slate-600 leading-relaxed">
-                  <strong>1.</strong> Retournez sur l'onglet ChatGPT<br>
-                  <strong>2.</strong> Collez (Cmd+V ou Ctrl+V) dans le chat<br>
-                  <strong>3.</strong> Envoyez pour obtenir votre lecture de compatibilité
+                  Une fois votre profil AXIOM complété,<br>
+                  vous recevrez automatiquement votre lecture de compatibilité<br>
+                  directement sur la plateforme.
                 </p>
               </div>
               <div class="w-full bg-primary-50 border border-primary-200 rounded-xl p-6 text-center mb-6">
                 <p class="text-sm text-primary-800 font-semibold mb-3">
-                  ✅ Prompt de lecture de compatibilité copié !
+                  ✅ Votre profil AXIOM est en cours
                 </p>
-                <div class="bg-white/70 rounded-lg p-4 mb-3">
-                  <p class="text-xs text-slate-600 mb-2">
-                    Le prompt est dans votre presse-papiers
-                  </p>
-                  <p class="text-lg font-bold text-primary-600">
-                    Cmd+V <span class="text-slate-400">/</span> Ctrl+V
-                  </p>
-                </div>
                 <p class="text-xs text-primary-700">
-                  👆 Cliquez sur l'onglet <strong>"Début d'analyse AXIOM"</strong> dans votre navigateur,<br>
-                  collez le prompt dans ChatGPT et envoyez pour voir votre lecture de compatibilité !
+                  👆 Retournez sur la plateforme AXIOM pour continuer et voir vos résultats !
                 </p>
               </div>
-              <button id="prevBtnCard4" onclick="showCard(3)" class="text-slate-500 hover:text-primary-600 text-sm font-medium flex items-center gap-2 transition-colors">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-                </svg>
-                Précédent
-              </button>
             </div>
           </div>
 
@@ -2720,29 +2693,40 @@ Le matching est terminé.`;
       }
     });
 
-    // Étape 2 : Ouvrir ChatGPT
-    document.getElementById('openChatGPTBtn').addEventListener('click', async function() {
-      // Re-copier le premier prompt (axiomPrompt) au cas où il aurait été perdu
-      try {
-        await navigator.clipboard.writeText(axiomPrompt);
-        console.log('✓ Prompt 1 (test AXIOM) copié dans le presse-papiers');
-      } catch (err) {
-        console.log('⚠️ Impossible de copier le prompt 1:', err);
-      }
-      
-      // Tracking Google Analytics - Étape 2 complétée
-      gtag('event', 'funnel_step_2_completed', {
-        'event_category': 'Funnel',
-        'event_label': 'Ouverture ChatGPT',
-        'value': 2
+    // Étape 2 : Rediriger vers la plateforme AXIOM native
+    const openAxiomBtn = document.getElementById('openAxiomBtn');
+    if (openAxiomBtn) {
+      openAxiomBtn.addEventListener('click', function(e) {
+        e.preventDefault(); // Empêcher la redirection par défaut
+        
+        // Tracking Google Analytics - Étape 2 complétée
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'funnel_step_2_completed', {
+            'event_category': 'Funnel',
+            'event_label': 'Redirection vers plateforme AXIOM',
+            'value': 2
+          });
+        }
+        
+        // Déterminer l'URL AXIOM selon l'environnement
+        const hostname = window.location.hostname;
+        let axiomUrl = '/axiom'; // Par défaut : production
+        
+        if (hostname === 'localhost' || hostname === '127.0.0.1') {
+          // Environnement local : rediriger vers le serveur Node.js sur le port 3000
+          axiomUrl = 'http://localhost:3000/axiom';
+        } else if (hostname.includes('manus.computer')) {
+          // Environnement Manus
+          axiomUrl = 'https://3000-iarv8cewnrhgf63blt2ts-301cacd5.us2.manus.computer/axiom';
+        } else if (hostname.includes('elgaenergy.com')) {
+          // Production : utiliser le chemin relatif
+          axiomUrl = '/axiom';
+        }
+        
+        // Redirection vers la plateforme AXIOM
+        window.location.href = axiomUrl;
       });
-      
-      // Ouvrir ChatGPT dans un nouvel onglet
-      window.open('https://chat.openai.com', '_blank');
-      
-      // Passer à la carte 3 immédiatement
-        showCard(3);
-    });
+    }
 
     // Étape 3 : Générer le matching
     document.getElementById('generateMatchingBtn').addEventListener('click', async function() {
@@ -2798,42 +2782,8 @@ Le matching est terminé.`;
       }
     });
 
-    // Note : Pas besoin d'event listener pour l'étape 4
-    // Le prompt est déjà copié à l'étape 3, l'utilisateur n'a plus qu'à retourner sur ChatGPT manuellement
-
-    // Tracking des boutons "Précédent"
-    const prevBtnCard2 = document.getElementById('prevBtnCard2');
-    if (prevBtnCard2) {
-      prevBtnCard2.addEventListener('click', function() {
-        gtag('event', 'funnel_previous_button', {
-          'event_category': 'Funnel',
-          'event_label': 'Bouton précédent - Carte 2 vers Carte 1',
-          'value': 1
-        });
-      });
-    }
-
-    const prevBtnCard3 = document.getElementById('prevBtnCard3');
-    if (prevBtnCard3) {
-      prevBtnCard3.addEventListener('click', function() {
-        gtag('event', 'funnel_previous_button', {
-          'event_category': 'Funnel',
-          'event_label': 'Bouton précédent - Carte 3 vers Carte 2',
-          'value': 2
-        });
-      });
-    }
-
-    const prevBtnCard4 = document.getElementById('prevBtnCard4');
-    if (prevBtnCard4) {
-      prevBtnCard4.addEventListener('click', function() {
-        gtag('event', 'funnel_previous_button', {
-          'event_category': 'Funnel',
-          'event_label': 'Bouton précédent - Carte 4 vers Carte 3',
-          'value': 3
-        });
-      });
-    }
+    // Note : Les boutons "Précédent" ont été supprimés car l'intégration native AXIOM
+    // gère maintenant la navigation directement dans la plateforme
 
     // Tracking du scroll - Mesure de l'engagement
     let scroll80Sent = false; // Flag pour éviter d'envoyer l'événement 80% plusieurs fois
@@ -2851,20 +2801,48 @@ Le matching est terminé.`;
       return Math.min(scrollPercentage, 100); // Limiter à 100%
     }
     
-    // Event listener pour le scroll - Suivre le scroll maximum atteint
+    // Event listener pour le scroll - Suivre le scroll maximum atteint et envoyer les événements
     let scrollTimeout;
+    let scrollInactivityTimeout;
+    let lastScrollTime = Date.now();
+    
     window.addEventListener('scroll', function() {
+      lastScrollTime = Date.now();
       clearTimeout(scrollTimeout);
+      clearTimeout(scrollInactivityTimeout);
+      
       scrollTimeout = setTimeout(function() {
         const scrollPercentage = getScrollPercentage();
         maxScrollReached = Math.max(maxScrollReached, scrollPercentage);
+        
+        // Envoyer l'événement scroll_80_percent dès que 80% est atteint
+        if (maxScrollReached >= 80 && !scroll80Sent && typeof gtag !== 'undefined') {
+          scroll80Sent = true;
+          gtag('event', 'scroll_80_percent', {
+            'event_category': 'Engagement',
+            'event_label': 'Scroll jusqu\'à 80% - Bloc AXIOM visible',
+            'value': Math.round(maxScrollReached)
+          });
+        }
       }, 150); // Debounce pour éviter trop d'appels
-    });
+      
+      // Vérification d'inactivité : si l'utilisateur n'a pas scrollé depuis 10 secondes et est en dessous de 50%
+      scrollInactivityTimeout = setTimeout(function() {
+        if (maxScrollReached < 50 && !scrollLessThan50Sent && !scroll80Sent && typeof gtag !== 'undefined') {
+          scrollLessThan50Sent = true;
+          gtag('event', 'scroll_less_than_50', {
+            'event_category': 'Engagement',
+            'event_label': 'Inactivité de scroll - Moins de 50% de scroll',
+            'value': Math.round(maxScrollReached)
+          });
+        }
+      }, 10000); // 10 secondes d'inactivité
+    }, { passive: true });
     
     // Détecter quand l'utilisateur quitte la page
     window.addEventListener('beforeunload', function() {
       // Événement : Quitte après être arrivé sur l'étape 4 (va sur ChatGPT)
-      if (reachedCard4 && !leftAfterCard4Sent) {
+      if (reachedCard4 && !leftAfterCard4Sent && typeof gtag !== 'undefined') {
         leftAfterCard4Sent = true;
         gtag('event', 'funnel_completed_and_left', {
           'event_category': 'Funnel',
@@ -2874,12 +2852,13 @@ Le matching est terminé.`;
       }
       
       // Événement : Quitte avant 50% de scroll
-      if (maxScrollReached < 50 && !scrollLessThan50Sent && !scroll80Sent) {
-        // Utiliser sendBeacon pour envoyer l'événement même si la page se ferme
-        if (navigator.sendBeacon) {
-          // Note: sendBeacon nécessite une URL, on ne peut pas l'utiliser directement avec gtag
-          // On va plutôt utiliser visibilitychange qui est plus fiable
-        }
+      if (maxScrollReached < 50 && !scrollLessThan50Sent && !scroll80Sent && typeof gtag !== 'undefined') {
+        scrollLessThan50Sent = true;
+        gtag('event', 'scroll_less_than_50', {
+          'event_category': 'Engagement',
+          'event_label': 'Quitte la page avant 50% de scroll - Pas de lecture',
+          'value': Math.round(maxScrollReached)
+        });
       }
     });
     
@@ -2889,7 +2868,7 @@ Le matching est terminé.`;
         // L'utilisateur quitte ou change d'onglet
         
         // Événement : Quitte après être arrivé sur l'étape 4 (va sur ChatGPT)
-        if (reachedCard4 && !leftAfterCard4Sent) {
+        if (reachedCard4 && !leftAfterCard4Sent && typeof gtag !== 'undefined') {
           leftAfterCard4Sent = true;
           gtag('event', 'funnel_completed_and_left', {
             'event_category': 'Funnel',
@@ -2899,23 +2878,25 @@ Le matching est terminé.`;
         }
         
         // Événement : Quitte avant 50% de scroll
-        if (maxScrollReached < 50 && !scrollLessThan50Sent && !scroll80Sent) {
+        if (maxScrollReached < 50 && !scrollLessThan50Sent && !scroll80Sent && typeof gtag !== 'undefined') {
           scrollLessThan50Sent = true;
           gtag('event', 'scroll_less_than_50', {
             'event_category': 'Engagement',
             'event_label': 'Quitte la page avant 50% de scroll - Pas de lecture',
-            'value': maxScrollReached
+            'value': Math.round(maxScrollReached)
           });
         }
       }
     });
     
+    
     // IntersectionObserver pour détecter quand le bloc AXIOM est visible (80% de scroll)
+    // Ceci est un backup au cas où le scroll direct ne fonctionne pas
     const blocAxiom = document.getElementById('bloc-axiom');
     if (blocAxiom) {
       const observerAxiom = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-          if (entry.isIntersecting && !scroll80Sent) {
+          if (entry.isIntersecting && !scroll80Sent && typeof gtag !== 'undefined') {
             scroll80Sent = true;
             gtag('event', 'scroll_80_percent', {
               'event_category': 'Engagement',
