@@ -488,11 +488,11 @@ AXIOM identifie le bon cadre avant de parler de résultats.
                 </svg>
               </div>
               <h4 class="text-2xl font-bold text-slate-900 mb-3">
-                Étape 1 : Récupérez votre Clé
+                Démarrer votre profil AXIOM
             </h4>
               <p class="text-base text-slate-600 leading-relaxed max-w-md mx-auto">
-                Cette clé est votre accès unique à AXIOM.<br>
-                Elle contient tout ce dont vous avez besoin pour démarrer votre analyse personnalisée.
+                Commencez votre analyse personnalisée directement sur notre plateforme.<br>
+                Un questionnaire interactif vous attend pour mieux comprendre votre fonctionnement professionnel.
               </p>
             </div>
             
@@ -506,36 +506,36 @@ AXIOM identifie le bon cadre avant de parler de résultats.
                     Comment ça marche ?
                   </p>
                   <p class="text-sm text-primary-700 leading-relaxed">
-                    En cliquant sur le bouton, la clé sera automatiquement copiée dans votre presse-papiers.<br>
-                    Vous n'aurez plus qu'à la coller dans ChatGPT à l'étape suivante.
+                    En cliquant sur le bouton, vous serez redirigé vers notre plateforme AXIOM.<br>
+                    Vous pourrez y compléter votre profil en répondant à une série de questions interactives.
                   </p>
                 </div>
               </div>
             </div>
 
             <div class="flex-grow flex flex-col justify-center">
-              <button id="generateAxiomBtn" class="lighthouse-button w-full text-white font-semibold py-4 px-6 rounded-full shadow-md mb-4 relative overflow-hidden">
+              <button id="startAxiomBtn" class="lighthouse-button w-full text-white font-semibold py-4 px-6 rounded-full shadow-md mb-4 relative overflow-hidden">
                 <span class="relative z-10 flex items-center justify-center gap-2">
                   <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
-                  GÉNÉRER MON ACCÈS AXIOM
+                  DÉMARRER AXIOM
                 </span>
               </button>
               
               <div class="text-center space-y-2">
                 <p class="text-sm text-slate-500">
-                  ✓ Clé copiée automatiquement
+                  ✓ Accès direct à la plateforme
                 </p>
                 <p class="text-xs text-slate-400">
-                  Temps estimé : 2 secondes
+                  Temps estimé : 15-20 minutes
                 </p>
               </div>
             </div>
           </div>
 
-          <!-- Card 2 - Étape 2 -->
-          <div id="card2" class="step-card hidden video-card rounded-2xl shadow-lg flex flex-col relative overflow-hidden">
+          <!-- Card 2 - Étape 2 (Masquée - Intégration native) -->
+          <div id="card2" class="step-card video-card rounded-2xl shadow-lg flex flex-col relative overflow-hidden" style="display: none !important;">
             <!-- Partie avec texte (en haut) -->
             <div class="text-section p-8 bg-white flex flex-col justify-center items-center">
               <h4 class="text-xl font-bold text-slate-900 mb-6">
@@ -554,6 +554,12 @@ AXIOM identifie le bon cadre avant de parler de résultats.
                 Cliquez sur le bouton pour ouvrir ChatGPT dans un nouvel onglet,<br>
                 puis collez le prompt et commencez votre profil AXIOM.
               </p>
+              <button id="prevBtnCard2" class="mt-4 text-sm text-slate-600 hover:text-slate-900 flex items-center gap-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                </svg>
+                Précédent
+              </button>
             </div>
             <!-- Partie avec vidéo (en bas) -->
             <div class="video-section relative">
@@ -577,8 +583,8 @@ AXIOM identifie le bon cadre avant de parler de résultats.
             </div>
           </div>
 
-          <!-- Card 3 - Étape 3 -->
-          <div id="card3" class="step-card hidden video-card rounded-2xl shadow-lg flex flex-col relative overflow-hidden">
+          <!-- Card 3 - Étape 3 (Masquée - Intégration native) -->
+          <div id="card3" class="step-card video-card rounded-2xl shadow-lg flex flex-col relative overflow-hidden" style="display: none !important;">
             <!-- Partie supérieure avec vidéo -->
             <div class="video-section relative">
               <!-- Vidéo pour desktop -->
@@ -632,12 +638,18 @@ AXIOM identifie le bon cadre avant de parler de résultats.
               <p class="text-sm text-slate-600 text-center mt-6 mb-4">
                 Si ça a matché, on se rencontre pour de vrai.
               </p>
+              <button id="prevBtnCard3" class="mt-4 text-sm text-slate-600 hover:text-slate-900 flex items-center gap-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                </svg>
+                Précédent
+              </button>
               </div>
             </div>
           </div>
 
-          <!-- Card 4 - Étape 4 (Nouvelle) -->
-          <div id="card4" class="step-card hidden bg-white rounded-2xl shadow-lg p-8 flex flex-col">
+          <!-- Card 4 - Étape 4 (Masquée - Intégration native) -->
+          <div id="card4" class="step-card bg-white rounded-2xl shadow-lg p-8 flex flex-col" style="display: none !important;">
             <h4 class="text-xl font-bold text-slate-900 mb-6">
               Étape 4 : Collez le deuxième prompt dans ChatGPT
             </h4>
@@ -663,6 +675,12 @@ AXIOM identifie le bon cadre avant de parler de résultats.
                   👆 Retournez sur ChatGPT, collez le prompt à la suite de la conversation et obtenez vos résultats !
                 </p>
               </div>
+              <button id="prevBtnCard4" class="mt-4 text-sm text-slate-600 hover:text-slate-900 flex items-center gap-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                </svg>
+                Précédent
+              </button>
             </div>
           </div>
 
@@ -2649,58 +2667,45 @@ Le matching est terminé.`;
       }
     }
 
-    // Étape 1 : Générer la clé AXIOM
-    document.getElementById('generateAxiomBtn').addEventListener('click', async function() {
-      try {
-        await navigator.clipboard.writeText(axiomPrompt);
-        
-        console.log('✓ Prompt 1 (test AXIOM) copié dans le presse-papiers');
-        
-        // Tracking Google Analytics - Étape 1 complétée
+    // Fonction pour déterminer l'URL AXIOM selon l'environnement
+    function getAxiomUrl() {
+      const hostname = window.location.hostname;
+      
+      // Production (Manus)
+      if (hostname.includes('manus.computer') || hostname.includes('elgaenergy.com')) {
+        // URL de production Manus (à adapter selon votre configuration)
+        return 'https://3000-iarv8cewnrhgf63blt2ts-301cacd5.us2.manus.computer/axiom';
+      }
+      
+      // Développement local
+      if (hostname === 'localhost' || hostname === '127.0.0.1' || hostname.includes('local')) {
+        return 'http://localhost:3000/axiom';
+      }
+      
+      // Par défaut, utiliser le même domaine
+      return '/axiom';
+    }
+
+    // Étape 1 : Démarrer AXIOM (redirection native)
+    document.getElementById('startAxiomBtn').addEventListener('click', function() {
+      // Tracking Google Analytics - Démarrage AXIOM
+      if (typeof gtag !== 'undefined') {
         gtag('event', 'funnel_step_1_completed', {
           'event_category': 'Funnel',
-          'event_label': 'Génération clé AXIOM',
+          'event_label': 'Démarrage AXIOM native',
           'value': 1
         });
-        
-        // Feedback visuel temporaire
-        const originalText = this.querySelector('span').textContent;
-        this.querySelector('span').textContent = '✓ Copié dans le presse-papiers !';
-        this.style.transform = 'scale(0.98)';
-        
-        // Changement de carte immédiat
-        setTimeout(() => {
-          showCard(2);
-        }, 200);
-      } catch (err) {
-        console.log('⚠️ Impossible de copier le prompt 1:', err);
-        // Fallback pour les navigateurs plus anciens
-        const textArea = document.createElement('textarea');
-        textArea.value = axiomPrompt;
-        textArea.style.position = 'fixed';
-        textArea.style.opacity = '0';
-        document.body.appendChild(textArea);
-        textArea.select();
-        try {
-          document.execCommand('copy');
-          
-          // Tracking Google Analytics - Étape 1 complétée (fallback)
-          gtag('event', 'funnel_step_1_completed', {
-            'event_category': 'Funnel',
-            'event_label': 'Génération clé AXIOM (fallback)',
-            'value': 1
-          });
-          
-          const originalText = this.querySelector('span').textContent;
-          this.querySelector('span').textContent = '✓ Copié !';
-          setTimeout(() => {
-            showCard(2);
-          }, 200);
-        } catch (fallbackErr) {
-          alert('Impossible de copier automatiquement. Le texte est trop long.');
-        }
-        document.body.removeChild(textArea);
       }
+      
+      // Feedback visuel temporaire
+      const originalText = this.querySelector('span').textContent;
+      this.querySelector('span').textContent = 'Redirection...';
+      this.style.transform = 'scale(0.98)';
+      
+      // Redirection vers AXIOM
+      const axiomUrl = getAxiomUrl();
+      console.log('Redirection vers AXIOM:', axiomUrl);
+      window.location.href = axiomUrl;
     });
 
     // Étape 2 : Ouvrir ChatGPT dans un nouvel onglet
@@ -2779,6 +2784,52 @@ Le matching est terminé.`;
         document.body.removeChild(textArea);
       }
     });
+
+    // Boutons "Précédent" pour naviguer entre les cartes
+    const prevBtnCard2 = document.getElementById('prevBtnCard2');
+    if (prevBtnCard2) {
+      prevBtnCard2.addEventListener('click', function(e) {
+        e.preventDefault();
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'funnel_navigation', {
+            'event_category': 'Funnel',
+            'event_label': 'Retour étape 2 → étape 1',
+            'value': 1
+          });
+        }
+        showCard(1);
+      });
+    }
+
+    const prevBtnCard3 = document.getElementById('prevBtnCard3');
+    if (prevBtnCard3) {
+      prevBtnCard3.addEventListener('click', function(e) {
+        e.preventDefault();
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'funnel_navigation', {
+            'event_category': 'Funnel',
+            'event_label': 'Retour étape 3 → étape 2',
+            'value': 2
+          });
+        }
+        showCard(2);
+      });
+    }
+
+    const prevBtnCard4 = document.getElementById('prevBtnCard4');
+    if (prevBtnCard4) {
+      prevBtnCard4.addEventListener('click', function(e) {
+        e.preventDefault();
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'funnel_navigation', {
+            'event_category': 'Funnel',
+            'event_label': 'Retour étape 4 → étape 3',
+            'value': 3
+          });
+        }
+        showCard(3);
+      });
+    }
 
     // Tracking du scroll - Mesure de l'engagement
     let scroll80Sent = false; // Flag pour éviter d'envoyer l'événement 80% plusieurs fois

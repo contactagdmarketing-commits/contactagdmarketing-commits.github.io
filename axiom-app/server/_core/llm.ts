@@ -216,7 +216,7 @@ const resolveApiUrl = () =>
 
 const assertApiKey = () => {
   if (!ENV.forgeApiKey) {
-    throw new Error("BUILT_IN_FORGE_API_KEY is not configured. Please add your OpenAI API key to the .env file.");
+    throw new Error("La clé API OpenAI n'est pas configurée. Veuillez ajouter BUILT_IN_FORGE_API_KEY ou OPENAI_API_KEY dans le fichier .env à la racine de axiom-app/");
   }
 };
 

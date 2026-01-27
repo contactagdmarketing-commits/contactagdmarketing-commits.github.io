@@ -15,11 +15,17 @@ Créez un fichier `.env` à la racine de `axiom-app/` avec au minimum :
 ```env
 NODE_ENV=development
 OPENAI_API_KEY=votre_clé_openai
-DATABASE_URL=mysql://user:password@host:port/database
-JWT_SECRET=votre_secret_jwt
 ```
 
-**Note** : Pour tester rapidement sans base de données, vous pouvez laisser `DATABASE_URL` vide, mais certaines fonctionnalités ne fonctionneront pas.
+**Important** : Vous devez absolument configurer `OPENAI_API_KEY` (ou `BUILT_IN_FORGE_API_KEY`) pour que l'application fonctionne. Sans cette clé, vous obtiendrez une erreur lors de l'envoi de messages.
+
+**Note** : Pour tester rapidement sans base de données, vous pouvez laisser `DATABASE_URL` vide. L'application utilisera un stockage en mémoire (mock) pour le développement.
+
+Vous pouvez copier le fichier `.env.example` comme point de départ :
+```bash
+cp .env.example .env
+# Puis éditez .env pour ajouter votre clé API OpenAI
+```
 
 ### Étape 3 : Démarrer le serveur
 

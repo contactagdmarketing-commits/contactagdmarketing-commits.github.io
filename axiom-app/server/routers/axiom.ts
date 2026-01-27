@@ -25,40 +25,51 @@ export const axiomRouter = router({
       name: z.string().optional(),
     }))
     .mutation(async ({ input }) => {
-      const sessionId = nanoid(32);
-      
-      const session = await createCandidateSession({
-        sessionId,
-        email: input.email,
-        name: input.name,
-        phase: "axiom",
-        currentBloc: 1,
-      });
+      try {
+        const sessionId = nanoid(32);
+        
+        console.log("[AXIOM] Creating session for:", input.email);
+        const session = await createCandidateSession({
+          sessionId,
+          email: input.email,
+          name: input.name,
+          phase: "axiom",
+          currentBloc: 1,
+        });
 
-      if (!session) {
-        throw new Error("Failed to create session");
+        console.log("[AXIOM] Session created:", session ? "SUCCESS" : "FAILED");
+        if (!session) {
+          console.error("[AXIOM] Session creation returned null");
+          throw new Error("Failed to create session");
+        }
+
+        // Add initial message to conversation
+        console.log("[AXIOM] Adding initial message");
+        await addConversationMessage({
+          sessionId,
+          role: "assistant",
+          content: AXIOM_INITIAL_MESSAGE,
+          bloc: 0,
+          phase: "axiom",
+        });
+
+        // Track session start
+        console.log("[AXIOM] Tracking behavior");
+        await trackBehavior({
+          sessionId,
+          eventType: "page_view",
+          eventData: JSON.stringify({ action: "session_started" }),
+        });
+
+        console.log("[AXIOM] Session initialization complete");
+        return {
+          sessionId,
+          initialMessage: AXIOM_INITIAL_MESSAGE,
+        };
+      } catch (error) {
+        console.error("[AXIOM] Error in initSession:", error);
+        throw error;
       }
-
-      // Add initial message to conversation
-      await addConversationMessage({
-        sessionId,
-        role: "assistant",
-        content: AXIOM_INITIAL_MESSAGE,
-        bloc: 0,
-        phase: "axiom",
-      });
-
-      // Track session start
-      await trackBehavior({
-        sessionId,
-        eventType: "page_view",
-        eventData: JSON.stringify({ action: "session_started" }),
-      });
-
-      return {
-        sessionId,
-        initialMessage: AXIOM_INITIAL_MESSAGE,
-      };
     }),
 
   // Get or restore a session
@@ -88,61 +99,82 @@ export const axiomRouter = router({
       message: z.string(),
     }))
     .mutation(async ({ input }) => {
-      const session = await getCandidateSession(input.sessionId);
-      if (!session) {
-        throw new Error("Session not found");
+      try {
+        console.log("[AXIOM] sendMessage - Session:", input.sessionId, "Message:", input.message.substring(0, 50));
+        
+        const session = await getCandidateSession(input.sessionId);
+        if (!session) {
+          console.error("[AXIOM] Session not found:", input.sessionId);
+          throw new Error("Session not found");
+        }
+
+        // Save user message
+        await addConversationMessage({
+          sessionId: input.sessionId,
+          role: "user",
+          content: input.message,
+          bloc: session.currentBloc,
+          phase: "axiom",
+        });
+
+        // Track message sent
+        await trackBehavior({
+          sessionId: input.sessionId,
+          eventType: "message_sent",
+          eventData: JSON.stringify({ bloc: session.currentBloc }),
+        });
+
+        // Get conversation history for context
+        const history = await getConversationHistory(input.sessionId, "axiom");
+
+        // Build messages for LLM
+        const messages = [
+          { role: "system" as const, content: AXIOM_SYSTEM_PROMPT },
+          ...history.map(msg => ({
+            role: msg.role as "user" | "assistant",
+            content: msg.content,
+          })),
+          { role: "user" as const, content: input.message },
+        ];
+
+        // Get AXIOM response with streaming
+        console.log("[AXIOM] Invoking LLM...");
+        let response;
+        try {
+          response = await invokeLLM({
+            messages,
+          });
+        } catch (llmError: any) {
+          console.error("[AXIOM] LLM Error:", llmError.message);
+          // Si l'erreur concerne la clé API manquante, retourner un message clair
+          if (llmError.message?.includes("BUILT_IN_FORGE_API_KEY") || llmError.message?.includes("not configured")) {
+            throw new Error("La clé API OpenAI n'est pas configurée. Veuillez ajouter BUILT_IN_FORGE_API_KEY dans le fichier .env");
+          }
+          throw new Error(`Erreur lors de l'appel à l'API: ${llmError.message}`);
+        }
+
+        const assistantContent = response.choices[0]?.message?.content;
+        const assistantMessage = typeof assistantContent === 'string' ? assistantContent : "Je n'ai pas pu générer une réponse.";
+
+        console.log("[AXIOM] LLM response received, length:", assistantMessage.length);
+
+        // Save assistant message
+        await addConversationMessage({
+          sessionId: input.sessionId,
+          role: "assistant",
+          content: assistantMessage,
+          bloc: session.currentBloc,
+          phase: "axiom",
+        });
+
+        return {
+          message: assistantMessage,
+          currentBloc: session.currentBloc,
+        };
+      } catch (error: any) {
+        console.error("[AXIOM] Error in sendMessage:", error);
+        throw new Error(error.message || "Une erreur est survenue lors de l'envoi du message. Veuillez réessayer.");
       }
-
-      // Save user message
-      await addConversationMessage({
-        sessionId: input.sessionId,
-        role: "user",
-        content: input.message,
-        bloc: session.currentBloc,
-        phase: "axiom",
-      });
-
-      // Track message sent
-      await trackBehavior({
-        sessionId: input.sessionId,
-        eventType: "message_sent",
-        eventData: JSON.stringify({ bloc: session.currentBloc }),
-      });
-
-      // Get conversation history for context
-      const history = await getConversationHistory(input.sessionId, "axiom");
-
-      // Build messages for LLM
-      const messages = [
-        { role: "system" as const, content: AXIOM_SYSTEM_PROMPT },
-        ...history.map(msg => ({
-          role: msg.role as "user" | "assistant",
-          content: msg.content,
-        })),
-        { role: "user" as const, content: input.message },
-      ];
-
-      // Get AXIOM response with streaming
-      const response = await invokeLLM({
-        messages,
-      });
-
-      const assistantContent = response.choices[0]?.message?.content;
-      const assistantMessage = typeof assistantContent === 'string' ? assistantContent : "Je n'ai pas pu générer une réponse.";
-
-      // Save assistant message
-      await addConversationMessage({
-        sessionId: input.sessionId,
-        role: "assistant",
-        content: assistantMessage,
-        bloc: session.currentBloc,
-        phase: "axiom",
-      });
-
-      return {
-        message: assistantMessage,
-        currentBloc: session.currentBloc,
-      };
     }),
 
   // Move to next bloc

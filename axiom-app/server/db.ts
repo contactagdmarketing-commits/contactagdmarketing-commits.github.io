@@ -5,6 +5,12 @@ import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
 
+// ============ MOCK STORAGE (pour développement sans DB) ============
+const mockSessions = new Map<string, CandidateSession>();
+const mockMessages = new Map<string, Array<typeof conversationMessages.$inferSelect>>();
+const mockBehaviorTracking: Array<typeof behaviorTracking.$inferSelect> = [];
+let mockSessionIdCounter = 0;
+
 // Lazily create the drizzle instance so local tooling can run without a DB.
 export async function getDb() {
   if (!_db && process.env.DATABASE_URL) {
@@ -94,8 +100,31 @@ export async function getUserByOpenId(openId: string) {
 export async function createCandidateSession(data: InsertCandidateSession): Promise<CandidateSession | null> {
   const db = await getDb();
   if (!db) {
-    console.warn("[Database] Cannot create session: database not available");
-    return null;
+    // Mode mock : stockage en mémoire
+    try {
+      console.warn("[Database] Database not available, using mock storage");
+      const now = new Date();
+      const mockSession: CandidateSession = {
+        id: ++mockSessionIdCounter,
+        sessionId: data.sessionId,
+        email: data.email,
+        name: data.name ?? null,
+        phase: data.phase ?? "axiom",
+        currentBloc: data.currentBloc ?? 1,
+        axiomSynthesis: data.axiomSynthesis ?? null,
+        matchingResult: data.matchingResult ?? null,
+        createdAt: now,
+        updatedAt: now,
+        completedAt: data.completedAt ?? null,
+      };
+      mockSessions.set(data.sessionId, mockSession);
+      mockMessages.set(data.sessionId, []);
+      console.log("[Database] Mock session created:", data.sessionId);
+      return mockSession;
+    } catch (error) {
+      console.error("[Database] Error creating mock session:", error);
+      return null;
+    }
   }
 
   try {
@@ -112,8 +141,8 @@ export async function createCandidateSession(data: InsertCandidateSession): Prom
 export async function getCandidateSession(sessionId: string): Promise<CandidateSession | null> {
   const db = await getDb();
   if (!db) {
-    console.warn("[Database] Cannot get session: database not available");
-    return null;
+    // Mode mock : récupération depuis la mémoire
+    return mockSessions.get(sessionId) ?? null;
   }
 
   try {
@@ -128,8 +157,16 @@ export async function getCandidateSession(sessionId: string): Promise<CandidateS
 export async function updateCandidateSession(sessionId: string, data: Partial<InsertCandidateSession>): Promise<CandidateSession | null> {
   const db = await getDb();
   if (!db) {
-    console.warn("[Database] Cannot update session: database not available");
-    return null;
+    // Mode mock : mise à jour en mémoire
+    const session = mockSessions.get(sessionId);
+    if (!session) return null;
+    const updatedSession: CandidateSession = {
+      ...session,
+      ...data,
+      updatedAt: new Date(),
+    } as CandidateSession;
+    mockSessions.set(sessionId, updatedSession);
+    return updatedSession;
   }
 
   try {
@@ -146,8 +183,27 @@ export async function updateCandidateSession(sessionId: string, data: Partial<In
 export async function addConversationMessage(data: InsertConversationMessage): Promise<void> {
   const db = await getDb();
   if (!db) {
-    console.warn("[Database] Cannot add message: database not available");
-    return;
+    // Mode mock : ajout en mémoire
+    try {
+      const messages = mockMessages.get(data.sessionId) ?? [];
+      const mockMessage: typeof conversationMessages.$inferSelect = {
+        id: messages.length + 1,
+        sessionId: data.sessionId,
+        role: data.role,
+        content: data.content,
+        bloc: data.bloc ?? null,
+        phase: data.phase ?? "axiom",
+        createdAt: new Date(),
+      };
+      messages.push(mockMessage);
+      mockMessages.set(data.sessionId, messages);
+      console.log("[Database] Mock message added for session:", data.sessionId);
+      return;
+    } catch (error) {
+      console.error("[Database] Error adding mock message:", error);
+      // Ne pas throw pour ne pas bloquer l'application
+      return;
+    }
   }
 
   try {
@@ -161,8 +217,12 @@ export async function addConversationMessage(data: InsertConversationMessage): P
 export async function getConversationHistory(sessionId: string, phase?: string) {
   const db = await getDb();
   if (!db) {
-    console.warn("[Database] Cannot get history: database not available");
-    return [];
+    // Mode mock : récupération depuis la mémoire
+    const messages = mockMessages.get(sessionId) ?? [];
+    if (phase) {
+      return messages.filter(msg => msg.phase === phase);
+    }
+    return messages;
   }
 
   try {
@@ -182,7 +242,15 @@ export async function getConversationHistory(sessionId: string, phase?: string) 
 export async function trackBehavior(data: InsertBehaviorTracking): Promise<void> {
   const db = await getDb();
   if (!db) {
-    console.warn("[Database] Cannot track behavior: database not available");
+    // Mode mock : ajout en mémoire
+    const mockTracking: typeof behaviorTracking.$inferSelect = {
+      id: mockBehaviorTracking.length + 1,
+      sessionId: data.sessionId,
+      eventType: data.eventType,
+      eventData: data.eventData ?? null,
+      timestamp: new Date(),
+    };
+    mockBehaviorTracking.push(mockTracking);
     return;
   }
 
