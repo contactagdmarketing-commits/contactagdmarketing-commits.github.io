@@ -14,10 +14,27 @@ Créez un fichier `.env` à la racine de `axiom-app/` avec au minimum :
 
 ```env
 NODE_ENV=development
-OPENAI_API_KEY=votre_clé_openai
 ```
 
-**Important** : Vous devez absolument configurer `OPENAI_API_KEY` (ou `BUILT_IN_FORGE_API_KEY`) pour que l'application fonctionne. Sans cette clé, vous obtiendrez une erreur lors de l'envoi de messages.
+#### Option A : Mode Mock (GRATUIT - pour tester sans payer)
+
+Pour tester l'application **sans appeler l'API OpenAI** (et donc sans payer de jetons), activez le mode mock :
+
+```env
+NODE_ENV=development
+MOCK_LLM=true
+```
+
+Le mode mock génère des réponses simulées réalistes sans faire d'appels API réels. **Parfait pour le développement et les tests !**
+
+#### Option B : Mode Production (nécessite une clé API OpenAI)
+
+Si vous voulez utiliser l'API OpenAI réelle (nécessite un compte payant) :
+
+```env
+NODE_ENV=development
+OPENAI_API_KEY=votre_clé_openai
+```
 
 **Note** : Pour tester rapidement sans base de données, vous pouvez laisser `DATABASE_URL` vide. L'application utilisera un stockage en mémoire (mock) pour le développement.
 
@@ -68,6 +85,11 @@ pnpm install
 ### Erreur de connexion à la base de données
 - Si vous n'avez pas de base de données, certaines fonctionnalités ne fonctionneront pas
 - Pour un test rapide, vous pouvez laisser `DATABASE_URL` vide
+
+### Éviter les coûts API OpenAI en développement
+- **Utilisez le mode mock** : Ajoutez `MOCK_LLM=true` dans votre `.env`
+- Le mode mock génère des réponses simulées sans appeler l'API
+- **Gratuit** et parfait pour tester l'interface et le flux utilisateur
 
 ## 📝 Notes importantes
 

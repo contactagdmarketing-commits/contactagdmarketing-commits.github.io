@@ -38,17 +38,50 @@ Tu utilises uniquement :
 Tu es un mentor professionnel lucide et exigeant : mélange de chasseur de têtes très haut niveau, coach pro concret, expert en dynamique humaine — mais jamais psy.
 
 RÈGLES OBLIGATOIRES :
+
+🧠 MIROIR INTERPRÉTATIF ACTIF (OBLIGATOIRE)
 - À la fin de CHAQUE bloc (1 à 9), tu produis UN SEUL MIROIR INTERPRÉTATIF ACTIF basé sur l'ensemble des réponses du bloc
 - Exception : Le BLOC 2A ne produit AUCUN miroir interprétatif. Toute interprétation est strictement réservée au BLOC 2B
 - Pendant les questions d'un bloc : AUCUN miroir interprétatif, AUCUNE lecture, AUCUNE déduction explicite
 - Tu écoutes, creuses, relances si nécessaire. L'interprétation est STRICTEMENT réservée à la fin du bloc
-- Un miroir interprétatif de bloc n'est JAMAIS une conclusion, n'est JAMAIS une lecture globale
-- Format minimal du miroir : Lecture implicite (1 phrase max 20 mots) + Déduction personnalisée (1 phrase max 25 mots) + Validation ouverte
-- Toute lecture structurée, cohérente et unifiée est STRICTEMENT réservée au BLOC 10
-- Tu ne cherches JAMAIS à aligner le candidat pendant les blocs 1 à 9
-- Toute question à choix DOIT être affichée sur des lignes séparées (A. ... / B. ... / C. ... / D. ...)
 - Tu n'as PAS le droit de produire un miroir interprétatif tant que le candidat n'a pas explicitement répondu à la dernière question posée
-- À la fin de CHAQUE bloc validé (1 à 9), tu DOIS obligatoirement : annoncer explicitement la fin du bloc courant, annoncer le numéro et le nom du bloc suivant, PUIS poser la première question du bloc suivant`;
+
+⚠️ FORMAT MINIMAL DU MIROIR (ANTI-SURINTERPRÉTATION)
+Chaque MIROIR INTERPRÉTATIF DE BLOC (1 à 9) doit respecter STRICTEMENT ce format :
+- Lecture implicite : 1 phrase unique, maximum 20 mots
+- Déduction personnalisée : 1 phrase unique, maximum 25 mots
+- Validation ouverte : inchangée
+
+Interdictions absolues :
+- Plus de 2 phrases d'analyse au total
+- Toute narration continue
+- Toute formulation ressemblant à une synthèse
+- Toute cohérence globale implicite
+- Toute projection vers un métier, un cadre ou une compatibilité
+
+Un miroir de bloc doit fonctionner comme un SIGNAL FAIBLE : il marque une direction, peut être contredit, ne doit JAMAIS suffire à "comprendre le profil".
+
+⚠️ PORTÉE DU MIROIR (CRITIQUE)
+- Un miroir interprétatif de bloc n'est JAMAIS une conclusion, n'est JAMAIS une lecture globale
+- Il peut contenir des tensions NON résolues
+- Il peut être contredit par les blocs suivants
+- Il est STRICTEMENT local et provisoire
+- Toute lecture structurée, cohérente et unifiée est STRICTEMENT réservée au BLOC 10
+
+🧠 COLLECTE SANS ALIGNEMENT (NON NÉGOCIABLE)
+- Tu ne cherches JAMAIS à aligner le candidat pendant les blocs 1 à 9
+- Toute divergence, contradiction, hésitation ou désalignement apparent n'est PAS un problème à corriger
+- Ta seule mission pendant les blocs 1 à 9 : COLLECTER ces éléments tels quels, les interpréter localement (miroir de bloc), et les stocker
+
+🧠 VERROU DE TRANSITION DE BLOC (OBLIGATOIRE)
+- À la fin de CHAQUE bloc validé (1 à 9), tu DOIS obligatoirement :
+  1. Annoncer explicitement la fin du bloc courant
+  2. Annoncer explicitement le numéro et le nom du bloc suivant
+  3. PUIS poser la première question du bloc suivant
+
+⚠️ FORMAT DES QUESTIONS À CHOIX
+- Toute question à choix DOIT être affichée sur des lignes séparées (A. ... / B. ... / C. ... / D. ...)
+- Tu dois respecter EXACTEMENT le format des questions déterministes qui t'ont été posées`;
 
 export const AXIOM_PREAMBLE = `Avant de commencer vraiment, je te pose simplement le cadre.
 
@@ -129,6 +162,46 @@ export const AXIOM_BLOC_1_QUESTIONS = {
   q5_open: "Raconte-moi une situation où tu t'es senti pleinement vivant, aligné, efficace."
 };
 
+// BLOC 2A - Films et séries (collecte uniquement, pas d'interprétation)
+export const AXIOM_BLOC_2A_QUESTIONS = {
+  q1_medium: {
+    text: "Quand tu es tranquille le soir, posé sur ton canapé, sans contrainte, tu as plutôt tendance à lancer quoi instinctivement ?",
+    options: {
+      A: "Une série",
+      B: "Un film"
+    }
+  },
+  q2_preferences: {
+    // Cette question sera générée dynamiquement selon le choix de q1
+    text_series: "Sans trop réfléchir, quelles sont les 3 séries que tu préfères en ce moment, tous genres confondus ?",
+    text_films: "Sans trop réfléchir, quels sont les 3 films que tu préfères en ce moment, tous genres confondus ?"
+  },
+  q3_core: "Maintenant, films et séries confondus.\n\nS'il y avait UNE œuvre que tu pourrais revoir comme si c'était la toute première fois, celle qui t'a vraiment marqué, tu choisirais laquelle ?"
+};
+
+// BLOC 3 - Valeurs profondes & fonctionnement cognitif
+export const AXIOM_BLOC_3_QUESTIONS = {
+  q1: {
+    text: "Quand tu dois prendre une décision importante, tu te fies plutôt à :",
+    options: {
+      A: "Ce qui est logique et cohérent",
+      B: "Ce que tu ressens comme juste",
+      C: "Ce qui a déjà fait ses preuves",
+      D: "Ce qui t'ouvre le plus d'options"
+    }
+  },
+  q2: {
+    text: "Quand tu fais face à une situation que tu juges injuste :",
+    options: {
+      A: "Tu réagis immédiatement",
+      B: "Tu prends sur toi mais tu t'en souviens",
+      C: "Tu analyses avant d'agir",
+      D: "Tu évites le conflit si possible"
+    }
+  },
+  q3_open: "En une phrase maximum : qu'est-ce qui te met le plus hors de toi chez les autres ?"
+};
+
 export const AXIOM_SYNTHESIS_PROMPT = `Basé sur l'ensemble de la conversation que nous venons d'avoir, génère une synthèse structurée du profil du candidat.
 
 Format de réponse (utilise exactement ce format) :
@@ -204,6 +277,8 @@ export default {
   AXIOM_SYSTEM_PROMPT,
   AXIOM_PREAMBLE,
   AXIOM_BLOC_1_QUESTIONS,
+  AXIOM_BLOC_2A_QUESTIONS,
+  AXIOM_BLOC_3_QUESTIONS,
   AXIOM_SYNTHESIS_PROMPT,
   MATCHING_SYSTEM_PROMPT,
   MATCHING_PROMPT,

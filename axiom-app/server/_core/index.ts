@@ -1,3 +1,4 @@
+import "dotenv/config"; // Charge le fichier .env au démarrage
 import express from "express";
 import { createExpressMiddleware } from "@trpc/server/adapters/express";
 import { createServer } from "http";

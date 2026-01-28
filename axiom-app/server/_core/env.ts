@@ -8,4 +8,6 @@ export const ENV = {
   forgeApiUrl: process.env.BUILT_IN_FORGE_API_URL ?? "",
   // Accept both BUILT_IN_FORGE_API_KEY and OPENAI_API_KEY for flexibility
   forgeApiKey: process.env.BUILT_IN_FORGE_API_KEY ?? process.env.OPENAI_API_KEY ?? "",
+  // Mode mock pour éviter les appels API réels en développement
+  mockLLM: process.env.MOCK_LLM === "true" || process.env.MOCK_LLM === "1",
 };
