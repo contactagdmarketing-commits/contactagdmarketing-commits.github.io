@@ -123,7 +123,7 @@ export async function createCandidateSession(data: InsertCandidateSession): Prom
       return mockSession;
     } catch (error) {
       console.error("[Database] Error creating mock session:", error);
-      return null;
+    return null;
     }
   }
 
@@ -202,7 +202,7 @@ export async function addConversationMessage(data: InsertConversationMessage): P
     } catch (error) {
       console.error("[Database] Error adding mock message:", error);
       // Ne pas throw pour ne pas bloquer l'application
-      return;
+    return;
     }
   }
 

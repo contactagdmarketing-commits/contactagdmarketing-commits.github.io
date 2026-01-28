@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Candidats (Test) — Elga Energy</title>
+  <title>Recrutement — Elga Energy</title>
   <meta name="description" content="Un recrutement qui s'Intéresse à vous. Rejoignez Elga Energy via AXIOM." />
   <link rel="icon" href="/assets/logos/favicon.svg" type="image/svg+xml" />
 
@@ -488,11 +488,11 @@ AXIOM identifie le bon cadre avant de parler de résultats.
                 </svg>
               </div>
               <h4 class="text-2xl font-bold text-slate-900 mb-3">
-                Étape 1 : Récupérez votre Clé
+                Étape 1 : Copiez le prompt
             </h4>
               <p class="text-base text-slate-600 leading-relaxed max-w-md mx-auto">
-                Cette clé est votre accès unique à AXIOM.<br>
-                Elle contient tout ce dont vous avez besoin pour démarrer votre analyse personnalisée.
+                Cliquez sur le bouton ci-dessous pour copier le prompt AXIOM dans votre presse-papiers.<br>
+                Ensuite, vous pourrez le coller dans ChatGPT pour commencer votre profil.
               </p>
             </div>
             
@@ -506,50 +506,55 @@ AXIOM identifie le bon cadre avant de parler de résultats.
                     Comment ça marche ?
                   </p>
                   <p class="text-sm text-primary-700 leading-relaxed">
-                    En cliquant sur le bouton, la clé sera automatiquement copiée dans votre presse-papiers.<br>
-                    Vous n'aurez plus qu'à la coller dans ChatGPT à l'étape suivante.
+                    Le prompt sera copié dans votre presse-papiers.<br>
+                    Ouvrez ensuite ChatGPT dans un nouvel onglet et collez-le pour commencer votre profil AXIOM.
                   </p>
                 </div>
               </div>
             </div>
 
             <div class="flex-grow flex flex-col justify-center">
-              <button id="generateAxiomBtn" class="lighthouse-button w-full text-white font-semibold py-4 px-6 rounded-full shadow-md mb-4 relative overflow-hidden">
+              <button id="copyPromptBtn" class="lighthouse-button w-full text-white font-semibold py-4 px-6 rounded-full shadow-md mb-4 relative overflow-hidden">
                 <span class="relative z-10 flex items-center justify-center gap-2">
                   <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
                   </svg>
-                  GÉNÉRER MON ACCÈS AXIOM
+                  COPIER LE PROMPT AXIOM
                 </span>
               </button>
               
               <div class="text-center space-y-2">
                 <p class="text-sm text-slate-500">
-                  ✓ Clé copiée automatiquement
+                  ✓ Le prompt sera copié dans votre presse-papiers
                 </p>
                 <p class="text-xs text-slate-400">
-                  Temps estimé : 2 secondes
+                  Ensuite, ouvrez ChatGPT et collez-le
                 </p>
               </div>
             </div>
           </div>
 
           <!-- Card 2 - Étape 2 -->
-          <div id="card2" class="step-card hidden video-card rounded-2xl shadow-lg flex flex-col relative overflow-hidden">
+          <div id="card2" class="step-card video-card rounded-2xl shadow-lg flex flex-col relative overflow-hidden hidden">
             <!-- Partie avec texte (en haut) -->
             <div class="text-section p-8 bg-white flex flex-col justify-center items-center">
               <h4 class="text-xl font-bold text-slate-900 mb-6">
-                Étape 2 : Lancez AXIOM
+                Étape 2 : Ouvrez ChatGPT
               </h4>
               <button id="openChatGPTBtn" class="lighthouse-button w-full text-white font-semibold py-4 px-6 rounded-full shadow-md mb-5 relative overflow-hidden">
-                <span class="relative z-10">Ouvrir ChatGPT et démarrer AXIOM</span>
+                <span class="relative z-10 flex items-center justify-center gap-2">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                  OUVRIR CHATGPT
+                </span>
               </button>
               <p class="text-sm text-slate-600 text-center leading-relaxed mb-6">
-                <strong>Le premier prompt est dans votre presse-papiers</strong><br>
-                Collez-le dans ChatGPT pour démarrer le test AXIOM<br>
-                et laissez-vous guider.
+                <strong>Le prompt est copié !</strong><br>
+                Cliquez sur le bouton pour ouvrir ChatGPT dans un nouvel onglet,<br>
+                puis collez le prompt et commencez votre profil AXIOM.
               </p>
-              <button id="prevBtnCard2" onclick="showCard(1)" class="text-slate-500 hover:text-primary-600 text-sm font-medium flex items-center gap-2 transition-colors">
+              <button id="prevBtnCard2" class="mt-4 text-sm text-slate-600 hover:text-slate-900 flex items-center gap-2">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
                 </svg>
@@ -579,7 +584,7 @@ AXIOM identifie le bon cadre avant de parler de résultats.
           </div>
 
           <!-- Card 3 - Étape 3 -->
-          <div id="card3" class="step-card hidden video-card rounded-2xl shadow-lg flex flex-col relative overflow-hidden">
+          <div id="card3" class="step-card video-card rounded-2xl shadow-lg flex flex-col relative overflow-hidden hidden">
             <!-- Partie supérieure avec vidéo -->
             <div class="video-section relative">
               <!-- Vidéo pour desktop -->
@@ -602,11 +607,16 @@ AXIOM identifie le bon cadre avant de parler de résultats.
             <!-- Partie inférieure avec texte -->
             <div class="text-section p-8 bg-white flex flex-col justify-center items-center">
             <h4 class="text-xl font-bold text-slate-900 mb-6">
-              Étape 3 : Découvrez le résultat en un clic
+              Étape 3 : Copiez le deuxième prompt
             </h4>
               <div class="flex-grow flex flex-col justify-center w-full">
               <button id="generateMatchingBtn" class="lighthouse-button w-full text-white font-semibold py-4 px-6 rounded-full shadow-md mb-6 relative overflow-hidden">
-                <span class="relative z-10">GÉNÉRER MA LECTURE DE COMPATIBILITÉ</span>
+                <span class="relative z-10 flex items-center justify-center gap-2">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                  </svg>
+                  COPIER LE PROMPT DE MATCHING
+                </span>
               </button>
               <div class="badges-container">
                 <div class="badge-item">
@@ -628,7 +638,7 @@ AXIOM identifie le bon cadre avant de parler de résultats.
               <p class="text-sm text-slate-600 text-center mt-6 mb-4">
                 Si ça a matché, on se rencontre pour de vrai.
               </p>
-              <button id="prevBtnCard3" onclick="showCard(2)" class="text-slate-500 hover:text-primary-600 text-sm font-medium flex items-center gap-2 transition-colors mx-auto">
+              <button id="prevBtnCard3" class="mt-4 text-sm text-slate-600 hover:text-slate-900 flex items-center gap-2">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
                 </svg>
@@ -638,10 +648,10 @@ AXIOM identifie le bon cadre avant de parler de résultats.
             </div>
           </div>
 
-          <!-- Card 4 - Étape 4 (Nouvelle) -->
-          <div id="card4" class="step-card hidden bg-white rounded-2xl shadow-lg p-8 flex flex-col">
+          <!-- Card 4 - Étape 4 -->
+          <div id="card4" class="step-card bg-white rounded-2xl shadow-lg p-8 flex flex-col hidden">
             <h4 class="text-xl font-bold text-slate-900 mb-6">
-              Étape 4 : Obtenez votre lecture de compatibilité
+              Étape 4 : Collez le deuxième prompt dans ChatGPT
             </h4>
             <div class="flex-grow flex flex-col justify-center items-center">
               <div class="mb-6 text-center">
@@ -651,30 +661,21 @@ AXIOM identifie le bon cadre avant de parler de résultats.
                 <p class="text-lg text-slate-700 font-medium mb-4">
                   Dernière étape !
                 </p>
-                <p class="text-base text-slate-600 leading-relaxed">
-                  <strong>1.</strong> Retournez sur l'onglet ChatGPT<br>
-                  <strong>2.</strong> Collez (Cmd+V ou Ctrl+V) dans le chat<br>
-                  <strong>3.</strong> Envoyez pour obtenir votre lecture de compatibilité
+                <p class="text-base text-slate-600 leading-relaxed mb-4">
+                  Le deuxième prompt est copié dans votre presse-papiers.<br>
+                  Retournez sur ChatGPT et collez-le<br>
+                  <strong>à la suite de votre conversation</strong> pour obtenir votre lecture de compatibilité.
                 </p>
               </div>
               <div class="w-full bg-primary-50 border border-primary-200 rounded-xl p-6 text-center mb-6">
                 <p class="text-sm text-primary-800 font-semibold mb-3">
-                  ✅ Prompt de lecture de compatibilité copié !
+                  ✅ Le prompt de matching est copié !
                 </p>
-                <div class="bg-white/70 rounded-lg p-4 mb-3">
-                  <p class="text-xs text-slate-600 mb-2">
-                    Le prompt est dans votre presse-papiers
-                  </p>
-                  <p class="text-lg font-bold text-primary-600">
-                    Cmd+V <span class="text-slate-400">/</span> Ctrl+V
-                  </p>
-                </div>
                 <p class="text-xs text-primary-700">
-                  👆 Cliquez sur l'onglet <strong>"Début d'analyse AXIOM"</strong> dans votre navigateur,<br>
-                  collez le prompt dans ChatGPT et envoyez pour voir votre lecture de compatibilité !
+                  👆 Retournez sur ChatGPT, collez le prompt à la suite de la conversation et obtenez vos résultats !
                 </p>
               </div>
-              <button id="prevBtnCard4" onclick="showCard(3)" class="text-slate-500 hover:text-primary-600 text-sm font-medium flex items-center gap-2 transition-colors">
+              <button id="prevBtnCard4" class="mt-4 text-sm text-slate-600 hover:text-slate-900 flex items-center gap-2">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
                 </svg>
@@ -2440,7 +2441,7 @@ Le matching est terminé.`;
             'event_category': 'Video',
             'event_label': 'Vidéo étape 2',
             'value': 2
-        });
+          });
         }
       });
       
@@ -2659,40 +2660,40 @@ Le matching est terminé.`;
         // Scroll vers la carte
         targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
         
-        // Tracking Google Analytics - Navigation entre cartes
-        gtag('event', 'funnel_navigation', {
-          'event_category': 'Funnel',
-          'event_label': 'Carte ' + cardNumber,
-          'value': cardNumber
-        });
+        // Marquer si l'utilisateur arrive sur la carte 4
+        if (cardNumber === 4) {
+          reachedCard4 = true;
+        }
       }
     }
 
-    // Étape 1 : Générer la clé AXIOM
-    document.getElementById('generateAxiomBtn').addEventListener('click', async function() {
+    // Étape 1 : Copier le prompt AXIOM
+    document.getElementById('copyPromptBtn').addEventListener('click', async function() {
       try {
         await navigator.clipboard.writeText(axiomPrompt);
         
-        console.log('✓ Prompt 1 (test AXIOM) copié dans le presse-papiers');
+        console.log('✓ Prompt AXIOM copié dans le presse-papiers');
         
         // Tracking Google Analytics - Étape 1 complétée
-        gtag('event', 'funnel_step_1_completed', {
-          'event_category': 'Funnel',
-          'event_label': 'Génération clé AXIOM',
-          'value': 1
-        });
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'funnel_step_1_completed', {
+            'event_category': 'Funnel',
+            'event_label': 'Copie prompt AXIOM',
+            'value': 1
+          });
+        }
         
         // Feedback visuel temporaire
         const originalText = this.querySelector('span').textContent;
         this.querySelector('span').textContent = '✓ Copié dans le presse-papiers !';
         this.style.transform = 'scale(0.98)';
         
-        // Changement de carte immédiat
+        // Changement de carte après un court délai
         setTimeout(() => {
           showCard(2);
-        }, 200);
+        }, 500);
       } catch (err) {
-        console.log('⚠️ Impossible de copier le prompt 1:', err);
+        console.log('⚠️ Impossible de copier le prompt:', err);
         // Fallback pour les navigateurs plus anciens
         const textArea = document.createElement('textarea');
         textArea.value = axiomPrompt;
@@ -2704,17 +2705,19 @@ Le matching est terminé.`;
           document.execCommand('copy');
           
           // Tracking Google Analytics - Étape 1 complétée (fallback)
-          gtag('event', 'funnel_step_1_completed', {
-            'event_category': 'Funnel',
-            'event_label': 'Génération clé AXIOM (fallback)',
-            'value': 1
-          });
+          if (typeof gtag !== 'undefined') {
+            gtag('event', 'funnel_step_1_completed', {
+              'event_category': 'Funnel',
+              'event_label': 'Copie prompt AXIOM (fallback)',
+              'value': 1
+            });
+          }
           
           const originalText = this.querySelector('span').textContent;
           this.querySelector('span').textContent = '✓ Copié !';
           setTimeout(() => {
             showCard(2);
-          }, 200);
+          }, 500);
         } catch (fallbackErr) {
           alert('Impossible de copier automatiquement. Le texte est trop long.');
         }
@@ -2722,28 +2725,29 @@ Le matching est terminé.`;
       }
     });
 
-    // Étape 2 : Ouvrir ChatGPT
-    document.getElementById('openChatGPTBtn').addEventListener('click', async function() {
-      // Re-copier le premier prompt (axiomPrompt) au cas où il aurait été perdu
-      try {
-        await navigator.clipboard.writeText(axiomPrompt);
-        console.log('✓ Prompt 1 (test AXIOM) copié dans le presse-papiers');
-      } catch (err) {
-        console.log('⚠️ Impossible de copier le prompt 1:', err);
-      }
-      
-      // Tracking Google Analytics - Étape 2 complétée
-      gtag('event', 'funnel_step_2_completed', {
-        'event_category': 'Funnel',
-        'event_label': 'Ouverture ChatGPT',
-        'value': 2
-      });
-      
+    // Étape 2 : Ouvrir ChatGPT dans un nouvel onglet
+    document.getElementById('openChatGPTBtn').addEventListener('click', function() {
       // Ouvrir ChatGPT dans un nouvel onglet
       window.open('https://chat.openai.com', '_blank');
       
-      // Passer à la carte 3 immédiatement
+      // Tracking Google Analytics - Étape 2 complétée
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'funnel_step_2_completed', {
+          'event_category': 'Funnel',
+          'event_label': 'Ouverture ChatGPT',
+          'value': 2
+        });
+      }
+      
+      // Feedback visuel temporaire
+      const originalText = this.querySelector('span').textContent;
+      this.querySelector('span').textContent = '✓ ChatGPT ouvert !';
+      this.style.transform = 'scale(0.98)';
+      
+      // Changement de carte après un court délai
+      setTimeout(() => {
         showCard(3);
+      }, 500);
     });
 
     // Étape 3 : Générer le matching
@@ -2754,11 +2758,13 @@ Le matching est terminé.`;
         console.log('✓ Prompt 2 (matching) copié dans le presse-papiers');
         
         // Tracking Google Analytics - Étape 3 complétée
-        gtag('event', 'funnel_step_3_completed', {
-          'event_category': 'Funnel',
-          'event_label': 'Génération lecture de compatibilité',
-          'value': 3
-        });
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'funnel_step_3_completed', {
+            'event_category': 'Funnel',
+            'event_label': 'Génération lecture de compatibilité',
+            'value': 3
+          });
+        }
         
         // Feedback visuel temporaire
         const originalText = this.querySelector('span').textContent;
@@ -2782,11 +2788,13 @@ Le matching est terminé.`;
           document.execCommand('copy');
           
           // Tracking Google Analytics - Étape 3 complétée (fallback)
-          gtag('event', 'funnel_step_3_completed', {
-            'event_category': 'Funnel',
-            'event_label': 'Génération lecture de compatibilité (fallback)',
-            'value': 3
-          });
+          if (typeof gtag !== 'undefined') {
+            gtag('event', 'funnel_step_3_completed', {
+              'event_category': 'Funnel',
+              'event_label': 'Génération lecture de compatibilité (fallback)',
+              'value': 3
+            });
+          }
           
           const originalText = this.querySelector('span').textContent;
           this.querySelector('span').textContent = '✓ Copié !';
@@ -2800,40 +2808,49 @@ Le matching est terminé.`;
       }
     });
 
-    // Note : Pas besoin d'event listener pour l'étape 4
-    // Le prompt est déjà copié à l'étape 3, l'utilisateur n'a plus qu'à retourner sur ChatGPT manuellement
-
-    // Tracking des boutons "Précédent"
+    // Boutons "Précédent" pour naviguer entre les cartes
     const prevBtnCard2 = document.getElementById('prevBtnCard2');
     if (prevBtnCard2) {
-      prevBtnCard2.addEventListener('click', function() {
-        gtag('event', 'funnel_previous_button', {
-          'event_category': 'Funnel',
-          'event_label': 'Bouton précédent - Carte 2 vers Carte 1',
-          'value': 1
-        });
+      prevBtnCard2.addEventListener('click', function(e) {
+        e.preventDefault();
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'funnel_navigation', {
+            'event_category': 'Funnel',
+            'event_label': 'Retour étape 2 → étape 1',
+            'value': 1
+          });
+        }
+        showCard(1);
       });
     }
 
     const prevBtnCard3 = document.getElementById('prevBtnCard3');
     if (prevBtnCard3) {
-      prevBtnCard3.addEventListener('click', function() {
-        gtag('event', 'funnel_previous_button', {
-          'event_category': 'Funnel',
-          'event_label': 'Bouton précédent - Carte 3 vers Carte 2',
-          'value': 2
-        });
+      prevBtnCard3.addEventListener('click', function(e) {
+        e.preventDefault();
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'funnel_navigation', {
+            'event_category': 'Funnel',
+            'event_label': 'Retour étape 3 → étape 2',
+            'value': 2
+          });
+        }
+        showCard(2);
       });
     }
 
     const prevBtnCard4 = document.getElementById('prevBtnCard4');
     if (prevBtnCard4) {
-      prevBtnCard4.addEventListener('click', function() {
-        gtag('event', 'funnel_previous_button', {
-          'event_category': 'Funnel',
-          'event_label': 'Bouton précédent - Carte 4 vers Carte 3',
-          'value': 3
-        });
+      prevBtnCard4.addEventListener('click', function(e) {
+        e.preventDefault();
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'funnel_navigation', {
+            'event_category': 'Funnel',
+            'event_label': 'Retour étape 4 → étape 3',
+            'value': 3
+          });
+        }
+        showCard(3);
       });
     }
 
@@ -2841,6 +2858,8 @@ Le matching est terminé.`;
     let scroll80Sent = false; // Flag pour éviter d'envoyer l'événement 80% plusieurs fois
     let scrollLessThan50Sent = false; // Flag pour éviter d'envoyer l'événement < 50% plusieurs fois
     let maxScrollReached = 0; // Pour suivre le scroll maximum atteint
+    let reachedCard4 = false; // Flag pour savoir si l'utilisateur est arrivé sur la carte 4
+    let leftAfterCard4Sent = false; // Flag pour éviter d'envoyer l'événement plusieurs fois
     
     // Fonction pour calculer le pourcentage de scroll
     function getScrollPercentage() {
@@ -2851,24 +2870,64 @@ Le matching est terminé.`;
       return Math.min(scrollPercentage, 100); // Limiter à 100%
     }
     
-    // Event listener pour le scroll - Suivre le scroll maximum atteint
+    // Event listener pour le scroll - Suivre le scroll maximum atteint et envoyer les événements
     let scrollTimeout;
+    let scrollInactivityTimeout;
+    let lastScrollTime = Date.now();
+    
     window.addEventListener('scroll', function() {
+      lastScrollTime = Date.now();
       clearTimeout(scrollTimeout);
+      clearTimeout(scrollInactivityTimeout);
+      
       scrollTimeout = setTimeout(function() {
         const scrollPercentage = getScrollPercentage();
         maxScrollReached = Math.max(maxScrollReached, scrollPercentage);
-      }, 150); // Debounce pour éviter trop d'appels
-    });
-    
-    // Détecter quand l'utilisateur quitte la page sans avoir scrollé plus de 50%
-    window.addEventListener('beforeunload', function() {
-      if (maxScrollReached < 50 && !scrollLessThan50Sent && !scroll80Sent) {
-        // Utiliser sendBeacon pour envoyer l'événement même si la page se ferme
-        if (navigator.sendBeacon) {
-          // Note: sendBeacon nécessite une URL, on ne peut pas l'utiliser directement avec gtag
-          // On va plutôt utiliser visibilitychange qui est plus fiable
+        
+        // Envoyer l'événement scroll_80_percent dès que 80% est atteint
+        if (maxScrollReached >= 80 && !scroll80Sent && typeof gtag !== 'undefined') {
+          scroll80Sent = true;
+          gtag('event', 'scroll_80_percent', {
+            'event_category': 'Engagement',
+            'event_label': 'Scroll jusqu\'à 80% - Bloc AXIOM visible',
+            'value': Math.round(maxScrollReached)
+          });
         }
+      }, 150); // Debounce pour éviter trop d'appels
+      
+      // Vérification d'inactivité : si l'utilisateur n'a pas scrollé depuis 10 secondes et est en dessous de 50%
+      scrollInactivityTimeout = setTimeout(function() {
+        if (maxScrollReached < 50 && !scrollLessThan50Sent && !scroll80Sent && typeof gtag !== 'undefined') {
+          scrollLessThan50Sent = true;
+          gtag('event', 'scroll_less_than_50', {
+            'event_category': 'Engagement',
+            'event_label': 'Inactivité de scroll - Moins de 50% de scroll',
+            'value': Math.round(maxScrollReached)
+          });
+        }
+      }, 10000); // 10 secondes d'inactivité
+    }, { passive: true });
+    
+    // Détecter quand l'utilisateur quitte la page
+    window.addEventListener('beforeunload', function() {
+      // Événement : Quitte après être arrivé sur l'étape 4 (va sur ChatGPT)
+      if (reachedCard4 && !leftAfterCard4Sent && typeof gtag !== 'undefined') {
+        leftAfterCard4Sent = true;
+        gtag('event', 'funnel_completed_and_left', {
+          'event_category': 'Funnel',
+          'event_label': 'Complète le funnel et quitte pour ChatGPT',
+          'value': 4
+        });
+      }
+      
+      // Événement : Quitte avant 50% de scroll
+      if (maxScrollReached < 50 && !scrollLessThan50Sent && !scroll80Sent && typeof gtag !== 'undefined') {
+        scrollLessThan50Sent = true;
+        gtag('event', 'scroll_less_than_50', {
+          'event_category': 'Engagement',
+          'event_label': 'Quitte la page avant 50% de scroll - Pas de lecture',
+          'value': Math.round(maxScrollReached)
+        });
       }
     });
     
@@ -2876,31 +2935,43 @@ Le matching est terminé.`;
     document.addEventListener('visibilitychange', function() {
       if (document.hidden) {
         // L'utilisateur quitte ou change d'onglet
-        if (maxScrollReached < 50 && !scrollLessThan50Sent && !scroll80Sent) {
+        
+        // Événement : Quitte après être arrivé sur l'étape 4 (va sur ChatGPT)
+        if (reachedCard4 && !leftAfterCard4Sent && typeof gtag !== 'undefined') {
+          leftAfterCard4Sent = true;
+          gtag('event', 'funnel_completed_and_left', {
+            'event_category': 'Funnel',
+            'event_label': 'Complète le funnel et quitte pour ChatGPT',
+            'value': 4
+          });
+        }
+        
+        // Événement : Quitte avant 50% de scroll
+        if (maxScrollReached < 50 && !scrollLessThan50Sent && !scroll80Sent && typeof gtag !== 'undefined') {
           scrollLessThan50Sent = true;
           gtag('event', 'scroll_less_than_50', {
             'event_category': 'Engagement',
             'event_label': 'Quitte la page avant 50% de scroll - Pas de lecture',
-            'value': maxScrollReached
+            'value': Math.round(maxScrollReached)
           });
         }
       }
     });
     
+    
     // IntersectionObserver pour détecter quand le bloc AXIOM est visible (80% de scroll)
+    // Ceci est un backup au cas où le scroll direct ne fonctionne pas
     const blocAxiom = document.getElementById('bloc-axiom');
     if (blocAxiom) {
       const observerAxiom = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-          if (entry.isIntersecting && !scroll80Sent) {
+          if (entry.isIntersecting && !scroll80Sent && typeof gtag !== 'undefined') {
             scroll80Sent = true;
             gtag('event', 'scroll_80_percent', {
               'event_category': 'Engagement',
               'event_label': 'Scroll jusqu\'à 80% - Bloc AXIOM visible',
               'value': 80
             });
-            // Une fois que 80% est atteint, on ne veut plus envoyer l'événement 50%
-            // (mais on garde scroll50Sent pour éviter de l'envoyer si l'utilisateur scroll rapidement)
           }
         });
       }, {
